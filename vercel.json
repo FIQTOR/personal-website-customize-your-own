@@ -3,7 +3,7 @@
   "build": {
     "env": {
       "VITE_DOMAIN": "fiqtor.pages.dev",
-      "VITE_API_BASE_URL": "https://api.fiqtor.com/api",
+      "VITE_API_BASE_URL": "/api",
       "VITE_ENABLE_AI": "TRUE"
     }
   },

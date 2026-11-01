@@ -1,11 +1,11 @@
 # AGENTS.md
 
-Unified personal portfolio repository (`fiqtor.com` / Cloudflare Pages).
+Unified personal portfolio repository (`fiqtor.pages.dev` / Cloudflare Pages).
 
 Frontend and Backend are unified in this single repo:
 - **Frontend:** React 19 + TypeScript + Vite + Tailwind v4 in `src/`, static assets in `public/`.
 - **Backend / API:** Cloudflare Pages Functions powered by Hono in `functions/api/[[route]].ts`.
-  Routes are mounted at `/api/*` on the same domain (e.g. `https://fiqtor.pages.dev/api/...` or `https://fiqtor.com/api/...`).
+  Routes are mounted at `/api/*` on the same domain (`https://fiqtor.pages.dev/api/...`).
   No subdomains, no CORS friction.
 
 ---

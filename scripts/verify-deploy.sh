@@ -2,8 +2,8 @@
 # ================================================================
 # Post-deploy verification for the FIQTOR portfolio (v3).
 #
-#   bash scripts/verify-deploy.sh                 # check production
-#   bash scripts/verify-deploy.sh https://staging.fiqtor.com
+#   bash scripts/verify-deploy.sh                 # check production (https://fiqtor.pages.dev)
+#   bash scripts/verify-deploy.sh https://staging.fiqtor.pages.dev
 #
 # Run this immediately after a Cloudflare Pages deploy. It asserts the things
 # that have silently broken before (missing viewport → unreadable on mobile,

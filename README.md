@@ -223,7 +223,7 @@ Everything is generated from one pure module, `src/config/Seo.ts`, used twice: b
 - **GEO** — `/llms.txt`, `/llms-full.txt`, and explicit rules for AI crawlers (GPTBot,
   ClaudeBot, PerplexityBot, Google-Extended, CCBot, …) in `robots.txt`.
 
-> The demo ships with Search Console verification and GA4 IDs for `fiqtor.com` — **replace them
+> The demo ships with Search Console verification and GA4 IDs for `fiqtor.pages.dev` — **replace them
 > with your own** before going live.
 
 ---

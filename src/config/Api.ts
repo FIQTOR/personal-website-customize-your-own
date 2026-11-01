@@ -1,12 +1,8 @@
 /**
  * Backend API base URL — the single source of truth for every fetch.
  *
- * The value comes from the build-time env var `VITE_API_BASE_URL` (e.g.
- * `https://api.fiqtor.com/api`). Vite inlines `import.meta.env.*` literally at
- * build time, so a missing variable can silently compile to the string
- * `"undefined"`. We validate it once, at module load, and expose
- * `isApiBaseUrlValid` so callers can degrade gracefully instead of requesting
- * `https://<site>/undefined/v1/...` (which an SPA fallback answers with HTML).
+ * The value comes from the build-time env var `VITE_API_BASE_URL` (defaults to `/api`).
+ * Vite inlines `import.meta.env.*` literally at build time.
  */
 
 /** Strip a single pair of wrapping quotes and any trailing slashes. */
@@ -35,7 +31,7 @@ const API_BASE_URL = normalizeBaseUrl(rawBaseUrl);
 /**
  * True when the base URL is genuinely usable. Supports:
  *   - Relative same-origin path (e.g. `/api`)
- *   - Absolute URL (e.g. `https://fiqtor.com/api`)
+ *   - Absolute URL (e.g. `https://fiqtor.pages.dev/api`)
  */
 export const isApiBaseUrlValid =
   API_BASE_URL !== '' &&
