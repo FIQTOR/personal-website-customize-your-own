@@ -64,7 +64,7 @@ function splitWords(el: HTMLElement): HTMLElement[] {
 function introTargets(hero: HTMLElement): HTMLElement[] {
   return Array.from(
     hero.querySelectorAll<HTMLElement>(
-      '.char, .lead .w, .tag, .cta, .cta-ghost, .cta-row-hero, .hero-social-bar, .eyebrow, .scroll-hint, .dot-portrait, .hero-rot, .hero-stats',
+      '.char, .lead .w, .tag, .cta, .cta-ghost, .cta-row-hero, .hero-social-bar, .hsb-btn, .hsb-hub, .hsb-sep, .eyebrow, .scroll-hint, .dot-portrait, .hero-rot, .hero-stats',
     ),
   );
 }
@@ -138,6 +138,10 @@ export function Hero({ started }: { started: boolean }) {
     const stats = left?.querySelector<HTMLElement>('.hero-stats') ?? null;
     const tags = Array.from(hero.querySelectorAll<HTMLElement>('.tag'));
     const cta = hero.querySelector<HTMLElement>('.cta-row-hero') ?? hero.querySelector<HTMLElement>('.cta');
+    const socialBar = hero.querySelector<HTMLElement>('.hero-social-bar');
+    const socialBtns = Array.from(hero.querySelectorAll<HTMLElement>('.hsb-btn'));
+    const socialHub = hero.querySelector<HTMLElement>('.hsb-hub');
+    const socialSep = hero.querySelector<HTMLElement>('.hsb-sep');
     const hint = hero.querySelector<HTMLElement>('.scroll-hint');
 
     if (document.visibilityState !== 'visible') {
@@ -151,6 +155,10 @@ export function Hero({ started }: { started: boolean }) {
     gsap.set([...leftLead, ...rightLead], { opacity: 0, y: 16, filter: 'blur(8px)' });
     gsap.set([eyebrow, cta, hint, rot, stats].filter(Boolean) as HTMLElement[], { opacity: 0, y: 18 });
     gsap.set(tags, { opacity: 0, scale: 0.8, y: 10 });
+    if (socialBar) gsap.set(socialBar, { opacity: 1 });
+    if (socialBtns.length) gsap.set(socialBtns, { opacity: 0, scale: 0.5, y: 14 });
+    if (socialSep) gsap.set(socialSep, { opacity: 0, scaleY: 0 });
+    if (socialHub) gsap.set(socialHub, { opacity: 0, x: -10 });
     if (portrait) gsap.set(portrait, { opacity: 0, scale: 1.07 });
 
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, paused: true });
@@ -164,7 +172,12 @@ export function Hero({ started }: { started: boolean }) {
     if (rightLead.length) tl.to(rightLead, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.04, ease: 'power2.out' }, 1.4);
     if (tags.length) tl.to(tags, { opacity: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'back.out(2)' }, 1.8);
     if (cta) tl.to(cta, { opacity: 1, y: 0, duration: 0.8 }, 2.0);
-    if (hint) tl.to(hint, { opacity: 1, y: 0, duration: 0.8 }, 2.2);
+    if (socialBtns.length) {
+      tl.to(socialBtns, { opacity: 1, scale: 1, y: 0, duration: 0.55, stagger: 0.06, ease: 'back.out(2.2)' }, 2.15);
+    }
+    if (socialSep) tl.to(socialSep, { opacity: 0.5, scaleY: 1, duration: 0.4 }, 2.4);
+    if (socialHub) tl.to(socialHub, { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' }, 2.45);
+    if (hint) tl.to(hint, { opacity: 1, y: 0, duration: 0.8 }, 2.5);
     let ready = false;
     const isReady = () => ready;
     tl.add(() => {
