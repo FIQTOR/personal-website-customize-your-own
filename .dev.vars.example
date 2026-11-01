@@ -1,0 +1,7 @@
+# Local development secrets for Cloudflare Workers / Pages Functions (wrangler pages dev)
+GEMINI_API_KEY=
+AI_MODEL_PRIMARY=gemini-2.5-flash-lite
+GITHUB_TOKEN=
+GITHUB_USERNAME=FIQTOR
+WAKATIME_APP_SECRET=
+COINGECKO_API_KEY=
