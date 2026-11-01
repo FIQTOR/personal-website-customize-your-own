@@ -5,7 +5,7 @@
 **A dark-first, motion-rich personal portfolio template**
 built with React 19 · TypeScript · Vite — bilingual, SEO/AEO/GEO-ready, and easy to make yours.
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FIQTOR/fiqtor.com/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FIQTOR/personal-website-customize-your-own/generate)
 [![Live demo](https://img.shields.io/badge/Live%20demo-fiqtor.pages.dev-000000?style=for-the-badge&logo=googlechrome&logoColor=white)](https://fiqtor.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge)](./LICENSE)
 
@@ -41,7 +41,7 @@ of plain TypeScript files.
 
 ```bash
 # 1 · clone (or click "Use this template" on GitHub)
-git clone https://github.com/FIQTOR/fiqtor.com.git my-portfolio
+git clone https://github.com/FIQTOR/personal-website-customize-your-own.git my-portfolio
 cd my-portfolio
 
 # 2 · install & configure
