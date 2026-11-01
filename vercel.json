@@ -1,0 +1,47 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "build": {
+    "env": {
+      "VITE_DOMAIN": "fiqtor.pages.dev",
+      "VITE_API_BASE_URL": "https://api.fiqtor.com/api",
+      "VITE_ENABLE_AI": "TRUE"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-FY6naYUTKQAuSE6p6hl+C1c368YhWJpClvGhACF9Xrs=' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://static.cloudflareinsights.com https://github-contributions-api.jogruber.de; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.google.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+        },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ],
+  "rewrites": [
+    { "source": "/projects", "destination": "/projects/index.html" },
+    {
+      "comment": "Case-study shells are written to /projects/<slug>/index.html at build time. This must sit AFTER the exact /projects rule above and BEFORE the catch-all, otherwise a project URL falls through to /index.html and serves the homepage's <head> — wrong title, wrong canonical, wrong OG card.",
+      "source": "/projects/([^/]+)",
+      "destination": "/projects/$1/index.html"
+    },
+    { "source": "/career", "destination": "/career/index.html" },
+    { "source": "/certificates", "destination": "/certificates/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/linktree", "destination": "/linktree/index.html" },
+    {
+      "source": "/((?!sitemap\\.xml|robots\\.txt|\\.well-known/|.*\\.[^/]+$|\\.[^/]*(?:/|$)).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

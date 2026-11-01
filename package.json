@@ -1,0 +1,38 @@
+{
+  "name": "fiqtor-portfolio-v3",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "description": "FIQTOR portfolio v3 — React 19 + TypeScript single-page site (dark canvas, dot portrait, real content).",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "preview:cf": "wrangler pages dev ./dist",
+    "deploy": "wrangler pages deploy ./dist",
+    "lint": "oxlint",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "hono": "^4.13.16",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261101.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.88.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.4",
+    "wrangler": "^4.156.0"
+  }
+}

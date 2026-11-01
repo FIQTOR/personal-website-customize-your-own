@@ -1,482 +1,332 @@
 <div align="center">
 
-# 🚀 Personal Portfolio Website
+# FIQTOR Portfolio — v3
 
-**A modern, full-stack personal portfolio template** — built with React 19 + Vite (frontend) and Node.js + Express (backend).
+**A dark-first, motion-rich personal portfolio template**
+built with React 19 · TypeScript · Vite — bilingual, SEO/AEO/GEO-ready, and easy to make yours.
 
-AI chatbot · Contact form (WhatsApp + Email) · GitHub & WakaTime stats · Certifications · Projects · Career timeline · Multi-language resume
-
-> 📦 **This repo uses Git submodules.** `backend/` and `frontend/` are **separate Git repositories** referenced here as [submodules](#-submodules). See [Submodules](#-submodules) for how to clone and work with them.
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FIQTOR/fiqtor.com/generate)
+[![Live demo](https://img.shields.io/badge/Live%20demo-fiqtor.pages.dev-000000?style=for-the-badge&logo=googlechrome&logoColor=white)](https://fiqtor.pages.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge)](./LICENSE)
 
 </div>
 
-<img src="/img/thumbnail.png" alt="thumbnail.png">
+![FIQTOR Portfolio — dark hero with interactive dot portrait](./docs/preview.png)
+
+<sub><a href="https://fiqtor.pages.dev">Live demo</a> · screenshots captured from the real site. Swap them for your own after rebranding (see <a href="#make-it-yours">Make it yours</a>).</sub>
 
 ---
 
-## 📑 Table of Contents
+## What you get
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Submodules](#-submodules)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-  - [Backend Environment Variables](#backend-environment-variables-backendenv)
-  - [Frontend Environment Variables](#frontend-environment-variables-frontendenv)
-  - [Customizing Your Portfolio Content](#customizing-your-portfolio-content)
-- [Running the Project](#-running-the-project)
-- [Available Scripts](#-available-scripts)
-- [Testing & CI](#-testing--ci)
-- [API Endpoints](#-api-endpoints)
-- [Deployment](#-deployment)
-- [Security Notes](#-security-notes)
-- [Troubleshooting](#-troubleshooting)
-- [License](#-license)
+This is a **complete, production-grade portfolio** you can clone, rebrand, and ship in an
+afternoon. Nothing is tied to the author — all identity, content, and copy live in a handful
+of plain TypeScript files.
+
+| | Feature |
+| --- | --- |
+| 🎨 **Distinctive design** | Dark canvas, dot grid, oversized typography, one-click **monochrome light theme** |
+| ✨ **Motion system** | GSAP hero intro, column-curtain page transitions, scroll reveals, magnetic buttons, interactive dot portrait — all respect `prefers-reduced-motion` |
+| 🌍 **Trilingual (EN / ID / ZH)** | Every string is localized across English, Indonesian, and Simplified Chinese; a language switch in the navbar and `<head>` `hreflang` |
+| 🗂️ **Real content catalogue** | 37 projects, 30 certificates (49 credential items), 4 career roles, 9-currency dynamic price converter — filterable, searchable, with a detail modal + gallery lightbox |
+| 🔌 **Live integrations** | AI assistant (SSE streaming), contact form (reCAPTCHA), GitHub contributions, WakaTime, crypto prices, social stats — each **degrades gracefully** if the backend is down |
+| 🔎 **SEO · AEO · GEO** | Per-route static HTML, `sitemap.xml`, `robots.txt`, JSON-LD (`Person`, `FAQPage`, `HowTo`, `ItemList`…), `llms.txt` / `llms-full.txt` |
+| 📱 **Mobile-audited** | 320–430px safe, bottom-sheet modals, iOS-safe inputs, ≥2.9rem tap targets |
+| ⚡ **Fast** | Vite 8, route-level lazy loading, code-split vendors, lazy images with explicit dimensions |
+| 🚀 **Deploy anywhere** | Ready-made configs for **Cloudflare Pages**, **Vercel**, or any static host |
 
 ---
 
-## ✨ Features
-
-- 🤖 **AI Assistant** — Context-aware chatbot (Google Gemini / Groq) that answers questions about you. Supports **voice dictation** (Web Speech API → types straight into the composer), **file attachments** (Image / Video / Document via a type picker, max 4.5MB), streaming replies, and copy/regenerate actions.
-- 📬 **Contact Form** — Sends notifications via WhatsApp Business API with automatic Email (SMTP) fallback.
-- 📊 **Live Stats** — GitHub contribution graph and WakaTime coding activity.
-- 🎨 **Modern UI** — Tailwind CSS v4, Framer Motion animations, dark/light theme, 3D & Lottie effects.
-- 🗂️ **Portfolio Sections** — Projects, career timeline, certifications, skills, services.
-- 💰 **Crypto Widget** — Static BTC/ETH/SOL prices served by the backend (no third-party API key to leak).
-- 🔍 **SEO Ready** — Structured data (JSON-LD), OpenGraph, Twitter cards, sitemap, robots.
-- 🌐 **Fully Configurable** — Personal/brand data lives in `frontend/src/config/Identity.ts` (code) and a few `VITE_*` env vars (no editing components needed).
-- 📱 **Responsive** — Mobile-first design with a classic linktree page.
-- 🧩 **Reusable Template** — Clean, easy-to-navigate structure; a "Portfolio template" link in the footer points to [`fiqtor.com-create-your-own`](https://github.com/FIQTOR/fiqtor.com-create-your-own).
-
----
-
-## 🛠 Tech Stack
-
-| Layer      | Technology                                                                                     |
-| ---------- | ---------------------------------------------------------------------------------------------- |
-| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS v4, Framer Motion, React Router, react-helmet-async |
-| **Backend**  | Node.js 24, Express, Axios, Nodemailer, Helmet, express-rate-limit                          |
-| **AI**       | `@google/genai` (Gemini), `groq-sdk` (Groq)                                                     |
-| **Services** | WhatsApp Cloud API, Gmail SMTP, GitHub GraphQL, WakaTime, reCAPTCHA |
-| **Deploy**   | Vercel (frontend + backend)                                                                     |
-
----
-
-## 📂 Project Structure
-
-```
-personal-website/               # 📦 umbrella repo (this one — holds only .gitmodules + docs)
-├── .gitmodules                 # defines backend/ and frontend/ as submodules
-├── README.md
-├── AGENTS.md
-│
-├── backend/                    # 🔗 git submodule → FIQTOR/api.fiqtor
-│   ├── index.js                # 🚀 server entry point
-│   ├── src/
-│   │   ├── config/             # CORS + static identity/crypto/social data
-│   │   ├── controllers/        # ai, contact, github, wakatime controllers
-│   │   ├── middleware/         # rate limiter, logger, error handler
-│   │   ├── services/           # contact, github, wakatime, crypto, social services
-│   │   └── routes/             # index (aggregator) + per-feature route files
-│   ├── .env.example            # backend env template
-│   └── vercel.json
-│
-└── frontend/                   # 🔗 git submodule → FIQTOR/fiqtor.com
-    ├── public/                 # static assets (images, pdf, favicon)
-    │   ├── img/                # project/company images
-    │   └── pdf/                # resume files
-    │   # sitemap.xml + robots.txt are GENERATED at build time (not stored here)
-    ├── src/
-    │   ├── components/         # shared UI components (Navbar, Footer, AIHelper…)
-    │   ├── config/             # ⚙️ Identity.ts (code-based branding), Head, Metadata, Github/Wakatime
-    │   ├── context/            # React contexts (theme, container, welcome)
-    │   ├── data/               # 📝 YOUR CONTENT: projects, career, certificates…
-    │   ├── layouts/            # layout wrappers
-    │   ├── modules/            # feature modules — e.g. modules/home/{sections,components}, modules/contact/components
-    │   ├── pages/              # route pages (file-based routing)
-    │   ├── App.tsx             # app shell
-    │   └── main.tsx            # entry point
-    ├── index.html              # minimal shell (head injected at build from src/config/Head.ts)
-    ├── vite.config.ts          # includes htmlHeadPlugin (head + sitemap + robots)
-    └── .env.example            # frontend env template
-```
-
-> 💡 **Key idea:** Personal/brand data → **env vars** (`.env`). Portfolio content (projects, certificates, career) → **`src/data/*.ts`**. The `<head>` metadata is generated at build time from **`src/config/Head.ts`**.
->
-> 🔗 **`backend/` and `frontend/` are Git submodules** — each is its own repository with its own history and remotes. This umbrella repo only pins *which commit* of each to use. See [Submodules](#-submodules).
-
----
-
-## 🔗 Submodules
-
-This repository contains **no application code of its own** — it's an **umbrella (meta) repo** that stitches together two independent repositories via **Git submodules**:
-
-| Submodule    | Repository                              | Purpose                          |
-| ------------ | --------------------------------------- | -------------------------------- |
-| `backend/`   | `https://github.com/FIQTOR/api.fiqtor`  | Node.js + Express API            |
-| `frontend/`  | `https://github.com/FIQTOR/fiqtor.com`  | React 19 + Vite web app          |
-
-The mapping lives in [`.gitmodules`](.gitmodules):
-
-```ini
-[submodule "backend"]
-	path = backend
-	url = https://github.com/FIQTOR/api.fiqtor
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/FIQTOR/fiqtor.com
-```
-
-**What this means in practice:**
-
-- The umbrella repo stores only a **pointer** (commit SHA) to each submodule — not the files themselves.
-- `backend/` and `frontend/` each have their **own** `.git`, remote, branches and history.
-- Committing in the umbrella repo records the **current SHA** of each submodule (a "gitlink").
-- CI/CD and Vercel import each submodule folder as its own project (see [Deployment](#-deployment)).
-
-### Cloning with submodules
+## Quick start
 
 ```bash
-# Option A — clone everything in one go
-git clone --recurse-submodules https://github.com/FIQTOR/fiqtor.com-create-your-own.git
-cd fiqtor.com-create-your-own
+# 1 · clone (or click "Use this template" on GitHub)
+git clone https://github.com/FIQTOR/fiqtor.com.git my-portfolio
+cd my-portfolio
 
-# Option B — already cloned without submodules?
-git submodule update --init --recursive
-```
-
-### Common submodule commands
-
-```bash
-# Check status / pinned commits
-git submodule status
-
-# Pull the latest commit for every submodule
-git submodule update --remote --merge
-
-# Update a single submodule
-git submodule update --remote backend
-
-# Run a git command inside a submodule
-git -C frontend status
-
-# Switch all submodules to the commit the umbrella repo pins
-git submodule update --init --recursive
-```
-
-> ⚠️ **Edits inside a submodule are committed in the submodule's own repo first**, then the umbrella repo commits the new pointer. Pushing the umbrella repo alone does **not** push submodule commits.
->
-> 💡 **Optional convenience:** run `git config submodule.recurse true` so any `git push` in the umbrella repo also pushes the submodules first (Git 2.14+). The bundled `scripts/push-submodules.sh` does commit → push → bump → push in the correct order and refuses to publish a pointer whose submodule commit isn't on the remote.
-
----
-
-## ✅ Prerequisites
-
-Make sure you have installed:
-
-- [Node.js](https://nodejs.org/) **v24.x** (matches the backend `engines` field)
-- [npm](https://www.npmjs.com/) (comes with Node) — or `pnpm` / `yarn`
-- [Git](https://git-scm.com/)
-
----
-
-## 📦 Installation
-
-### 1. Clone the repository **with submodules**
-
-Because `backend/` and `frontend/` are Git submodules, clone recursively (or init them after cloning):
-
-```bash
-# recommended — pulls the umbrella repo + both submodules
-git clone --recurse-submodules https://github.com/<your-username>/personal-website.git
-cd personal-website
-
-# already cloned without them? fetch the submodule commits:
-git submodule update --init --recursive
-```
-
-> ❓ If `backend/` or `frontend/` are empty after cloning, run `git submodule update --init --recursive`. See [Submodules](#-submodules).
-
-### 2. Install backend dependencies
-
-```bash
-cd backend
+# 2 · install & configure
 npm install
+cp .env.example .env         # set VITE_DOMAIN / VITE_API_BASE_URL (no backend yet? leave defaults)
+
+# 3 · run
+npm run dev                  # → http://localhost:5173
 ```
 
-### 3. Install frontend dependencies
+> **No backend? Still fine.** Every live widget (AI, stats, prices) falls back to sensible
+> local defaults, so the site looks and works complete without `VITE_API_BASE_URL`.
+
+### Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Typecheck (`tsc -b`) + production build → `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Lint with [oxlint](https://oxc.rs/) |
+| `npm run typecheck` | TypeScript project build, no emit |
+
+**Requirements:** Node **20+** and npm 10+.
+
+---
+
+## Make it yours
+
+> Everything below is **content only** — you never have to touch components or CSS to rebrand.
+
+### 1 · Identity — `src/config/Identity.ts` ⭐ start here
+
+The single source of truth for who the site is about. Set your name, brand, role, headline,
+contact details, socials, timezone, résumé paths, company, and portrait.
+
+```ts
+export const BRAND_NAME = 'FIQTOR';            // name shown everywhere in the UI
+export const LEGAL_NAME = 'Taufiiqul Hakim';   // only in About + structured data
+export const JOB_TITLE  = 'AI & Software Engineer';
+export const SITE_ORIGIN = 'https://fiqtor.pages.dev';
+export const SOCIAL_LINKS = { github: '…', linkedin: '…', … };
+export const PORTRAIT_IMAGE = '/icon.webp';    // replace public/icon.webp
+```
+
+### 2 · Content — `src/data/`
+
+| File | What to edit |
+| --- | --- |
+| `projects.ts` | Your projects (`title`, `description`, `tags` in EN/ID, `srcImage` + `images[]`, `category`, `best`) |
+| `certificates.ts` | Certificates & awards (`published`, `srcImage`, `tags`, `best`) |
+| `certificatesExtra.ts` | Longer descriptions shown in the certificate modal |
+| `certGroups.ts` | Which certificates are "flagship" and how the rest are grouped |
+| `site.ts` | Services, FAQ, process steps, Linktree, career, testimonials, stats |
+| `skills.ts` | Skill → icon mapping |
+| `social.ts` | Social link labels & icons |
+| `galleryLabels.ts` | Screenshot captions |
+| `portrait.ts` | Hero dot-matrix interactive face particles (`PORTRAIT: { w, h, d: [[x, y, size], ...] }`) |
+
+> 💡 **Customizing Hero Dot Face (`portrait.ts`):**  
+> Mengubah visual dot-matrix wajah di hero section jauh lebih cepat dan rapi jika menggunakan **Claude / AI**. Unggah foto portrait diri dengan kontras jelas, lalu minta Claude membuat array dot matrix `[x, y, size]` yang sesuai dengan interface `PortraitData` di `src/data/portrait.ts`.
+
+**Images** go in `public/img/{projects,career,certificate,cryptocurrency,testimonials}/`
+(use `.webp` for speed). **Résumés** go in `public/pdf/`. Then update the paths in `Identity.ts`.
+
+### 3 · Pages & metadata — `src/config/Seo.ts`
+
+Per-route titles, descriptions, keywords, FAQ answers, and structured data (`ROUTES`, `FAQ`).
+This module is *pure*, so it powers both the build-time `<head>` **and** client-side SPA
+navigation — edit it once.
+
+### 4 · Theme — `src/styles/site.css`
+
+Both themes are plain CSS custom properties on `html[data-theme="dark"|"light"]`. Recolor the
+whole site by editing those variables — no build step, no Tailwind config.
+
+### 5 · Environment — `.env`
+
+| Variable | Purpose |
+| --- | --- |
+| `VITE_DOMAIN` | Site origin for canonical / OG / JSON-LD URLs |
+| `VITE_API_BASE_URL` | Backend for live widgets (see [backend contract](#live-integrations-backend-contract)) |
+| `VITE_ENABLE_AI` | `false` hides the AI assistant button |
+| `VITE_RECAPTCHA_SITE_KEY` | Empty = reCAPTCHA widget off |
+| `VITE_GA_ID` | GA4 measurement ID override (falls back to `GA_MEASUREMENT_ID` in `Identity.ts`) |
+
+> ⚠️ **`VITE_*` values are embedded in the public bundle.** Never put secrets there — API keys,
+> tokens, and private credentials belong on the backend.
+
+### 6 · Before you publish — checklist
+
+- [ ] `Identity.ts` — name, contact, socials, domain, résumé paths
+- [ ] Replace `public/icon.webp`, `public/favicon.ico`, `public/img/icons/*`, `public/og-image.png`
+- [ ] Remove or replace `public/googled*.html` (Google Search Console verification — **not yours**)
+- [ ] Clear the sample catalogue in `src/data/projects.ts` / `certificates.ts`
+- [ ] Update `GA_MEASUREMENT_ID` in `Identity.ts` — or set it to `''` to disable analytics
+- [ ] Update `<title>` fallbacks and JSON-LD by editing `src/config/Seo.ts`
+- [ ] Replace `docs/preview.png` with a screenshot of your own homepage hero
+- [ ] Update the repo/`package.json` name and the `LICENSE` copyright line
+
+### Replacing the README thumbnail
+
+`docs/preview.png` is a real capture of the live demo, so it still shows the author's name.
+After rebranding, capture your own homepage hero at **1920×1080** (open your deployment, scroll
+to the top, wait for the intro animation to settle, then screenshot the visible area) and save it
+over `docs/preview.png`. Keep the filename and the README picks it up with no edits.
+
+---
+
+## Project structure
+
+```
+index.html                       # shell; <head> injected at build time
+vite.config.ts                   # React plugin + build-time SEO/sitemap/llms plugin
+docs/preview.png                 # README hero thumbnail (replace with your own)
+public/
+  img/{projects,career,certificate,cryptocurrency,testimonials}/  # your screenshots
+  pdf/                           # résumés
+  icon.webp, og-image.png        # portrait & social preview
+  img/icons/                     # PWA icons (192, 512, maskable, apple-touch)
+  _headers, _redirects           # Cloudflare Pages housekeeping
+src/
+  main.tsx                       # router (Home, Projects, Career, Certificates, Contact, Linktree, 404)
+  styles/site.css                # the entire visual system + theme tokens
+  config/
+    Identity.ts                  # ★ brand, owner, contact, socials, résumé paths
+    Api.ts                       # VITE_API_BASE_URL validation
+    Features.ts                  # reCAPTCHA / AI feature flags
+    Seo.ts                       # ★ per-route meta + JSON-LD + sitemap/robots/llms/manifest
+  data/                          # ★ all content (bilingual)
+    site.ts                      # services, FAQ, process, linktree, career, catalogue
+    projects.ts, certificates.ts # catalogues (EN/ID)
+    certGroups.ts                # certificate taxonomy (flagship → grouped)
+  components/
+    Layout, Loader, Navbar, Footer, Logo, ThemeSwitch, GlobalEffects, DotPortrait
+    Cards, DetailModal, FilterGallery, Seo, home/{Hero,HomeSections,LiveStats}
+  lib/
+    catalog.tsx                  # modal state + LanguageProvider
+    chat.tsx                     # AI assistant (SSE streaming + local fallbacks)
+    theme.tsx, themeBoot.ts      # dark/light provider + pre-paint script
+    ui.tsx, utils.ts, utils.tsx  # toasts, motion prefs, pure helpers, icons
+  hooks/useReveal.tsx            # scroll reveal, interactive titles, count-up, typewriter
+  pages/                         # one file per route
+```
+
+The `★` files are the ones you'll edit most — identity, content, and metadata.
+
+---
+
+## Live integrations (backend contract)
+
+All network calls target `VITE_API_BASE_URL` (default `/api` mounted on the same domain via Cloudflare Pages Functions) and
+**degrade gracefully** — if upstream is unreachable or credentials are unset, the UI keeps working with local
+defaults. Point them at your own API, or leave `VITE_ENABLE_AI=false` and skip most of it.
+
+| Feature | Endpoint | Notes |
+| --- | --- | --- |
+| AI assistant | `POST /api/v1/ai/generate` | Cloudflare Pages Functions (SSE streaming via Gemini REST) |
+| GitHub contributions | `GET /api/v1/github/contributions` | Edge proxy for GitHub GraphQL contributions API |
+| WakaTime | `GET /api/v1/wakatime` | All-time stats with edge caching |
+| Crypto prices | `GET /api/v1/crypto` | `{btc,eth,sol}` with `rate` + `delta.day\|month` |
+| Social stats | `GET /api/v1/social/stats` | Follower counts (TikTok / Instagram) |
+| Contact form | Client-side direct redirect | Validates brief then opens prefilled WhatsApp chat |
+
+Only the endpoints you use need to exist — unused widgets fall back to static content.
+
+---
+
+## SEO · AEO · GEO out of the box
+
+Everything is generated from one pure module, `src/config/Seo.ts`, used twice: by
+`vite.config.ts` at build time (static HTML per route) and by `<Seo />` at runtime (SPA nav).
+
+- **SEO** — per-route title/description/canonical/OG/Twitter, `hreflang` (`en`, `id`, `x-default`),
+  `sitemap.xml` with `xhtml:link` alternates, `robots.txt`, `security.txt`, web manifest, and a
+  static `/<route>/index.html` so crawlers and hard refreshes get correct metadata without JS.
+- **AEO** — `FAQPage`, `HowTo`, `ItemList` (services, projects, certificates, roles),
+  `BreadcrumbList`, and `SpeakableSpecification`.
+- **GEO** — `/llms.txt`, `/llms-full.txt`, and explicit rules for AI crawlers (GPTBot,
+  ClaudeBot, PerplexityBot, Google-Extended, CCBot, …) in `robots.txt`.
+
+> The demo ships with Search Console verification and GA4 IDs for `fiqtor.com` — **replace them
+> with your own** before going live.
+
+---
+
+## Deploy
+
+The build is a static bundle in `dist/`. Pick a host:
+
+<details open>
+<summary><b>Cloudflare Pages</b></summary>
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | None |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | `/` |
+| Node version | 20+ |
+
+`public/_headers` and `public/_redirects` are already wired. `wrangler.jsonc` and
+`functions/_middleware.js` (real 404s for missing assets) only matter if you use the
+Cloudflare CLI — update the `name` in `wrangler.jsonc` to your Pages project.
+</details>
+
+<details>
+<summary><b>Vercel</b></summary>
+
+`vercel.json` already includes SPA rewrites and security headers — just import the repo.
+Update the `VITE_DOMAIN` / `VITE_API_BASE_URL` values in its `build.env` block.
+</details>
+
+<details>
+<summary><b>Any static host</b></summary>
+
+Run `npm run build` and serve `dist/` with an SPA fallback to `index.html` for unknown paths
+(the prerendered per-route shells already exist for the main routes).
+</details>
+
+**Post-deploy check** — invisible failures like a lost `<meta name="viewport">` (site renders
+zoomed-out on phones), missing headers, or 404s on legacy URLs:
 
 ```bash
-cd ../frontend
-npm install
-```
-
-### 4. Create environment files
-
-Copy the example files and fill in your own values (see [Configuration](#-configuration)):
-
-```bash
-# Backend
-cd ../backend
-cp .env.example .env
-
-# Frontend
-cd ../frontend
-cp .env.example .env
+bash scripts/verify-deploy.sh                      # production
+bash scripts/verify-deploy.sh https://staging…     # any origin
 ```
 
 ---
 
-## ⚙️ Configuration
+## Accessibility & performance
 
-All configuration is done through environment variables. **Never commit your real `.env` files** — they are already excluded in `.gitignore`.
-
-- **Backend** → `backend/.env`
-- **Frontend** → `frontend/.env`
-
-> ⚠️ Any variable starting with `VITE_` is embedded into the **public browser bundle**. Never put true secrets (API secrets, private tokens) in a `VITE_` variable. Branding/identity is code-based in `frontend/src/config/Identity.ts`; backend identity/social in `backend/src/config/identity.js`.
-
-### Backend Environment Variables (`backend/.env`)
-
-| Variable                | Required | Description                                                                 |
-| ----------------------- | :------: | --------------------------------------------------------------------------- |
-| `NODE_ENV`              |    ✅    | `development` or `production`                                               |
-| `APP_PORT`              |    ✅    | Server port (default `4000`)                                                |
-| `FRONTEND_HOST`         |    ✅    | Allowed CORS origin(s), e.g. `http://localhost:5173`                        |
-| **AI**                  |          |                                                                             |
-| `GEMINI_API_KEY`        |    ✅    | Google Gemini key — https://aistudio.google.com/app/apikey                  |
-| `GROQ_API_KEY`          |    ⬜    | Groq key (optional) — https://console.groq.com/keys                        |
-| **Identity / Social**   |    —     | **Not env** → code in `backend/src/config/identity.js` (brand, owner, company, social URLs) |
-| **Email / SMTP**        |          |                                                                             |
-| `EMAIL_HOST`            |    ✅    | SMTP host, e.g. `smtp.googlemail.com`                                       |
-| `EMAIL_PORT`            |    ✅    | SMTP port, e.g. `465`                                                       |
-| `EMAIL_USERNAME`        |    ✅    | SMTP username (your Gmail)                                                  |
-| `EMAIL_PASSWORD`        |    ✅    | Gmail **App Password** — https://myaccount.google.com/apppasswords          |
-| `EMAIL_RECIPIENT`       |    ✅    | Email that receives contact form submissions                                 |
-| `EMAIL_BUSINESS`        |    ⬜    | Optional public business email                                              |
-| **WhatsApp / Meta**     |    ⬜    | `APP_ID`, `APP_SECRET`, `RECIPIENT_WAID`, `VERSION`, `PHONE_NUMBER_ID`, `ACCESS_TOKEN` |
-| **GitHub**              |    ⬜    | `GITHUB_USERNAME`, `GITHUB_TOKEN` — https://github.com/settings/tokens      |
-| **WakaTime**            |    ⬜    | `WAKATIME_APP_SECRET` — https://wakatime.com/settings/api                   |
-| `WAKATIME_TIMEOUT_MS`   |    ⬜    | Request timeout in ms (default `8000`)                                      |
-| `WAKATIME_MAX_RETRIES`  |    ⬜    | Retries on transient errors (default `2`)                                   |
-| `WAKATIME_CACHE_TTL_MS` |    ⬜    | Cache TTL in ms (default `300000` = 5 min)                                  |
-| `LOG_LEVEL`             |    ⬜    | pino log level (`debug` in dev / `info` in prod by default)                 |
-| `SENTRY_DSN`            |    ⬜    | Sentry DSN for backend error tracking (empty = disabled)                    |
-| `SENTRY_RELEASE`        |    ⬜    | Release tag reported to Sentry (e.g. `api@1.0.0`)                           |
-| `SENTRY_TRACES_SAMPLE_RATE` | ⬜   | Performance-trace sample rate, `0`–`1` (default `0`)                        |
-
-> 💡 **AI identity & social URLs are code-based** — `backend/src/config/identity.js` (not secrets, so kept out of `.env`).
-
-> 💡 **Crypto & social stats are static** — no env vars, no third-party API. Edit `backend/src/config/crypto.js` and `backend/src/config/social.js` and restart the server.
-
-### Frontend Environment Variables (`frontend/.env`)
-
-Only a few values remain in env — identity/branding moved into code (`frontend/src/config/Identity.ts`).
-
-| Variable                  | Required | Description                                                       |
-| ------------------------- | :------: | ----------------------------------------------------------------- |
-| `VITE_DOMAIN`             |    ⬜    | Optional site-origin override (defaults to `SITE_ORIGIN` in `src/config/Identity.ts`) |
-| `VITE_API_BASE_URL`       |    ✅    | Backend API URL, e.g. `http://localhost:4000/api`                 |
-| `VITE_RECAPTCHA_SITE_KEY` |    ⬜    | reCAPTCHA **site** key — https://www.google.com/recaptcha/admin   |
-| `VITE_ENABLE_AI`          |    ⬜    | `TRUE` / `FALSE` to toggle AI features                            |
-| `VITE_SENTRY_DSN`         |    ⬜    | Sentry DSN for frontend error tracking (empty = disabled)         |
-| `VITE_SENTRY_ENVIRONMENT` |    ⬜    | Sentry environment label (defaults to Vite `MODE`)                |
-| `VITE_SENTRY_RELEASE`     |    ⬜    | Release tag reported to Sentry (e.g. `web@1.0.0`)                 |
-| `VITE_SENTRY_TRACES_SAMPLE_RATE` | ⬜ | Performance-trace sample rate, `0`–`1` (default `0`)              |
-
-> 📌 **Branding, owner identity, contact, social URLs, resume paths, company brand, site origin and GA ID** are code in [`frontend/src/config/Identity.ts`](frontend/src/config/Identity.ts). Integration usernames live in `src/config/Github.ts` and `src/config/Wakatime.ts` (social handles come from `SOCIAL_LINKS` in `Identity.ts`). **No `VITE_*` API keys exist.**
-
-### Customizing Your Portfolio Content
-
-Beyond env vars, edit these files in `frontend/src/data/` to replace the sample content with your own:
-
-| File               | What it controls                                             |
-| ------------------ | ----------------------------------------------------------- |
-| `projects.ts`      | Project portfolio (title, image, description, links, tags)  |
-| `career.ts`        | Work experience timeline                                    |
-| `certificate.ts`   | Certificates, awards & credentials                          |
-| `skills.ts`        | Skill icons & stack                                         |
-| `services.ts`      | Services offered                                            |
-| `menu.ts`          | Navigation menu items                                       |
-| `social.ts`        | Social links (wired to `Identity.ts`)                       |
-| `icons.tsx`        | Custom SVG icon components                                  |
-| `portrait.ts`      | Interactive dot-matrix portrait data in the hero section    |
-
-> 💡 **Customizing the Hero Dot-Matrix Portrait (`portrait.ts`):**
-> 
-> The interactive particle face in the hero section is rendered from coordinate & radius data in `frontend/src/data/portrait.ts` (`PORTRAIT: { w, h, d: [[x, y, size], ...] }`).
-> 
-> - **Recommendation:** Rather than plotting dots manually, it is **better and much faster to use Claude (or an AI assistant)**. 
-> - Simply provide a clear, high-contrast portrait photo of yourself and prompt Claude to rasterize/sample it into a dot-matrix array with coordinates and dot radii (`d: [x, y, size]`), matching the format in `frontend/src/data/portrait.ts`. Then copy-paste the generated JSON/TypeScript structure into `portrait.ts`.
-
-> 📄 **`index.html` `<head>` metadata** (title, meta, OpenGraph, Twitter, JSON-LD, Google Analytics) is **generated at build time** from [`src/config/Head.ts`](frontend/src/config/Head.ts) via the `htmlHeadPlugin` in [`vite.config.ts`](frontend/vite.config.ts). You don't edit `index.html` directly — change the values in `Head.ts` (they read from the same `VITE_*` env vars), and the correct tags are injected automatically for both dev and production builds. This guarantees crawlers that don't run JavaScript still see accurate metadata.
-
-> 🗺️ **`sitemap.xml` and `robots.txt` are also generated at build time** from `VITE_DOMAIN` (see `renderSitemap` / `renderRobots` in `Head.ts`) — no static files to maintain, no hardcoded domain in the repo. They are emitted to `dist/` on build and served automatically by the dev server.
-
-> 🔑 **Google / Bing site-verification files** (e.g. `google*.html`, `BingSiteAuth.xml`) are intentionally **not** included — add your own verification file to `frontend/public/` after cloning if you need search-console verification.
-
-Also replace the assets in `frontend/public/`:
-- `img/projects/*` — project thumbnails
-- `img/career/*` — company logos
-- `img/certificate/*` — certificate images
-- `pdf/*` — your resume files (update the paths in `frontend/src/config/Identity.ts` → `RESUME` to match your file names)
-- `icon.webp`, `favicon.ico` — your logo/favicon
-
-> `sitemap.xml` and `robots.txt` are **generated automatically** — do not add them to `public/`.
+- Respects `prefers-reduced-motion` — loader, hero, cursor effects, and tilt all disable.
+- Cursor / tilt / magnetic effects only run on precise-pointer devices.
+- Content is visible without JS: reveals, count-ups, and interactive titles are progressive.
+- Heavy routes (certificates, contact/reCAPTCHA) are lazy-loaded.
+- Images use `loading="lazy"` with explicit dimensions (no layout shift).
+- Mobile audited 320–430px: no horizontal overflow, bottom-sheet modals, iOS-safe inputs.
 
 ---
 
-## ▶️ Running the Project
+## FAQ
 
-You need **two terminals** — one for backend, one for frontend.
+<details>
+<summary><b>Do I need a backend?</b></summary>
 
-**Terminal 1 — Backend:**
-```bash
-cd backend
-npm run dev          # nodemon, auto-reload
-# or
-npm start            # production mode
-```
-Backend runs at **http://localhost:4000**
+No. The site renders complete without one — AI chat, live stats, prices, and the contact
+form simply fall back to local defaults. Add `VITE_API_BASE_URL` when you want them live.
+</details>
 
-**Terminal 2 — Frontend:**
-```bash
-cd frontend
-npm run dev
-```
-Frontend runs at **http://localhost:5173**
+<details>
+<summary><b>Can I make it single-language?</b></summary>
 
-Open http://localhost:5173 in your browser. 🎉
+Yes. All copy is stored as `{ en, id }` in `src/data/*`. Keep one key and trim the language
+switch in `Navbar.tsx`, or leave both for a bilingual audience.
+</details>
 
----
+<details>
+<summary><b>How do I remove the AI assistant or reCAPTCHA?</b></summary>
 
-## 📜 Available Scripts
+Set `VITE_ENABLE_AI=false` to hide the AI button; leave `VITE_RECAPTCHA_SITE_KEY` empty to
+disable the reCAPTCHA widget. To turn off analytics, set `GA_MEASUREMENT_ID = ''` in
+`src/config/Identity.ts`.
+</details>
 
-### Frontend (`frontend/`)
+<details>
+<summary><b>Where do I change colors and fonts?</b></summary>
 
-| Command             | Description                                |
-| ------------------- | ------------------------------------------ |
-| `npm run dev`       | Start dev server with HMR                  |
-| `npm run build`     | Type-check + build for production          |
-| `npm run preview`   | Preview the production build locally       |
-| `npm run lint`      | Run ESLint                                 |
-| `npm test`          | Run unit tests (Vitest, run once)          |
-| `npm run test:watch` | Run tests in watch mode                   |
+`src/styles/site.css` — the theme is a set of CSS custom properties on
+`html[data-theme="dark"|"light"]`. Change the tokens, and every component follows.
+</details>
 
-### Backend (`backend/`)
+<details>
+<summary><b>Does it include a blog or CMS?</b></summary>
 
-| Command         | Description                          |
-| --------------- | ------------------------------------ |
-| `npm run dev`   | Start with nodemon (auto-reload)     |
-| `npm start`     | Start the server                     |
-| `npm test`      | Run unit tests (Vitest, run once)    |
-| `npm run test:watch` | Run tests in watch mode         |
+Not by default. Content is file-based (TypeScript data modules), which keeps the build fast
+and the diff reviewable. Fork it and add a blog route if you need one.
+</details>
 
 ---
 
-## 🧪 Testing & CI
+## Credits & license
 
-Both repos ship with **Vitest** unit tests and a **GitHub Actions** CI workflow.
+Built by [FIQTOR](https://fiqtor.pages.dev). Released under the **MIT License** — free to use,
+modify, and ship, including commercially. See [LICENSE](./LICENSE).
 
-- **Frontend** (`frontend/`) — `src/**/*.{test,spec}.{ts,tsx}`, jsdom + Testing Library.
-  Covers the Kanban store hook and pure utils.
-- **Backend** (`backend/`) — `tests/**/*.test.js`, Node env + supertest.
-  Covers routes/rate limiting (against `src/app.js`), the AI controller control
-  flow, and the contact service WhatsApp → Email fallback.
-- **CI** — each repo has `.github/workflows/ci.yml`. Frontend runs
-  lint → typecheck → test → build; backend runs install → test. The frontend
-  build injects placeholder `VITE_*` values so the head/sitemap plugin works.
-
-> The Express app is built in `backend/src/app.js` (separate from `index.js`)
-> so tests can exercise it via supertest without binding a port.
-
----
-
-## 🔌 API Endpoints
-
-All endpoints are served under `/api` (backend base URL), except `/health` and `/v1/public/*`.
-
-| Method   | Endpoint                              | Description                          |
-| -------- | ------------------------------------- | ------------------------------------ |
-| `GET`    | `/health`                             | Health check (uptime)                |
-| `POST`   | `/api/v1/ai/generate`                 | AI chat completion                   |
-| `POST`   | `/api/v1/contact/send`                | Contact form (WhatsApp → Email)      |
-| `GET`    | `/api/v1/github/contributions`        | GitHub contribution stats            |
-| `GET`    | `/api/v1/wakatime`                    | WakaTime coding stats                |
-| `GET`    | `/api/v1/crypto`                      | Static BTC/ETH/SOL prices            |
-| `GET`    | `/api/v1/social/stats`                | Static TikTok/Instagram stats        |
-| `GET`    | `/v1/public/stats`                    | Public social stats (same static data) |
-
----
-
-## 🚢 Deployment
-
-Both apps are configured for **Vercel** (`vercel.json` included in each folder).
-
-> 🔗 **Submodule note:** `backend/` and `frontend/` are separate Git repos ([submodules](#-submodules)). Deploy each by importing its own repository (or the submodule path) as its own Vercel project — Vercel needs access to that repo, not just the umbrella one.
-
-### Backend
-1. Import the `backend/` folder (repo `FIQTOR/api.fiqtor`) as a Vercel project.
-2. Add all backend env vars in **Settings → Environment Variables**.
-3. Set `FRONTEND_HOST` to your production frontend URL (for CORS).
-4. Deploy.
-
-### Frontend
-1. Import the `frontend/` folder as a Vercel project.
-2. Add all `VITE_*` env vars in **Settings → Environment Variables**.
-3. Set `VITE_DOMAIN` to your production domain and `VITE_API_BASE_URL` to your deployed backend URL.
-4. Deploy.
-
-> The frontend `vercel.json` rewrites all routes to `/index.html` (SPA routing), while keeping `sitemap.xml` and `robots.txt` intact.
-
----
-
-## 🔒 Security Notes
-
-- ❌ **Never commit `.env`** — real env files are ignored via `.gitignore`. Only `.env.example` is committed.
-- 🔑 **Rotate secrets** if they were ever committed to git. Purge history with [`git filter-repo`](https://github.com/newren/git-filter-repo) or [BFG](https://rtyley.github.io/bfg-repo-cleaner/) and force-push.
-- 🧾 Any `VITE_*` value is **public** (shipped to the browser). Keep secrets server-side only.
-- 🔐 **No third-party API keys ship to the client.** Crypto prices and social stats are served by the backend as static data; integration usernames live in `src/config/*.ts`. If you ever switch to a live provider, proxy it through the backend — never expose the key via `VITE_*`.
-- 🚫 **No secrets, tokens, personal data, or verification files are committed to this repo** — everything sensitive lives in `.env` (gitignored). The only `.env` tracked is `.env.example` (placeholders).
-- 🛡️ The backend uses Helmet, HPP, rate limiting, and CORS — keep these enabled in production.
-  - **Per-endpoint limits:** a broad global limiter, a lighter `statsLimiter` for the external-API read endpoints (GitHub/WakaTime), a `contactLimiter` for the form, and an `aiLimiter` **plus** a daily `aiDailyLimiter` quota on `/api/v1/ai/generate` (cost control). Limits live in `backend/src/middleware/rate-limiter.js`.
-- 🧾 **Structured logging:** the backend logs JSON via [pino](https://getpino.io/) (`backend/src/config/logger.js`); HTTP requests go through `pino-http` with CRLF sanitisation and secret redaction. Tune verbosity with `LOG_LEVEL`.
-- 🚨 **Error tracking:** optional [Sentry](https://sentry.io/) on both backend (`SENTRY_DSN`) and frontend (`VITE_SENTRY_DSN`, `src/config/sentry.ts` + an `ErrorBoundary`). Disabled/no-op when the DSN is empty.
-- 📧 **Email & DNS security (SPF, DKIM, DMARC, MTA-STS, HSTS, subdomains):** see [`docs/SECURITY-EMAIL-DNS.md`](docs/SECURITY-EMAIL-DNS.md) for the Cloudflare records and rollout steps.
-
----
-
-## 🧰 Troubleshooting
-
-| Problem                              | Fix                                                                                     |
-| ------------------------------------ | --------------------------------------------------------------------------------------- |
-| `Cannot find module './src/...'` | Ensure all controller/service/route files exist under `backend/src/`.            |
-| CORS error in browser                | Set `FRONTEND_HOST` in `backend/.env` to your frontend origin.                          |
-| AI not responding                    | Verify `GEMINI_API_KEY` (backend) and `VITE_API_BASE_URL` (frontend).                   |
-| Contact form fails                   | Check `EMAIL_*` / WhatsApp vars; the backend falls back to email if WhatsApp fails.     |
-| `.env` values not applying           | Restart the dev server (env vars are read on startup).                                  |
-| GitHub/WakaTime stats empty          | Set the relevant tokens/usernames in `backend/.env`.                                    |
-| WakaTime times out (ETIMEDOUT)       | Network/IPv6 issue — the service already retries + caches. Tune via `WAKATIME_TIMEOUT_MS`, `WAKATIME_MAX_RETRIES`, `WAKATIME_CACHE_TTL_MS` in `backend/.env`. |
-| Sitemap/robots show wrong domain     | Set `VITE_DOMAIN` in `frontend/.env` and rebuild — they are generated from it.           |
-| Horizontal scroll appears after load | Decorative full-bleed elements overflow the viewport. A global `overflow-x: clip` guard in `frontend/src/index.css` prevents it — avoid `w-screen` / `100vw` (use `w-full`). |
-| Page width shifts / jumps on scroll-lock | `html { scrollbar-gutter: stable }` reserves the scrollbar space so locking scroll (e.g. AI panel open) never changes layout width. |
-| `backend/` / `frontend/` folders empty after clone | They are submodules — run `git submodule update --init --recursive`.        |
-| Submodule shows `-` (uninitialized)   | `git submodule update --init --recursive` (or `git submodule update --remote backend` to pull latest). |
-| Submodule points to old commit        | `git submodule update --remote --merge`, then commit the new pointer in the umbrella repo. |
-| Pushed umbrella repo but `backend` changes missing | Commit & push inside the submodule first (`git -C backend push`), then commit the pointer here. |
-
----
-
-## 📄 License
-
-ISC — free to use as a template. Attribution appreciated but not required.
-
----
-
-<div align="center">
-
-**Built with ❤️ — happy coding!**
-
-</div>
+If this template helped you, a ⭐ on the repo is appreciated. Remove the `LICENSE`/attribution
+only if your fork's license allows it — MIT requires keeping the copyright notice.

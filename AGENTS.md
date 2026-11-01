@@ -1,54 +1,28 @@
 # AGENTS.md
 
-Personal portfolio (`fiqtor.com`). Root repo tracks two submodules:
+Unified personal portfolio repository (`fiqtor.com` / Cloudflare Pages).
 
-- `frontend/`: React SPA (Vercel)
-- `backend/`: Express API (Vercel)
-
-Scope git commands per repo: `git -C frontend ...` or `git -C backend ...`.
-Publishing a change therefore has two steps — commit/push inside the submodule,
-then bump the pointer in the root. Use `scripts/push-submodules.sh -m "..."` to
-do both at once (see script header for flags).
-
-Full-stack docs live in `README.md` (root), `backend/README.md`, `frontend/README.md`.
+Frontend and Backend are unified in this single repo:
+- **Frontend:** React 19 + TypeScript + Vite + Tailwind v4 in `src/`, static assets in `public/`.
+- **Backend / API:** Cloudflare Pages Functions powered by Hono in `functions/api/[[route]].ts`.
+  Routes are mounted at `/api/*` on the same domain (e.g. `https://fiqtor.pages.dev/api/...` or `https://fiqtor.com/api/...`).
+  No subdomains, no CORS friction.
 
 ---
 
-## 🚨 DEPLOY BRANCH & DUAL-CLONE TRAP (READ FIRST)
+## ⚡ ARCHITECTURE & DEPLOYMENT
 
-**Vercel deploys `frontend/` from branch `master`** — that is the GitHub default
-branch (`git ls-remote --symref origin HEAD` → `refs/heads/master`). If a change
-lands on any other branch (`main`, `v3-pre-merge`, …), production **never** picks
-it up even though the commit is "pushed". Always work and push on **`master`**:
-
-```bash
-git -C frontend checkout master && git -C frontend pull --ff-only origin master
-# ...edit...
-git -C frontend add <files> && git -C frontend commit -m "..."
-git -C frontend push origin master     # ← target master explicitly
-```
-
-**There are two local clones of the SAME remote** (`github.com/FIQTOR/fiqtor.com`):
-
-| Dir | Tracked by root repo? | Usual branch | Notes |
-| :-- | :-- | :-- | :-- |
-| `frontend/` | ✅ submodule (deployed) | **`master`** | The one Vercel builds. Edit & push here. |
-| `frontend-v3/` | ❌ untracked duplicate | `main` | Stray clone. Edits here DO NOT deploy. |
-
-⚠️ Editing `frontend-v3/` and pushing to `main` looks successful but leaves the
-live site stale. Fixes must be applied in **`frontend/` on `master`**. If you
-edited `frontend-v3/src`, mirror the change into `frontend/src` and commit on
-`master` (verify: `diff frontend/src/... frontend-v3/src/...` should be empty).
-
-**Verify deploy after push** (bundle name changes when Vercel rebuilds):
-
-```bash
-curl -s https://fiqtor.com/ | grep -oE "/assets/index-[^\"]+\.js"   # note old hash
-# wait ~1 min for rebuild, then re-check the hash + grep for removed content
-```
-
-`iarty.biz.id` (separate repo `iarty-app/frontend`) has NO such trap — its default
-& deploy branch is already `master`.
+- **Cloudflare Pages project name:** `fiqtor-com`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **Pages Functions:** Automatically picked up from `functions/` by Cloudflare Pages.
+- **Environment variables** (set in Cloudflare Dashboard > Settings > Environment Variables):
+  - `GEMINI_API_KEY`: Google Gemini API key for AI assistant (`/api/v1/ai/generate`).
+  - `AI_MODEL_PRIMARY`: Primary Gemini model (default `gemini-2.5-flash-lite`).
+  - `GITHUB_TOKEN`: GitHub personal access token for `/api/v1/github/contributions`.
+  - `GITHUB_USERNAME`: GitHub username (default `FIQTOR`).
+  - `WAKATIME_APP_SECRET`: WakaTime API key for `/api/v1/wakatime`.
+  - `COINGECKO_API_KEY`: Optional demo/pro key for `/api/v1/crypto`.
 
 ---
 
@@ -69,51 +43,8 @@ curl -s https://fiqtor.com/ | grep -oE "/assets/index-[^\"]+\.js"   # note old h
 
 ---
 
-## ⚡ FRONTEND (`frontend/`)
+## ⚡ FRONTEND
 
-- **Tech:** React SPA, Vite, TypeScript (strict), Tailwind v4 (`@tailwindcss/vite`), `next-themes`.
-- **Routing:** File-based via `vite-plugin-pages` (`src/pages/*.tsx`).
-  - `src/pages/` are thin wrappers importing modules from `src/modules/<page>/`.
-  - Shared UI: `src/components/`. Static data: `src/data/`.
-  - Every page MUST render `<HelmetContainer page="..." />` (see `src/config/Metadata.ts`).
-- **AI helper:** `src/components/AIHelper.tsx` is a thin orchestrator; logic lives in `src/components/ai/` (hooks `useAIChat`, `useSpeechDictation`, `useFileAttachment` + components `AIMessageList`, `AIComposer`, shared `types.ts`).
-- **Contexts:** `ContainerContext` / `WelcomeContext` live in `src/context/*-context.ts` (separate from their providers for Fast Refresh). Import the context from the `*-context` file, the provider component from `*Provider`. `fullPathName` is derived from `useLocation()` inside `ContainerProvider` (single source of truth) — do NOT store route state manually.
-- **Layout tokens:** use the `.page-x` and `.page-base` utility classes (defined in `src/index.css`) for page padding + base text instead of ad-hoc `px-7 md:px-24` etc.
-- **Modals/dialogs:** use `useFocusTrap(active, onClose)` (`src/hooks/useFocusTrap.ts`) for focus trapping, Escape-to-close and focus restore. Icon-only buttons MUST have `aria-label`; live regions use `role="status"` + `aria-live`.
-- **Tests:** Vitest (`npm test`), config in `vitest.config.ts`, setup in `src/test/setup.ts`; test files sit next to source as `*.test.ts(x)`.
-- **Aliases:** `@/*` maps to `src/*` (always use `@/...` imports).
-- **API Base:** `${import.meta.env.VITE_API_BASE_URL}/v1/...` (Base URL ends in `/api`).
-- **Config is env-driven:** all branding/identity/SEO values come from `src/config/Identity.ts` and `src/config/Head.ts` (which read `VITE_*`). Do NOT hardcode personal data or brand strings in components.
-- **`<head>` + `sitemap.xml` + `robots.txt`** are generated at build time by `htmlHeadPlugin` (`vite.config.ts`) from `src/config/Head.ts`. Do NOT edit `index.html` directly and do NOT add static `sitemap.xml`/`robots.txt` to `public/`.
-- **New env key?** Add it to `frontend/.env.example` AND to the `ImportMetaEnv` interface in `src/vite-env.d.ts`.
-
----
-
-## ⚡ BACKEND (`backend/`)
-
-- **Tech:** CommonJS (Express 4). `index.js` (bootstrap/`listen`) → `src/app.js` (`createApp()` builds the app, exported for tests) → `src/routes/index.js` → `src/controllers/` + `src/services/`.
-- **AI:** Google Gemini (`@google/genai`, `GEMINI_API_KEY`) in `src/controllers/ai.controller.js`; client is lazy + injectable via `setAiClient()` (test seam); identity from `src/config/identity.js`.
-- **Integrations:** WhatsApp/Meta Cloud API + Email (SMTP) in `src/services/contact.service.js` (exposes `createMessagingService(deps)` for injectable transports); GitHub (`src/services/github.service.js`); WakaTime (`src/services/wakatime.service.js`, with timeout/retry/cache).
-- **Public Stats:** `/v1/public/stats` (mounted outside `/api`).
-- **Rate limiting:** `src/middleware/rate-limiter.js` exports `apiLimiter` (global), `statsLimiter`, `contactLimiter`, `aiLimiter` + `aiDailyLimiter` (daily AI quota).
-- **Tests:** Vitest + supertest (`npm test`), config `vitest.config.mjs`, tests in `tests/*.test.js`.
-- **Env Sync:** Always sync new env keys to `.env.example`. All secrets come from env — never hardcode.
-
----
-
-## 🔒 SECURITY
-
-- NEVER read, edit, parse, or output any `.env` file or its values in outputs, diffs, or commits.
-- If you need the env structure, refer ONLY to `.env.example`.
-- NEVER commit or print service-account JSON keys, API tokens, or personal data.
-- `VITE_*` values are PUBLIC (browser bundle) — never place real secrets behind `VITE_`.
-- Keep secrets server-side (backend env only). Rotate anything ever committed.
-
----
-
-## 🤖 OUTPUT FORMAT
-
-- CAVEMAN MODE active: no intros, no conversational fluff, no code explanations unless requested.
-- Direct, working code + ultra-concise responses (< 3 lines when non-code).
-
-Do not output <thinking></thinking> tags or any internal reasoning chain in the final response. Output only the final answer directly.
+- **Tech:** React 19 SPA, Vite, TypeScript (strict), Tailwind v4, `react-router-dom`.
+- **API Base:** Relative `/api` by default (`src/config/Api.ts`).
+- **Contact:** Form validates and formats brief, then opens direct WhatsApp chat (`wa.me`). Direct DM pattern replaces email SMTP.
