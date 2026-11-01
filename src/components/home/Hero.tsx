@@ -347,9 +347,9 @@ export function Hero({ started }: { started: boolean }) {
         </h2>
         <p className="lead" data-split="words">
           {t(
-            'Full stack web, AI automation, and business systems — from a first sketch to production.',
-            'Web full stack, otomasi AI, dan sistem bisnis — dari sketsa pertama sampai produksi.',
-            '全栈 Web、AI 自动化和业务系统 — 从最初的草图到生产部署。',
+            'Full stack web, AI automation, and business systems, built from a first sketch to production.',
+            'Web full stack, otomasi AI, dan sistem bisnis yang dibangun dari sketsa awal hingga siap pakai.',
+            '全栈 Web、AI 自动化和业务系统，从最初构想到上线落地。',
           )}
         </p>
         {/* Each tag also carries the mark of the tech it stands for, so the
@@ -409,7 +409,7 @@ export function Hero({ started }: { started: boolean }) {
             target="_blank"
             rel="noopener"
             className="hsb-hub"
-            title={`${S.company.name} — ${S.company.url}`}
+            title={`${S.company.name}: ${S.company.url}`}
           >
             <img src={S.company.image} alt="" width={18} height={18} className="hsb-hub-img" />
             <span>{S.company.name}</span>

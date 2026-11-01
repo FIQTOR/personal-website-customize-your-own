@@ -122,7 +122,7 @@ function CryptoPanel() {
               {c.name}
             </div>
             {done ? (
-              <small>{lang === 'zh' ? '价格源离线 — 访问 CoinGecko 查看实时价格。' : lang === 'en' ? 'Price feed offline — open CoinGecko for live rates.' : 'Feed harga mati — buka CoinGecko untuk harga live.'}</small>
+              <small>{lang === 'zh' ? '价格源离线，访问 CoinGecko 查看实时价格。' : lang === 'en' ? 'Price feed offline. Open CoinGecko for live rates.' : 'Feed harga mati. Buka CoinGecko untuk harga live.'}</small>
             ) : (
               <span className="lv-skel" />
             )}
@@ -215,7 +215,7 @@ function SocialPanel() {
           )}
           {offline && (
             <small className="lv-stale">
-              {t('Last known figures — feed offline', 'Angka terakhir diketahui — feed mati', '最后已知数据 — 数据源离线')}
+              {t('Last known figures (feed offline)', 'Angka terakhir diketahui (feed mati)', '最后已知数据（数据源离线）')}
             </small>
           )}
           <a href={S.social.tiktok} target="_blank" rel="noopener" style={{ fontSize: '.82rem', width: 'fit-content' }}>
@@ -260,10 +260,10 @@ function WakaPanel() {
       ) : done ? (
         <small>
           {lang === 'zh'
-            ? '统计维护中 — 请直接访问 WakaTime 主页。'
+            ? '统计维护中，请直接访问 WakaTime 主页。'
             : lang === 'en'
-            ? 'Stats are being maintained — check the WakaTime profile directly.'
-            : 'Statistik sedang dalam pemeliharaan — cek profil WakaTime langsung.'}
+            ? 'Stats are being maintained. Check the WakaTime profile directly.'
+            : 'Statistik sedang dalam pemeliharaan. Cek profil WakaTime langsung.'}
         </small>
       ) : (
         <span className="lv-skel" />

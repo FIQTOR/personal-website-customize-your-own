@@ -215,9 +215,9 @@ function Testimonials() {
       >
         <p className="lead-sub rv">
           {t(
-            `Real quotes from ${items.length} business owners whose sites and systems are live today — swipe for more.`,
-            `Kutipan asli dari ${items.length} pemilik usaha yang situs dan sistemnya sudah berjalan hari ini — geser untuk yang lain.`,
-            `来自 ${items.length} 位企业主的真实评价，他们的网站和系统正在运行 — 滑动查看更多。`,
+            `Real quotes from ${items.length} business owners whose sites and systems are live today, swipe for more.`,
+            `Kutipan asli dari ${items.length} pemilik usaha yang situs dan sistemnya sudah berjalan hari ini, geser untuk yang lain.`,
+            `来自 ${items.length} 位企业主的真实评价，他们的网站和系统正在运行，滑动查看更多。`,
           )}
         </p>
         {/* `ts-rated` marks the quotes declared in JSON-LD `reviewCount`: the
@@ -485,9 +485,9 @@ function Heatmap() {
           </>
         ) : (
           t(
-            'GitHub is unreachable right now — showing a placeholder grid. Open the profile for live activity.',
-            'GitHub tidak dapat dijangkau saat ini — menampilkan grid contoh. Buka profil untuk aktivitas langsung.',
-            'GitHub 暂时无法访问 — 显示占位网格。打开个人资料查看实时活动。',
+            'GitHub is unreachable right now, showing a placeholder grid. Open the profile for live activity.',
+            'GitHub tidak dapat dijangkau saat ini, menampilkan grid contoh. Buka profil untuk aktivitas langsung.',
+            'GitHub 暂时无法访问，显示占位网格。打开个人资料查看实时活动。',
           )
         )}
       </p>
@@ -548,7 +548,7 @@ export function KeyFacts() {
   const facts = [
     {
       k: { en: 'Who', id: 'Siapa', zh: '关于' },
-      v: { en: `${S.name} — AI & software engineer, founder of ${S.company.name}.`, id: `${S.name} — AI & software engineer, pendiri ${S.company.name}.`, zh: `${S.name} — AI 与软件工程师，${S.company.name} 创始人。` },
+      v: { en: `${S.name}: AI & software engineer, founder of ${S.company.name}.`, id: `${S.name}: AI & software engineer, pendiri ${S.company.name}.`, zh: `${S.name}: AI 与软件工程师，${S.company.name} 创始人。` },
     },
     {
       k: { en: 'Based in', id: 'Berbasis di', zh: '所在地' },
@@ -677,9 +677,9 @@ export function HomeSections() {
               {t('I go by ', 'Nama panggilan saya ', '我是 ')}
               <b>{S.name}</b>
               {t(
-                ' — previously known as ',
-                ' — sebelumnya dikenal sebagai ',
-                ' — 原名 ',
+                ', previously known as ',
+                ', sebelumnya dikenal sebagai ',
+                ', 原名 ',
               )}
               <b>{S.legalName}</b>
               {t(
@@ -689,9 +689,9 @@ export function HomeSections() {
               )}
               <b>{t('AI & software engineer', 'AI & software engineer', 'AI 与软件工程师')}</b>
               {t(
-                ' with a background in computer engineering. I build web apps, AI automation, and business systems — and I use them to run ',
-                ' berlatar computer engineering. Saya membangun aplikasi web, otomasi AI, dan sistem bisnis — dan saya memakainya untuk menjalankan ',
-                ', 计算机工程背景. 我构建 Web 应用, AI 自动化和业务系统 — 并用它们来运营 ',
+                ' with a background in computer engineering. I build web apps, AI automation, and business systems to run ',
+                ' berlatar computer engineering. Saya membangun aplikasi web, otomasi AI, dan sistem bisnis untuk menjalankan ',
+                ', 计算机工程背景. 我构建 Web 应用, AI 自动化和业务系统并用以运营 ',
               )}
               <b>{S.company.name}</b>
               {t(

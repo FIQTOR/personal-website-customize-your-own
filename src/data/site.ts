@@ -808,9 +808,9 @@ export const S: SiteConfig = {
       slug: 'modular-system',
       title: { en: 'Web App & Modular System', id: 'Aplikasi Web & Sistem Modular', zh: 'Web 应用与模块化业务系统' },
       desc: {
-        en: 'Custom modular web systems built around your operational workflows — start with core modules like POS, inventory, or CRM, and expand as your business grows.',
-        id: 'Aplikasi web modular kustom yang dirancang sesuai operasional bisnis Anda — mulai dari 2 modul inti seperti Kasir, Stok, atau CRM, lalu kembangkan saat bisnis tumbuh.',
-        zh: '根据真实业务流程定制开发的模块化系统——支持从收银 POS、进销存或 CRM 等核心模块起步，伴随企业规模灵活扩展。',
+        en: 'Custom modular web systems built around your operational workflows: start with core modules like POS, inventory, or CRM, and expand as your business grows.',
+        id: 'Aplikasi web modular kustom yang dirancang sesuai operasional bisnis Anda: mulai dari 2 modul inti seperti Kasir, Stok, atau CRM, lalu kembangkan saat bisnis tumbuh.',
+        zh: '根据真实业务流程定制开发的模块化系统，支持从收银 POS、进销存或 CRM 等核心模块起步，伴随企业规模灵活扩展。',
       },
       meta: {
         en: 'Modular architecture · Role-based access · Cloud database',
@@ -890,8 +890,8 @@ export const S: SiteConfig = {
     {
       title: { en: 'Build', id: 'Bangun', zh: '开发' },
       desc: {
-        en: 'Work happens in visible increments — you can review progress and leave feedback.',
-        id: 'Pengerjaan bertahap dan terlihat — Anda bisa meninjau progres dan memberi masukan.',
+        en: 'Work happens in visible increments so you can review progress and leave feedback.',
+        id: 'Pengerjaan bertahap dan transparan agar Anda bisa meninjau progres dan memberi masukan.',
         zh: '采用可见的敏捷递增方式迭代开发，您可以实时查验阶段性成果并反馈。',
       },
     },
@@ -928,17 +928,17 @@ export const S: SiteConfig = {
     {
       q: { en: 'What can you build?', id: 'Apa saja yang bisa dikerjakan?', zh: '能开发什么?' },
       a: {
-        en: 'Web apps, business systems (ERP, CRM, HRIS, school platforms), e-commerce, AI integrations, automation, and interactive 3D experiences. If you are unsure whether your need fits, just ask — you will get an honest answer.',
-        id: 'Aplikasi web, sistem bisnis (ERP, CRM, HRIS, platform sekolah), e-commerce, integrasi AI, otomasi, dan pengalaman 3D interaktif. Kalau ragu apakah kebutuhanmu cocok, tanyakan saja — jawabannya jujur.',
-        zh: 'Web 应用, 业务系统 (ERP, CRM, HRIS, 学校平台), 电商, AI 集成, 自动化, 以及交互式 3D 体验. 不确定是否符合您的需求? 尽管问 — 会得到诚实回答.',
+        en: 'Web apps, business systems (ERP, CRM, HRIS, school platforms), e-commerce, AI integrations, automation, and interactive 3D experiences. If you are unsure whether your need fits, just ask and you will get an honest answer.',
+        id: 'Aplikasi web, sistem bisnis (ERP, CRM, HRIS, platform sekolah), e-commerce, integrasi AI, otomasi, dan pengalaman 3D interaktif. Kalau ragu apakah kebutuhanmu cocok, tanyakan saja dan jawabannya jujur.',
+        zh: 'Web 应用, 业务系统 (ERP, CRM, HRIS, 学校平台), 电商, AI 集成, 自动化, 以及交互式 3D 体验. 不确定是否符合您的需求? 尽管问，会得到诚实回答.',
       },
     },
     {
       q: { en: 'What technology stack do you use?', id: 'Teknologi apa yang dipakai?', zh: '使用什么技术栈?' },
       a: {
-        en: 'Mainly TypeScript, React, Next.js, Node.js, Laravel, PostgreSQL, MySQL, Docker, AWS, the OpenAI and Gemini APIs, n8n, and Three.js — chosen per project rather than forced.',
-        id: 'Terutama TypeScript, React, Next.js, Node.js, Laravel, PostgreSQL, MySQL, Docker, AWS, API OpenAI dan Gemini, n8n, serta Three.js — dipilih sesuai proyek, bukan dipaksakan.',
-        zh: '主要是 TypeScript, React, Next.js, Node.js, Laravel, PostgreSQL, MySQL, Docker, AWS, OpenAI 和 Gemini API, n8n, 以及 Three.js — 按项目选择, 不强制.',
+        en: 'Mainly TypeScript, React, Next.js, Node.js, Laravel, PostgreSQL, MySQL, Docker, AWS, OpenAI & Gemini APIs, n8n, and Three.js, chosen per project rather than forced.',
+        id: 'Terutama TypeScript, React, Next.js, Node.js, Laravel, PostgreSQL, MySQL, Docker, AWS, API OpenAI dan Gemini, n8n, serta Three.js yang dipilih sesuai kebutuhan proyek.',
+        zh: '主要是 TypeScript, React, Next.js, Node.js, Laravel, PostgreSQL, MySQL, Docker, AWS, OpenAI 和 Gemini API, n8n, 以及 Three.js，根据项目技术选型，不盲目套用.',
       },
     },
     {
@@ -1201,8 +1201,8 @@ export const S: SiteConfig = {
     { en: 'Flexible', id: 'Fleksibel', zh: '时间灵活' },
   ],
   budgetNote: {
-    en: 'Prices are starting points, not fixed quotes — the final figure follows your scope. Tell me your budget and I will say honestly whether it fits.',
-    id: 'Harga di atas adalah titik awal, bukan harga mati — angka akhirnya mengikuti lingkup pekerjaan. Sebutkan budget Anda dan saya akan bilang jujur apakah masuk atau tidak.',
+    en: 'Prices are starting points, not fixed quotes. The final figure follows your scope. Tell me your budget and I will say honestly whether it fits.',
+    id: 'Harga di atas adalah titik awal, bukan harga mati. Angka akhirnya mengikuti lingkup pekerjaan. Sebutkan budget Anda dan saya akan bilang jujur apakah masuk atau tidak.',
     zh: '上述价格为初始起步参考价，最终报价取决于具体项目范围。请告诉我您的预算预期，我将坦诚评估可行性。',
   },
 };

@@ -6,8 +6,8 @@ import type { RawProject } from './site';
 export const rawProjects: RawProject[] = [
   {
     title: {
-      en: "WorthIt.id - Living Cost & Salary Calculator Indonesia",
-      id: "WorthIt.id - Simulasi Biaya Hidup & Target Gaji Indonesia",
+      en: "WorthIt.id: Living Cost & Salary Calculator Indonesia",
+      id: "WorthIt.id: Simulasi Biaya Hidup & Target Gaji Indonesia",
     },
     category: "Web App",
     best: true,
@@ -34,8 +34,8 @@ export const rawProjects: RawProject[] = [
     category: "Web App",
     best: true,
     description: {
-      en: "A realtime public transport tracker I built for Greater Jakarta and East Java — 1,160+ TransJakarta buses (BRT, Mikrotrans, Integrasi, Rusun, Royal, Wisata), KRL, MRT, LRT, Whoosh and 24-hour intercity KAI trains move on a MapLibre vector map every ~3 seconds over WebSocket. It solves the problem of guessing when a bus or train will actually arrive: a multi-modal A→B journey planner returns Fastest / Cheapest / Fewest-transfers options with real fares and draws the route polyline on the map, alongside search over 7,819 bus stops and 211 stations plus GPS-based \"stops near me\" — all in an iOS-style glass UI with a full dark map.",
-      id: "Pelacak transportasi umum realtime yang saya bangun untuk Jabodetabek dan Jawa Timur — 1.160+ bus TransJakarta (BRT, Mikrotrans, Integrasi, Rusun, Royal, Wisata), KRL, MRT, LRT, Whoosh, dan KAI antarkota 24 jam bergerak di peta vektor MapLibre setiap ~3 detik lewat WebSocket. Ini menyelesaikan masalah menebak kapan bus atau kereta benar-benar tiba: perencana perjalanan multi-modal A→B memberi opsi Tercepat / Termurah / Paling sedikit pindah dengan tarif nyata dan menggambar polyline rute di peta, plus pencarian 7.819 halte dan 211 stasiun serta \"halte di dekatku\" berbasis GPS — semuanya dalam UI glass bergaya iOS dengan peta gelap penuh.",
+      en: "A realtime public transport tracker I built for Greater Jakarta and East Java. 1,160+ TransJakarta buses (BRT, Mikrotrans, Integrasi, Rusun, Royal, Wisata), KRL, MRT, LRT, Whoosh and 24-hour intercity KAI trains move on a MapLibre vector map every ~3 seconds over WebSocket. It solves the problem of guessing when a bus or train will actually arrive: a multi-modal A→B journey planner returns Fastest / Cheapest / Fewest-transfers options with real fares and draws the route polyline on the map, alongside search over 7,819 bus stops and 211 stations plus GPS-based \"stops near me\", all in an iOS-style glass UI with a full dark map.",
+      id: "Pelacak transportasi umum realtime yang saya bangun untuk Jabodetabek dan Jawa Timur. 1.160+ bus TransJakarta (BRT, Mikrotrans, Integrasi, Rusun, Royal, Wisata), KRL, MRT, LRT, Whoosh, dan KAI antarkota 24 jam bergerak di peta vektor MapLibre setiap ~3 detik lewat WebSocket. Ini menyelesaikan masalah menebak kapan bus atau kereta benar-benar tiba: perencana perjalanan multi-modal A→B memberi opsi Tercepat / Termurah / Paling sedikit pindah dengan tarif nyata dan menggambar polyline rute di peta, plus pencarian 7.819 halte dan 211 stasiun serta \"halte di dekatku\" berbasis GPS, semuanya dalam UI glass bergaya iOS dengan peta gelap penuh.",
     },
     urlDirect: "https://transit.iarty.biz.id/",
     srcImage: "img/projects/transit-thumbnail.webp",
@@ -61,8 +61,8 @@ export const rawProjects: RawProject[] = [
     },
     category: "Creative",
     description: {
-      en: "A real-time 3D explorer I built for Shanghai's 468 m Oriental Pearl Tower, loaded from a Draco-compressed GLB with automatic multi-stage fallback loading. Visitors orbit the tower, explode it into 34 labeled components (structure, façade, glass, lighting, radome, plaza…) and reassemble it, with a draggable sun, real-time shadows and a day/night switch. It solves the problem of flat photo galleries for complex structures — every layer of the building can be inspected in 3D right in the browser.",
-      id: "Penjelajah 3D real-time yang saya bangun untuk Menara Mutiara Oriental Shanghai setinggi 468 m, dimuat dari GLB terkompresi Draco dengan pemuatan cadangan otomatis berlapis. Pengunjung memutar menara, membongkarnya menjadi 34 komponen berlabel (rangka, fasad, kaca, lampu, radome, plaza…) lalu menyatukannya kembali, dengan matahari yang bisa digeser, bayangan real-time, dan sakelar siang/malam. Ini menyelesaikan masalah galeri foto datar untuk struktur kompleks — setiap lapisan bangunan bisa diperiksa dalam 3D langsung di browser.",
+      en: "A real-time 3D explorer I built for Shanghai's 468 m Oriental Pearl Tower, loaded from a Draco-compressed GLB with automatic multi-stage fallback loading. Visitors orbit the tower, explode it into 34 labeled components (structure, façade, glass, lighting, radome, plaza…) and reassemble it, with a draggable sun, real-time shadows and a day/night switch. It solves the problem of flat photo galleries for complex structures, allowing every layer of the building to be inspected in 3D right in the browser.",
+      id: "Penjelajah 3D real-time yang saya bangun untuk Menara Mutiara Oriental Shanghai setinggi 468 m, dimuat dari GLB terkompresi Draco dengan pemuatan cadangan otomatis berlapis. Pengunjung memutar menara, membongkarnya menjadi 34 komponen berlabel (rangka, fasad, kaca, lampu, radome, plaza…) lalu menyatukannya kembali, dengan matahari yang bisa digeser, bayangan real-time, dan sakelar siang/malam. Ini menyelesaikan masalah galeri foto datar untuk struktur kompleks sehingga setiap lapisan bangunan bisa diperiksa dalam 3D langsung di browser.",
     },
     urlDirect: "https://oriental-pearl-tower.vercel.app/",
     srcImage: "img/projects/oriental-pearl-tower.webp",
@@ -79,8 +79,8 @@ export const rawProjects: RawProject[] = [
     },
     category: "Creative",
     description: {
-      en: "A real-time 3D island diorama I built where every tap on the lagoon sends a ripple across the reef, with a full day-to-night cycle, rain and sunset presets, overwater villas, and a live water simulation. It solves the problem of static, lifeless hero visuals — visitors can play with the scene, dragging the sun from golden hour to starlight and stirring the water themselves.",
-      id: "Diorama pulau 3D real-time yang saya bangun di mana setiap ketukan di laguna mengirim riak melintasi terumbu, dengan siklus siang-malam penuh, preset hujan dan matahari terbenam, vila di atas air, dan simulasi air langsung. Ini menyelesaikan masalah visual hero yang statis dan tanpa nyawa — pengunjung bisa bermain dengan adegan, menggeser matahari dari golden hour ke cahaya bintang dan mengaduk air sendiri.",
+      en: "A real-time 3D island diorama I built where every tap on the lagoon sends a ripple across the reef, with a full day-to-night cycle, rain and sunset presets, overwater villas, and a live water simulation. It solves the problem of static, lifeless hero visuals: visitors can play with the scene, dragging the sun from golden hour to starlight and stirring the water themselves.",
+      id: "Diorama pulau 3D real-time yang saya bangun di mana setiap ketukan di laguna mengirim riak melintasi terumbu, dengan siklus siang-malam penuh, preset hujan dan matahari terbenam, vila di atas air, dan simulasi air langsung. Ini menyelesaikan masalah visual hero yang statis dan tanpa nyawa: pengunjung bisa bermain dengan adegan, menggeser matahari dari golden hour ke cahaya bintang dan mengaduk air sendiri.",
     },
     urlDirect: "https://lagoon-mocha.vercel.app/",
     srcImage: "img/projects/lagoon.webp",
@@ -97,8 +97,8 @@ export const rawProjects: RawProject[] = [
     },
     category: "Landing Page",
     description: {
-      en: "A premium car rental website I built with a cinematic scroll-driven 3D showroom featuring real GLB car models (Ferrari, Lamborghini, Porsche). Visitors scrub through each car, get a live price estimate for their chosen dates and options, and send a pre-filled booking straight to WhatsApp. It solves the problem of rental businesses showing flat photo galleries — here customers explore the actual cars in 3D and book in seconds.",
-      id: "Situs rental mobil premium yang saya bangun dengan showroom 3D sinematik yang digerakkan scroll menampilkan model mobil GLB asli (Ferrari, Lamborghini, Porsche). Pengunjung menelusuri setiap mobil, mendapat estimasi harga langsung untuk tanggal dan opsi pilihan, lalu mengirim pemesanan siap-pakai langsung ke WhatsApp. Ini menyelesaikan masalah bisnis rental yang hanya menampilkan galeri foto datar — di sini pelanggan menjelajahi mobil sebenarnya dalam 3D dan memesan dalam hitungan detik.",
+      en: "A premium car rental website I built with a cinematic scroll-driven 3D showroom featuring real GLB car models (Ferrari, Lamborghini, Porsche). Visitors scrub through each car, get a live price estimate for their chosen dates and options, and send a pre-filled booking straight to WhatsApp. It solves the problem of rental businesses showing flat photo galleries: here customers explore the actual cars in 3D and book in seconds.",
+      id: "Situs rental mobil premium yang saya bangun dengan showroom 3D sinematik yang digerakkan scroll menampilkan model mobil GLB asli (Ferrari, Lamborghini, Porsche). Pengunjung menelusuri setiap mobil, mendapat estimasi harga langsung untuk tanggal dan opsi pilihan, lalu mengirim pemesanan siap-pakai langsung ke WhatsApp. Ini menyelesaikan masalah bisnis rental yang hanya menampilkan galeri foto datar: di sini pelanggan menjelajahi mobil sebenarnya dalam 3D dan memesan dalam hitungan detik.",
     },
     urlDirect: "https://lintas-rent.vercel.app/",
     srcImage: "img/projects/lintas-rent.webp",
@@ -116,7 +116,7 @@ export const rawProjects: RawProject[] = [
     category: "Business System",
     best: true,
     description: {
-      en: "A digital business ecosystem I built that combines online courses, an AI-powered investment tool, and a digital marketplace under one account system. It solves the problem of business owners having to subscribe to and switch between many separate tools that don't share data — I unified education, investment, and commerce into a single platform they can also extend with custom apps.",
+      en: "A digital business ecosystem I built that combines online courses, an AI-powered investment tool, and a digital marketplace under one account system. It solves the problem of business owners having to subscribe to and switch between many separate tools that don't share data: I unified education, investment, and commerce into a single platform they can also extend with custom apps.",
       id: "Ekosistem bisnis digital yang saya bangun dengan menggabungkan kursus online, alat investasi bertenaga AI, dan marketplace digital dalam satu sistem akun. Ini menyelesaikan masalah pemilik bisnis yang harus berlangganan dan berpindah-pindah banyak alat terpisah yang tidak berbagi data — saya menyatukan pendidikan, investasi, dan perdagangan ke dalam satu platform yang juga bisa diperluas dengan aplikasi khusus.",
     },
     urlDirect: "https://iarty.biz.id",
