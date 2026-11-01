@@ -391,7 +391,7 @@ html[data-theme="light"] .prt-note{background:rgba(10,10,10,.03)}
 .role:hover{border-color:rgba(255,255,255,.4)}.role:hover::before{opacity:1}
 html[data-theme="light"] .role:hover{border-color:rgba(10,10,10,.4)}
 .role h4{font-size:1.15rem;margin-bottom:.4rem}.role p{color:var(--muted);line-height:1.6;font-size:.95rem}
-.cloud{position:relative;display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(2.5rem,6vw,4rem);padding:1.5rem;border:1px dashed var(--line);border-radius:1.3rem;min-height:9rem;align-content:center;justify-content:center}
+.cloud{position:relative;display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(2.5rem,6vw,4rem);padding:1.5rem;border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:1.3rem;min-height:9rem;align-content:center;justify-content:center}
 .cloud-hint{position:absolute;top:.8rem;left:1.1rem;margin:0;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .cloud button{position:relative;display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.2rem;font-family:inherit;line-height:1.2;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;font-size:.95rem;cursor:pointer;transform:translate(var(--tx,0),var(--ty,0));transition:transform .35s var(--ease),background .25s,color .25s,border-color .25s}
 .cloud button:hover,.cloud button.pop{background:#fff;color:#08080a;border-color:#fff}
@@ -614,7 +614,7 @@ body.nosc{overflow:hidden}
 .srch input:focus{outline:none;border-color:var(--ac);background:rgba(255,255,255,.05)}
 .srch svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);opacity:.6}
 .cnt{margin:1.2rem 0 1.4rem;color:var(--muted);font-size:.85rem}
-.empty{grid-column:1/-1;padding:3rem 1rem;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:1.2rem}
+.empty{grid-column:1/-1;padding:3rem 1rem;text-align:center;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:1.2rem}
 .item-in{animation:itemin .6s var(--ease) backwards;animation-delay:calc(var(--i,0)*.07s)}
 @keyframes itemin{from{opacity:0;transform:translateY(30px) scale(.97)}}
 
@@ -1280,7 +1280,7 @@ html[data-theme="light"] .lk:hover .bd2{background:#fff;color:#0a0a0a}
 .cgroup-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.8rem}
 .cgroup-nav a,.cgroup-nav span{min-height:2.4rem;display:inline-flex;align-items:center;padding:0 .9rem;border-radius:999px;border:1px solid var(--line);background:none;color:var(--muted);font-size:.82rem;text-decoration:none;transition:.25s var(--ease)}
 .cgroup-nav a:hover{border-color:var(--text);color:var(--text)}
-.cmore{display:grid;gap:1rem;justify-items:start;padding:1.4rem;border:1px dashed var(--line);border-radius:1.2rem;margin:1rem 0 2rem}
+.cmore{display:grid;gap:1rem;justify-items:start;padding:1.4rem;border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:1.2rem;margin:1rem 0 2rem}
 .cmore p{color:var(--muted);font-size:.92rem;line-height:1.6;max-width:60ch}
 .cmore .btn2{cursor:pointer}
 .cnote{display:flex;gap:.6rem;align-items:flex-start;margin-top:1.6rem;color:var(--muted);font-size:.82rem;line-height:1.5}
