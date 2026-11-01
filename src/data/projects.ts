@@ -6,6 +6,28 @@ import type { RawProject } from './site';
 export const rawProjects: RawProject[] = [
   {
     title: {
+      en: "WorthIt.id - Living Cost & Salary Calculator Indonesia",
+      id: "WorthIt.id - Simulasi Biaya Hidup & Target Gaji Indonesia",
+    },
+    category: "Web App",
+    best: true,
+    description: {
+      en: "A deterministic living cost simulator, reverse salary calculator, and inter-city job offer analyzer (phantom raise detector) across 30 Indonesian cities based on official BPS & UMK 2025 data. It solves the blind relocation gamble for jobseekers: calculating categorized expenses (housing, food, commute, utilities, lifestyle), statutory deductions (PPh 21 TER PP 58/2023, BPJS TK & Kesehatan), relocation upfront costs, and savings runway in an Apple-style gauge ring UI with full dark mode and shareable evaluation cards.",
+      id: "Platform simulasi biaya hidup deterministik, kalkulator target gaji (reverse salary), dan simulator tawaran kerja luar kota (phantom raise detector) di 30 kota Indonesia berdasarkan data resmi BPS & UMK 2025. Menyelesaikan dilema relokasi kerja: menghitung estimasi pengeluaran per kategori (tempat tinggal, pangan, komuter, utilitas, gaya hidup), potongan resmi (PPh 21 TER PP 58/2023, BPJS Ketenagakerjaan & Kesehatan), modal awal relokasi, serta runway tabungan dalam UI cincin tabungan ala Apple dengan mode gelap penuh dan kartu evaluasi yang dapat dibagikan.",
+    },
+    urlDirect: "https://worthitaja.pages.dev/",
+    srcImage: "img/projects/worthit-id.webp",
+    images: [
+      "/img/projects/worthit-id.webp",
+    ],
+    tags: {
+      en: ["Fintech", "Living Cost", "Salary Calculator", "PPh 21 TER", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+      id: ["Fintech", "Biaya Hidup", "Kalkulator Gaji", "PPh 21 TER", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+    },
+    icons: ["ReactJS", "TypeScript", "TailwindCSS", "Vite", "Cloudflare"],
+  },
+  {
+    title: {
       en: "Jakarta Transit - Live Public Transport Tracking",
       id: "Jakarta Transit - Pelacakan Transportasi Umum Live",
     },

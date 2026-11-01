@@ -5,6 +5,11 @@ export interface ProjectZhData {
 }
 
 export const PROJECTS_ZH: Record<string, ProjectZhData> = {
+  "WorthIt.id - Living Cost & Salary Calculator Indonesia": {
+    title: "WorthIt.id - 印尼生活成本与目标薪资测算平台",
+    desc: "基于印尼中央统计局 (BPS) 与 2025 官方最低薪资 (UMK) 数据打造的确定性生活成本测算、反向薪资计算器与跨城跳槽虚假涨薪（Phantom Raise）评估平台。覆盖全印尼 30 个主要城市，解决求职者盲目异地求职的痛点：深度测算分类生活开销（房租、饮食、交通通勤、水电及生活方式）、法定法定税扣（印尼 PPh 21 TER 最新个人所得税、BPJS 劳工养老与健康医保）、前期搬迁成本储备与储蓄健康度 — 呈现于 Apple 风格环形健康度仪表盘中，支持深色模式与高清图卡分享。",
+    tags: ["金融科技", "生活成本测算", "薪资计算器", "印尼个税", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+  },
   "Jakarta Transit - Live Public Transport Tracking": {
     title: "雅加达实时公共交通追踪系统",
     desc: "为大雅加达与东爪哇地区打造的高性能实时公共交通追踪系统 — 汇集 1,160+ 辆 TransJakarta 公交（BRT、Mikrotrans 等）、KRL 城市轨道、MRT、LRT、雅万高铁（Whoosh）及 24 小时城际列车，通过 WebSocket 在 MapLibre 矢量地图上每 ~3 秒实时更新运动轨迹。彻底解决乘客盲目等车的痛点：多模态 A→B 智能行程规划器提供“最快 / 最省 / 最少换乘”方案及实时票价并绘制线路图，支持 7,819 个公交站点与 211 个火车站搜索及 GPS 附近站点定位 — 呈现于全暗黑地图与 iOS 毛玻璃设计风格的精致界面中。",
