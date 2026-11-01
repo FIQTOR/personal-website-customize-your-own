@@ -19,7 +19,6 @@ const LINKS: Array<{ to: string; en: string; id: string; zh: string; note: { en:
   { to: '/certificates', en: 'Certificates', id: 'Sertifikat', zh: '证书', note: { en: `${S.certs.length} credentials`, id: `${S.certs.length} kredensial`, zh: `${S.certs.length} 个证书` } },
   { to: '/career', en: 'Career', id: 'Karier', zh: '经历', note: { en: 'Timeline & roles', id: 'Linimasa & peran', zh: '时间线与角色' } },
   { to: '/contact', en: 'Contact', id: 'Kontak', zh: '联系', note: { en: 'Replies within 24h', id: 'Dibalas < 24 jam', zh: '24小时内回复' } },
-  { to: '/linktree', en: 'Linktree', id: 'Linktree', zh: '链接树', note: { en: 'Every profile', id: 'Semua profil', zh: '所有主页' } },
 ];
 
 export default function NotFound() {

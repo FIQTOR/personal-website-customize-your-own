@@ -63,7 +63,7 @@ echo
 # ---------------------------------------------------------------
 echo "1. Documents (status + charset + viewport)"
 # ---------------------------------------------------------------
-for route in "/" "/projects" "/career" "/certificates" "/contact" "/linktree"; do
+for route in "/" "/projects" "/career" "/certificates" "/contact"; do
   body=$(fetch "$route"); status_of
   if [ "$STATUS" != "200" ]; then
     bad "$route -> HTTP $STATUS (expected 200)"

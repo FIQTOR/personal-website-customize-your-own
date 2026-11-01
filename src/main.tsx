@@ -6,7 +6,6 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Career from './pages/Career';
-import Linktree from './pages/Linktree';
 import NotFound from './pages/NotFound';
 import './styles/site.css';
 
@@ -38,7 +37,6 @@ const router = createBrowserRouter([
         path: 'contact',
         lazy: async () => ({ Component: (await import('./pages/Contact')).default }),
       },
-      { path: 'linktree', element: <Linktree /> },
       { path: '*', element: <NotFound /> },
     ],
   },

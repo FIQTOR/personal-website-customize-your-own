@@ -808,7 +808,6 @@ export function HomeSections() {
               {t('Email', 'Email', '邮件')}
             </a>
             <Link to="/contact">{t('Contact form', 'Form kontak', '联系表单')}</Link>
-            <Link to="/linktree">Linktree</Link>
           </span>
         </div>
       </section>

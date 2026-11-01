@@ -610,12 +610,6 @@ export default function Contact() {
             </div>
           </dl>
         </div>
-        <p className="rv" style={{ marginTop: '2rem', color: 'var(--muted)' }}>
-          {t('Need a quick way in?', 'Butuh cara cepat?', '需要快速直达入口？')}{' '}
-          <Link to="/linktree" className="btn2" style={{ marginLeft: '.5rem', padding: '.5rem 1rem', fontSize: '.9rem' }}>
-            {t('Open Linktree', 'Buka Linktree', '查看全部社交主页')} →
-          </Link>
-        </p>
       </section>
     </div>
   );

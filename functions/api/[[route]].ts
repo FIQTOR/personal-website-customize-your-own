@@ -49,7 +49,6 @@ const REDIRECT_MAP: Record<string, string[]> = {
   '/talk': ['contact', 'kontak', 'hubungi', 'talk', '联系', '沟通', '合作'],
   '/#about': ['about', 'tentang', 'profil', '关于', '个人介绍'],
   '/#skills': ['skill', 'skills', 'kemampuan', 'keahlian', '技能', '技术栈'],
-  '/linktree': ['linktree', 'links', 'tautan', '链接树', '外链'],
   '/career': ['career', 'karir', 'pengalaman', 'experience', '经历', '履历', '职业历程'],
   '/roadmap': ['roadmap', 'belajar', 'learn', '路线图'],
   '/projects': ['project', 'projects', 'projek', 'portfolio', 'portofolio', 'proyek', '项目', '作品集', '案例'],

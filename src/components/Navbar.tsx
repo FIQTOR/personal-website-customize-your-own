@@ -17,7 +17,6 @@ const MENU: Array<{ to: string; label: { en: string; id: string; zh?: string }; 
   { to: '/career', label: { en: 'Career', id: 'Karier', zh: '经历' } },
   { to: '/certificates', label: { en: 'Certificates', id: 'Sertifikat', zh: '证书' } },
   { to: '/contact', label: { en: 'Contact', id: 'Kontak', zh: '联系' } },
-  { to: '/linktree', label: { en: 'Linktree', id: 'Linktree', zh: '社交链接' }, icon: 'linktree' },
 ];
 
 /** Three-state language switch (EN / ID / 中文). */

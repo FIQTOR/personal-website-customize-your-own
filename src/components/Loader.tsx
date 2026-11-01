@@ -44,7 +44,6 @@ export const LABELS: Record<string, string> = {
   '/certificates': 'Certificates',
   '/career': 'Career',
   '/contact': 'Contact',
-  '/linktree': 'Linktree',
 };
 
 type Phase = 'loading' | 'arriving' | 'idle';

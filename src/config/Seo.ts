@@ -130,16 +130,6 @@ export const ROUTES: RouteSeo[] = [
     priority: '0.8',
     changefreq: 'yearly',
   },
-  {
-    path: '/linktree',
-    label: 'Linktree',
-    crumb: 'Links',
-    title: `Social Links & Profiles — ${BRAND_NAME}`,
-    description: `One page with every official ${BRAND_NAME} profile: Instagram, TikTok, YouTube, LinkedIn, GitHub, plus direct WhatsApp and email contact routes and a downloadable contact card.`,
-    keywords: [`${BRAND_NAME} links`, `${BRAND_NAME} instagram`, `${BRAND_NAME} github`, `${BRAND_NAME} linkedin`, 'linktree developer'],
-    priority: '0.6',
-    changefreq: 'weekly',
-  },
 ];
 
 /* ---------------------------------------------------------------------
@@ -825,20 +815,6 @@ const routeGraph = (cfg: SeoConfig, route: RouteSeo): Record<string, unknown>[] 
     });
   }
 
-  if (route.path === '/linktree') {
-    extras.push({
-      '@type': 'ProfilePage',
-      '@id': `${canonical}#profilelinks`,
-      name: `${BRAND_NAME} — official links`,
-      isPartOf: { '@id': `${canonical}#webpage` },
-      mainEntity: {
-        '@type': 'Person',
-        '@id': `${cfg.origin}/#person`,
-        sameAs: Object.values(SOCIAL_LINKS),
-      },
-    });
-  }
-
   return [breadcrumbs, webPage, ...extras];
 };
 
@@ -1060,7 +1036,6 @@ Profiles: ${Object.values(SOCIAL_LINKS).join(' · ')}
 - [Career](${cfg.origin}/career): ${S.career.length} roles, newest first.
 - [Certificates](${cfg.origin}/certificates): ${totalCertificates()} credentials grouped by type; ${S.certsFeatured.length} flagship credentials highlighted.
 - [Contact](${cfg.origin}/contact): project form, WhatsApp, email, FAQ.
-- [Links](${cfg.origin}/linktree): official social profiles.
 ${projectRoutes().length ? `\n## Case studies\n${projectRoutes().map((r) => `- [${r.label}](${cfg.origin}${r.path}): ${r.description}`).join('\n')}\n` : ''}
 
 ## Facts

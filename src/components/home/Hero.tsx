@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DotPortrait } from '../DotPortrait';
 import { isReducedMotion } from '../../lib/utils';
+import { Icon } from '../../lib/utils.tsx';
 import { S, waLink } from '../../data/site';
 import { useLanguage } from '../../lib/catalog';
 import { SkillLogo } from '../SkillLogo';
@@ -62,7 +63,9 @@ function splitWords(el: HTMLElement): HTMLElement[] {
 
 function introTargets(hero: HTMLElement): HTMLElement[] {
   return Array.from(
-    hero.querySelectorAll<HTMLElement>('.char, .lead .w, .tag, .cta, .cta-ghost, .cta-row-hero, .eyebrow, .scroll-hint, .dot-portrait, .hero-rot, .hero-stats'),
+    hero.querySelectorAll<HTMLElement>(
+      '.char, .lead .w, .tag, .cta, .cta-ghost, .cta-row-hero, .hero-social-bar, .eyebrow, .scroll-hint, .dot-portrait, .hero-rot, .hero-stats',
+    ),
   );
 }
 
@@ -368,6 +371,38 @@ export function Hero({ started }: { started: boolean }) {
           <a className="cta-ghost" href={waLink(lang)} target="_blank" rel="noopener">
             {t('Start a project', 'Mulai proyek', '启动项目')}
             <span className="sr"> {t('(opens WhatsApp)', '(membuka WhatsApp)', '（打开 WhatsApp）')}</span>
+          </a>
+        </div>
+
+        <div className="hero-social-bar" data-anim="fade">
+          <div className="hsb-links" aria-label={t('Social profiles', 'Profil sosial', '社交账号')}>
+            {S.socialLinks.map((l) => (
+              <a
+                key={l.icon}
+                href={l.url}
+                target="_blank"
+                rel="noopener"
+                aria-label={l.label[lang] || l.label.en}
+                title={l.label[lang] || l.label.en}
+                className="hsb-btn"
+              >
+                <Icon name={l.icon} size={18} />
+              </a>
+            ))}
+          </div>
+          <span className="hsb-sep" aria-hidden="true" />
+          <a
+            href={S.company.url}
+            target="_blank"
+            rel="noopener"
+            className="hsb-hub"
+            title={`${S.company.name} — ${S.company.url}`}
+          >
+            <img src={S.company.image} alt="" width={18} height={18} className="hsb-hub-img" />
+            <span>{S.company.name}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M7 17L17 7M7 7h10v10" />
+            </svg>
           </a>
         </div>
       </div>

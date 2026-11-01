@@ -38,7 +38,6 @@ const LABELS: Record<string, string> = {
   '/certificates': 'Certificates',
   '/career': 'Career',
   '/contact': 'Contact',
-  '/linktree': 'Linktree',
 };
 
 /**
@@ -63,7 +62,7 @@ const normalizeRoute = (raw: string): string => {
   const clean = base.length > 1 ? base.replace(/\/+$/, '') : '/';
   const known = ROUTE_ALIASES[clean] ?? clean;
   const exists =
-    known === '/' || ['/projects', '/career', '/certificates', '/contact', '/linktree'].includes(known);
+    known === '/' || ['/projects', '/career', '/certificates', '/contact'].includes(known);
   return exists ? known : '/';
 };
 

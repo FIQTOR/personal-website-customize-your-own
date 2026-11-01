@@ -34,7 +34,6 @@ export function Footer() {
         <Link to="/career">{t('Career', 'Karier', '经历')}</Link>
         <Link to="/certificates">{t('Certificates', 'Sertifikat', '证书')}</Link>
         <Link to="/contact">{t('Contact', 'Kontak', '联系')}</Link>
-        <Link to="/linktree">Linktree</Link>
       </nav>
       <nav aria-label={t('Social media', 'Media sosial', '社交媒体')}>
         <h2>{t('Social', 'Sosial', '社交')}</h2>

@@ -38,7 +38,6 @@
     { "source": "/career", "destination": "/career/index.html" },
     { "source": "/certificates", "destination": "/certificates/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
-    { "source": "/linktree", "destination": "/linktree/index.html" },
     {
       "source": "/((?!sitemap\\.xml|robots\\.txt|\\.well-known/|.*\\.[^/]+$|\\.[^/]*(?:/|$)).*)",
       "destination": "/index.html"
