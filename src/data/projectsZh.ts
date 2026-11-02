@@ -5,6 +5,11 @@ export interface ProjectZhData {
 }
 
 export const PROJECTS_ZH: Record<string, ProjectZhData> = {
+  "stockcry: Indonesian Stock & Crypto Media Platform": {
+    title: "stockcry: 印尼股票与加密货币数字媒体平台",
+    desc: "为 stockcry 打造的高性能现代数字化金融媒体平台与交互门户，专注以简明有力、通俗易懂的每日速报形式传递印尼资本市场动态（IHSG 大盘、上市公司、分红、IPO）以及前沿加密货币资讯。系统结合 GSAP 与 ScrollTrigger 实现字级渐显动效，搭载动态光轨 Canvas 粒子视觉，并配备严格的 JSON-LD 结构化数据体系，针对生成式 AI 搜索引擎优化 (GEO) 与精准问答优化 (AEO) 全面打磨。",
+    tags: ["数字媒体", "金融科技", "股票与加密", "GSAP 动效", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+  },
   "WorthIt.id: Living Cost & Salary Calculator Indonesia": {
     title: "WorthIt.id: 印尼生活成本与目标薪资测算平台",
     desc: "基于印尼中央统计局 (BPS) 与 2025 官方最低薪资 (UMK) 数据打造的确定性生活成本测算、反向薪资计算器与跨城跳槽虚假涨薪（Phantom Raise）评估平台。覆盖全印尼 30 个主要城市，解决求职者盲目异地求职的痛点：深度测算分类生活开销（房租、饮食、交通通勤、水电及生活方式）、法定法定税扣（印尼 PPh 21 TER 最新个人所得税、BPJS 劳工养老与健康医保）、前期搬迁成本储备与储蓄健康度 — 呈现于 Apple 风格环形健康度仪表盘中，支持深色模式与高清图卡分享。",
