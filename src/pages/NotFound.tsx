@@ -86,13 +86,17 @@ export default function NotFound() {
       </section>
 
       <section className="nf-grid" aria-label={t('Main pages', 'Halaman utama', '主要页面')}>
-        {LINKS.map((l, i) => (
-          <Link key={l.to} to={l.to} className="nf-card" style={{ ['--i' as string]: i }}>
-            <span>{String(i + 1).padStart(2, '0')}</span>
-            <b>{(l as Record<string, string>)[lang] || l.en}</b>
-            <small>{(l.note as Record<string, string>)[lang] || l.note.en}</small>
-          </Link>
-        ))}
+        {LINKS.map((l, i) => {
+          const label = l[lang as 'en' | 'id' | 'zh'] || l.en;
+          const note = l.note[lang as 'en' | 'id' | 'zh'] || l.note.en;
+          return (
+            <Link key={l.to} to={l.to} className="nf-card" style={{ ['--i' as string]: i }}>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <b>{label}</b>
+              <small>{note}</small>
+            </Link>
+          );
+        })}
       </section>
 
       <section className="nf-more">
