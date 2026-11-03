@@ -306,6 +306,7 @@ export interface SeoConfig {
   phone: string;
   whatsapp: string;
   gaId: string;
+  googleSiteVerification?: string;
   twitter: string;
   github: string;
   timezone: string;
@@ -325,6 +326,9 @@ export const buildSeoConfig = (env: EnvRecord = {}): SeoConfig => ({
   phone: CONTACT_PHONE,
   whatsapp: WHATSAPP_NUMBER,
   gaId: (typeof env.VITE_GA_ID === 'string' && env.VITE_GA_ID) || '',
+  googleSiteVerification:
+    (typeof env.VITE_GOOGLE_SITE_VERIFICATION === 'string' && env.VITE_GOOGLE_SITE_VERIFICATION) ||
+    'yhnOI4Kth1g4-jE8hw3cluXH1tl8Rj9ghjZf7euGfXE',
   twitter: TWITTER_HANDLE,
   github: GITHUB_USERNAME,
   timezone: TIMEZONE,
@@ -855,6 +859,7 @@ const metaTags = (cfg: SeoConfig, route: RouteSeo): string => {
     `<meta name="description" content="${a(route.description)}" />`,
     `<meta name="keywords" content="${a(route.keywords.join(', '))}" />`,
     `<meta name="author" content="${a(cfg.owner)}" />`,
+    ...(cfg.googleSiteVerification ? [`<meta name="google-site-verification" content="${a(cfg.googleSiteVerification)}" />`] : []),
     `<meta name="robots" content="${route.noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}" />`,
     `<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />`,
     `<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />`,

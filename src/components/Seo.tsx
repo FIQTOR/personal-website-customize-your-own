@@ -17,6 +17,7 @@ import {
 const cfg = buildSeoConfig({
   VITE_DOMAIN: import.meta.env.VITE_DOMAIN,
   VITE_GA_ID: import.meta.env.VITE_GA_ID,
+  VITE_GOOGLE_SITE_VERIFICATION: import.meta.env.VITE_GOOGLE_SITE_VERIFICATION,
 });
 
 const NOT_FOUND: RouteSeo = {
@@ -42,6 +43,9 @@ export function Seo() {
       <title>{route.title}</title>
       <meta name="description" content={route.description} />
       <meta name="keywords" content={route.keywords.join(', ')} />
+      {cfg.googleSiteVerification && (
+        <meta name="google-site-verification" content={cfg.googleSiteVerification} />
+      )}
       <link rel="canonical" href={canonical} />
       <meta name="robots" content={route.noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large'} />
 
