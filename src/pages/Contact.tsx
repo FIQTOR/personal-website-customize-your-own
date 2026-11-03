@@ -166,7 +166,7 @@ export default function Contact() {
               )}
             </p>
             <div style={{ display: 'flex', gap: '.7rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <a className="btn-w btn-wa" href={`https://wa.me/${S.wa}`} target="_blank" rel="noopener">
+              <a className="btn-w btn-wa" href={`https://wa.me/${S.wa}`} target="_blank" rel="noopener noreferrer">
                 <Icon name="whatsapp" size={18} />
                 {t('Faster: continue on WhatsApp', 'Lebih cepat: lanjut lewat WhatsApp', '更快捷：通过 WhatsApp 继续沟通')}
               </a>

@@ -90,16 +90,50 @@ Your job:
 - LANGUAGE ADAPTATION: You MUST always detect and respond in the EXACT SAME LANGUAGE as the user's prompt or preferred language (e.g. if the user writes in Chinese / Mandarin, reply in fluent, natural Simplified Chinese; if in Indonesian, reply in Bahasa Indonesia; if in English, reply in English).
 `;
 
+const ALLOWED_MIME_TYPES = new Set([
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/heic',
+  'image/heif',
+  'application/pdf',
+]);
+
+const MAX_BASE64_LENGTH = 10 * 1024 * 1024; // ~7.5MB decoded
+
 app.post('/v1/ai/generate', async (c) => {
+  const origin = c.req.header('origin');
+  if (origin) {
+    try {
+      const { hostname } = new URL(origin);
+      const isAllowedHost =
+        hostname === 'localhost' ||
+        hostname === '127.0.0.1' ||
+        hostname.endsWith('.pages.dev') ||
+        hostname === 'fiqtor.com' ||
+        hostname.endsWith('.fiqtor.com');
+      if (!isAllowedHost) {
+        return c.json({ status: 'failed', text: 'Cross-origin request rejected' }, 403);
+      }
+    } catch {
+      return c.json({ status: 'failed', text: 'Invalid Origin' }, 403);
+    }
+  }
+
   const env = c.env;
-  let body: any = {};
+  let body: Record<string, unknown> = {};
   try {
-    body = await c.req.json();
+    body = (await c.req.json()) as Record<string, unknown>;
   } catch {
     return c.json({ status: 'failed', text: 'Invalid JSON request' }, 400);
   }
 
-  let { input, history = [], file, lang } = body;
+  let { input, history = [], file, lang } = body as {
+    input?: string;
+    history?: Array<{ role?: string; parts?: Array<{ text?: string } | string> }>;
+    file?: { data?: string; mimeType?: string };
+    lang?: string;
+  };
   input = typeof input === 'string' ? input.trim().substring(0, 1200) : '';
 
   if (!input && !file) {
@@ -149,7 +183,7 @@ app.post('/v1/ai/generate', async (c) => {
   const model = env.AI_MODEL_PRIMARY || 'gemini-2.5-flash-lite';
 
   // Construct Gemini REST contents
-  const contents: any[] = [
+  const contents: Array<{ role: string; parts: Array<Record<string, unknown>> }> = [
     {
       role: 'user',
       parts: [{ text: SYSTEM_PROMPT }],
@@ -181,23 +215,26 @@ app.post('/v1/ai/generate', async (c) => {
 
   if (Array.isArray(history)) {
     for (const h of history.slice(-10)) {
-      if (h && h.role && h.parts) {
+      if (h && h.role && h.parts && Array.isArray(h.parts)) {
         contents.push({
           role: h.role === 'model' ? 'model' : 'user',
-          parts: h.parts.map((p: any) => (typeof p === 'string' ? { text: p } : p)),
+          parts: h.parts.map((p) => (typeof p === 'string' ? { text: p } : (p as Record<string, unknown>))),
         });
       }
     }
   }
 
-  const userParts: any[] = [];
-  if (file && file.data && file.mimeType) {
-    userParts.push({
-      inlineData: {
-        data: String(file.data),
-        mimeType: String(file.mimeType),
-      },
-    });
+  const userParts: Array<Record<string, unknown>> = [];
+  if (file && typeof file.data === 'string' && typeof file.mimeType === 'string') {
+    const mime = file.mimeType.toLowerCase();
+    if (ALLOWED_MIME_TYPES.has(mime) && file.data.length <= MAX_BASE64_LENGTH) {
+      userParts.push({
+        inlineData: {
+          data: file.data,
+          mimeType: mime,
+        },
+      });
+    }
   }
   if (input) {
     userParts.push({ text: input });
@@ -253,8 +290,9 @@ app.post('/v1/ai/generate', async (c) => {
           }
         }
         await writer.write(encoder.encode(`data: [DONE]\n\n`));
-      } catch (err: any) {
-        await writer.write(encoder.encode(`data: ${JSON.stringify({ status: 'failed', text: err?.message || 'Stream error' })}\n\n`));
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : 'Stream error';
+        await writer.write(encoder.encode(`data: ${JSON.stringify({ status: 'failed', text: message })}\n\n`));
       } finally {
         await writer.close();
       }
@@ -267,9 +305,10 @@ app.post('/v1/ai/generate', async (c) => {
         'Connection': 'keep-alive',
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Internal error';
     return new Response(
-      `data: ${JSON.stringify({ status: 'failed', text: error.message || 'Internal error' })}\n\ndata: [DONE]\n\n`,
+      `data: ${JSON.stringify({ status: 'failed', text: message })}\n\ndata: [DONE]\n\n`,
       { headers: { 'Content-Type': 'text/event-stream; charset=utf-8' } },
     );
   }
@@ -313,14 +352,15 @@ app.get('/v1/github/contributions', async (c) => {
     });
 
     if (!res.ok) throw new Error(`GitHub API returned ${res.status}`);
-    const data: any = await res.json();
-    if (data.errors) throw new Error(data.errors[0].message);
+    const data = (await res.json()) as { data?: unknown; errors?: Array<{ message: string }> };
+    if (data.errors && data.errors.length > 0) throw new Error(data.errors[0].message);
 
     return c.json(data.data, 200, {
       'Cache-Control': 'public, max-age=3600, s-maxage=3600',
     });
-  } catch (err: any) {
-    return c.json({ status: 'error', message: err.message }, 500);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return c.json({ status: 'error', message }, 500);
   }
 });
 
@@ -333,13 +373,17 @@ app.get('/v1/wakatime', async (c) => {
     return c.json({ status: 500, message: 'WakaTime key not configured' }, 500);
   }
 
+  const basicAuthHeader = apiKey.startsWith('Basic ')
+    ? apiKey
+    : `Basic ${btoa(apiKey)}`;
+
   try {
     const res = await fetch('https://wakatime.com/api/v1/users/current/all_time_since_today', {
-      headers: { Authorization: `Basic ${apiKey}` },
+      headers: { Authorization: basicAuthHeader },
     });
 
     if (!res.ok) throw new Error(`WakaTime API returned ${res.status}`);
-    const json: any = await res.json();
+    const json = (await res.json()) as { data?: unknown };
 
     return c.json(
       {
@@ -353,8 +397,9 @@ app.get('/v1/wakatime', async (c) => {
         'Cache-Control': 'public, max-age=300, s-maxage=300',
       },
     );
-  } catch (err: any) {
-    return c.json({ status: 503, message: 'WakaTime unreachable', error: err.message }, 503);
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err.message : 'Unknown error';
+    return c.json({ status: 503, message: 'WakaTime unreachable', error }, 503);
   }
 });
 
@@ -376,11 +421,18 @@ app.get('/v1/crypto', async (c) => {
     );
 
     if (!res.ok) throw new Error(`CoinGecko returned ${res.status}`);
-    const markets: any = await res.json();
+    const markets = (await res.json()) as Array<{
+      id: string;
+      current_price: number;
+      price_change_percentage_30d_in_currency?: number;
+      price_change_percentage_30d?: number;
+      price_change_percentage_24h_in_currency?: number;
+      price_change_percentage_24h?: number;
+    }>;
 
     if (!Array.isArray(markets)) throw new Error('Malformed data');
 
-    const byId = new Map(markets.map((m: any) => [m.id, m]));
+    const byId = new Map(markets.map((m) => [m.id, m]));
     const btc = byId.get('bitcoin');
     const eth = byId.get('ethereum');
     const sol = byId.get('solana');

@@ -49,33 +49,19 @@ const CurrencyContext = createContext<CurrencyCtx | null>(null);
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const { lang } = useLanguage();
 
-  const [currency, setCurrencyState] = useState<CurrencyCode>(() => {
+  const [manualCurrency, setManualCurrency] = useState<CurrencyCode | null>(() => {
     try {
       const saved = localStorage.getItem(CURRENCY_KEY) as CurrencyCode;
       if (saved && SUPPORTED_CURRENCIES.some((c) => c.code === saved)) return saved;
     } catch {
       /* ignore */
     }
-    if (lang === 'zh') return 'CNY';
-    if (lang === 'id') return 'IDR';
-    return 'USD';
+    return null;
   });
 
-  const [rates, setRates] = useState<Record<string, number>>(FALLBACK_RATES_FROM_IDR);
+  const currency: CurrencyCode = manualCurrency ?? (lang === 'zh' ? 'CNY' : lang === 'id' ? 'IDR' : 'USD');
 
-  // Auto-switch default currency if user switches language and hasn't explicitly locked it
-  useEffect(() => {
-    try {
-      const hasSaved = localStorage.getItem(CURRENCY_KEY);
-      if (!hasSaved) {
-        if (lang === 'zh') setCurrencyState('CNY');
-        else if (lang === 'id') setCurrencyState('IDR');
-        else setCurrencyState('USD');
-      }
-    } catch {
-      /* ignore */
-    }
-  }, [lang]);
+  const [rates, setRates] = useState<Record<string, number>>(FALLBACK_RATES_FROM_IDR);
 
   // Fetch live exchange rates from open.er-api.com
   useEffect(() => {
@@ -99,7 +85,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const setCurrency = (c: CurrencyCode) => {
-    setCurrencyState(c);
+    setManualCurrency(c);
     try {
       localStorage.setItem(CURRENCY_KEY, c);
     } catch {
