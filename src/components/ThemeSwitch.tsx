@@ -25,7 +25,7 @@ export function ThemeSwitch({ compact = false }: { compact?: boolean }) {
     <button
       type="button"
       className={'theme-sw' + (compact ? ' compact' : '')}
-      onClick={toggle}
+      onClick={(e) => toggle(e.currentTarget)}
       aria-label={label}
       title={label}
       aria-pressed={!isDark}

@@ -24,7 +24,7 @@ const NOT_FOUND: RouteSeo = {
   path: '/404',
   label: 'Not Found',
   crumb: 'Not found',
-  title: `Page Not Found — ${cfg.brand}`,
+  title: `Page Not Found | ${cfg.brand}`,
   description: `This URL does not exist on ${new URL(cfg.origin).hostname}. Return to the homepage or report the broken link.`,
   keywords: [],
   priority: '0',

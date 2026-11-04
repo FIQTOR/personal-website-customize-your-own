@@ -76,7 +76,7 @@ export default function ProjectDetail() {
         <img
           className="pd-cover rv"
           src={cover}
-          alt={`${project.title[lang] || project.title.en} — ${t('screenshot', 'cuplikan', '截图')}`}
+          alt={`${project.title[lang] || project.title.en} | ${t('screenshot', 'cuplikan', '截图')}`}
           width={1600}
           height={900}
           loading="eager"
@@ -90,7 +90,7 @@ export default function ProjectDetail() {
                 <figure>
                   <img
                     src={g.src}
-                    alt={`${project.title[lang] || project.title.en} — ${g.caption[lang] || g.caption.en}`}
+                    alt={`${project.title[lang] || project.title.en}: ${g.caption[lang] || g.caption.en}`}
                     width={1600}
                     height={900}
                     loading="lazy"

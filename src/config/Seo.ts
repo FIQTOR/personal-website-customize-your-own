@@ -84,7 +84,7 @@ export const ROUTES: RouteSeo[] = [
     path: '/',
     label: 'Home',
     crumb: 'Home',
-    title: `${BRAND_NAME} — AI & Software Engineer, Full Stack Developer`,
+    title: `${BRAND_NAME} | AI & Software Engineer, Full Stack Developer`,
     description: `${BRAND_NAME} is an AI and software engineer from ${COUNTRY} with ${YEARS_OF_EXPERIENCE}+ years of experience building full stack web apps, AI automation, and business systems. ${S.projects.length} shipped projects, ${S.certs.reduce((n, c) => n + c.count, 0)} certificates.`,
     keywords: [`${BRAND_NAME}`, `${BRAND_NAME} portfolio`, `AI engineer ${COUNTRY}`, 'full stack developer portfolio', `hire software engineer ${COUNTRY}`],
     priority: '1.0',
@@ -94,7 +94,7 @@ export const ROUTES: RouteSeo[] = [
     path: '/projects',
     label: 'Projects',
     crumb: 'Projects',
-    title: `Projects Portfolio — Web, AI & Business Apps — ${BRAND_NAME}`,
+    title: `Projects Portfolio | Web, AI & Business Apps | ${BRAND_NAME}`,
     description: `Searchable portfolio of ${S.projects.length} applications built by ${BRAND_NAME}, filterable by category: AI automation, web apps, business systems, e-commerce, landing pages, templates, and creative 3D.`,
     keywords: [`${BRAND_NAME} projects`, 'web development portfolio', 'AI automation projects', 'React project showcase', 'Laravel projects Indonesia'],
     priority: '0.9',
@@ -104,7 +104,7 @@ export const ROUTES: RouteSeo[] = [
     path: '/career',
     label: 'Career',
     crumb: 'Career',
-    title: `Career Timeline & Work Experience — ${BRAND_NAME}`,
+    title: `Career Timeline & Work Experience | ${BRAND_NAME}`,
     description: `Work history of ${BRAND_NAME}: founder of ${S.company.name}, web programming trainer, full stack developer at SEAMEO QITEP in Science, and founder of KodeSatSet. ${S.career.length} roles with responsibilities and results.`,
     keywords: [`${BRAND_NAME} career`, 'software engineer work experience', `developer timeline ${COUNTRY}`, 'founder IARTY'],
     priority: '0.7',
@@ -114,8 +114,8 @@ export const ROUTES: RouteSeo[] = [
     path: '/certificates',
     label: 'Certificates',
     crumb: 'Certificates',
-    title: `Certifications & Credentials — ${BRAND_NAME}`,
-    description: `Verified professional and academic certificates held by ${BRAND_NAME}: BNSP national web developer competency, SEAMEO QITEP in Science cloud engineering champion, LKS Web Technologies finalist, freeCodeCamp and Dicoding courses — grouped by type.`,
+    title: `Certifications & Credentials | ${BRAND_NAME}`,
+    description: `Verified professional and academic certificates held by ${BRAND_NAME}: BNSP national web developer competency, SEAMEO QITEP in Science cloud engineering champion, LKS Web Technologies finalist, freeCodeCamp and Dicoding courses, grouped by type.`,
     keywords: [`${BRAND_NAME} certificates`, `developer certifications ${COUNTRY}`, 'BNSP junior web developer', 'AWS Academy certificate', 'freeCodeCamp certification'],
     priority: '0.7',
     changefreq: 'monthly',
@@ -124,8 +124,8 @@ export const ROUTES: RouteSeo[] = [
     path: '/contact',
     label: 'Contact',
     crumb: 'Contact',
-    title: `Contact & Hire — Project Inquiries — ${BRAND_NAME}`,
-    description: `WhatsApp +${WHATSAPP_NUMBER} is the fastest way to reach ${BRAND_NAME} — usually answered within minutes, 08:00–22:00 WIB (GMT+7). A contact form and email are also available, both answered within 24 hours.`,
+    title: `Contact & Hire | Project Inquiries | ${BRAND_NAME}`,
+    description: `WhatsApp +${WHATSAPP_NUMBER} is the fastest way to reach ${BRAND_NAME}, usually answered within minutes, 08:00–22:00 WIB (GMT+7). A contact form and email are also available, both answered within 24 hours.`,
     keywords: [`contact ${BRAND_NAME}`, `hire full stack developer ${COUNTRY}`, 'freelance web developer inquiry', 'AI automation consultant Indonesia'],
     priority: '0.8',
     changefreq: 'yearly',
@@ -179,7 +179,7 @@ const titleCase = (s: string): string =>
  */
 const routeForProjectEntry = (p: (typeof S.projects)[number], priority: string): RouteSeo => {
   const category = titleCase(p.category);
-  const suffix = ` — ${category} Case Study`;
+  const suffix = ` | ${category} Case Study`;
   /**
    * Keep the title informative. A SERP truncates around 60 characters, so the
    * name is clipped to leave room for the suffix — but only once the suffix is
@@ -338,7 +338,7 @@ export const buildSeoConfig = (env: EnvRecord = {}): SeoConfig => ({
     width: 1200,
     height: 630,
     type: 'image/png',
-    alt: `${BRAND_NAME} — ${JOB_TITLE} from ${COUNTRY}`,
+    alt: `${BRAND_NAME} | ${JOB_TITLE} from ${COUNTRY}`,
   },
   logo: {
     /** Square brand mark, used by JSON-LD Organization/Person `logo`. */
@@ -550,9 +550,9 @@ const baseGraph = (cfg: SeoConfig) => {
       ],
       worksFor: { '@id': `${origin}/#organization` },
       award: [
-        'SEAMEO QITEP in Science — Web Cloud Engineering Champion (1st of 24 teams)',
-        'LKS SMK Jombang Regency — Web Technologies Champion (1st place)',
-        'LKS SMK East Java — Web Technologies, 4th of 44',
+        'SEAMEO QITEP in Science: Web Cloud Engineering Champion (1st of 24 teams)',
+        'LKS SMK Jombang Regency: Web Technologies Champion (1st place)',
+        'LKS SMK East Java: Web Technologies, 4th of 44',
         'BNSP Certified Junior Web Developer',
       ],
       hasCredential: S.certsFeatured.slice(0, 6).map((c) => ({
@@ -909,14 +909,14 @@ const metaTags = (cfg: SeoConfig, route: RouteSeo): string => {
  */
 const noscriptHtml = (cfg: SeoConfig): string => `  <noscript>
     <div style="max-width:46rem;margin:5rem auto;padding:0 1.25rem;font-family:system-ui,-apple-system,sans-serif;line-height:1.6">
-      <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);margin:0 0 1rem">${escapeAttr(cfg.owner)} — ${escapeAttr(cfg.jobTitle)}</h1>
+      <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);margin:0 0 1rem">${escapeAttr(cfg.owner)} | ${escapeAttr(cfg.jobTitle)}</h1>
       <p>${escapeAttr(cfg.headline)}</p>
       <p>${escapeAttr(HOME_FAQ[0].a)}</p>
       <p>${escapeAttr(CONTACT_FAQ[0].a)}</p>
       <ul>
-        <li><a href="/projects">Projects — ${S.projects.length} shipped</a></li>
-        <li><a href="/certificates">Certificates — ${totalCertificates()} credentials</a></li>
-        <li><a href="/career">Career — ${S.career.length} roles</a></li>
+        <li><a href="/projects">Projects (${S.projects.length} shipped)</a></li>
+        <li><a href="/certificates">Certificates (${totalCertificates()} credentials)</a></li>
+        <li><a href="/career">Career (${S.career.length} roles)</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/llms.txt">LLM summary (llms.txt)</a></li>
       </ul>
@@ -1026,7 +1026,7 @@ const careerLines = (): string =>
 
 /** `/llms.txt` — the short, canonical summary (llmstxt.org format). */
 export const renderLlmsTxt = (cfg: SeoConfig): string =>
-  `# ${cfg.brand} — ${cfg.jobTitle}
+  `# ${cfg.brand} | ${cfg.jobTitle}
 
 > ${cfg.headline} Legal name: ${cfg.legalName} (display name: ${cfg.owner}). Based in ${COUNTRY}, GMT+7. ${YEARS_OF_EXPERIENCE}+ years of experience, ${S.projects.length} shipped projects, ${totalCertificates()} certificates. Founder of ${S.company.name}.
 
@@ -1104,7 +1104,7 @@ Facts on this page were last generated from the site's own data files (${new Dat
 export const renderManifest = (cfg: SeoConfig): string =>
   JSON.stringify(
     {
-      name: `${cfg.brand} — ${cfg.jobTitle}`,
+      name: `${cfg.brand} | ${cfg.jobTitle}`,
       short_name: cfg.brand,
       description: cfg.headline,
       start_url: '/',

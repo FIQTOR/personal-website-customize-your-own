@@ -85,7 +85,7 @@ for route in "/" "/projects" "/career" "/certificates" "/contact"; do
   # routes share the homepage title and this catches it.
   if [ "$route" != "/" ]; then
     title=$(printf '%s' "$body" | grep -o '<title>[^<]*' | head -1)
-    if printf '%s' "$title" | grep -q 'FIQTOR — AI &amp; Software Engineer, Full Stack Developer'; then
+    if printf '%s' "$title" | grep -q 'FIQTOR | AI &amp; Software Engineer, Full Stack Developer'; then
       bad "  $route is serving the homepage shell (prerendered <head> lost)"
     fi
   fi

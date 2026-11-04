@@ -1240,6 +1240,17 @@ html[data-theme="light"] .succ i{box-shadow:0 0 0 10px rgba(10,127,63,.1)}
 html[data-theme="light"] .theme-sw{background:rgba(0,0,0,.04)}
 html[data-theme="light"] .theme-sw:hover{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
 
+/* Circular bloom view transition on theme switch */
+::view-transition-old(root),
+::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}
+::view-transition-new(root){z-index:9999}
+@media (prefers-reduced-motion: reduce){
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){animation:none !important}
+}
+
 /* ---------- 2. linktree: monochrome backdrop ---------- */
 /* Replaces the indigo/violet/teal blurred blobs with a black-and-white
    composition: two soft monochrome glows plus a fine grid, so the page keeps
