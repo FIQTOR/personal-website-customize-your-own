@@ -6,14 +6,14 @@ import type { RawProject } from './site';
 export const rawProjects: RawProject[] = [
   {
     title: {
-      en: "stockcry: Indonesian Stock & Crypto Media Platform",
-      id: "stockcry: Media Saham & Crypto Indonesia",
+      en: "stockcry: Indonesian Stock & Crypto Media with Automated Instagram Publishing",
+      id: "stockcry: Media Saham & Crypto Indonesia dengan Auto-Post Instagram",
     },
     category: "Landing Page",
     best: true,
     description: {
-      en: "A modern digital media platform and interactive landing portal for stockcry, delivering concise Indonesian capital market insights (IHSG, emiten, dividends, IPOs) and crypto intelligence in high-impact, digestible daily briefs. Built with high-performance animations, word-reveal typography via GSAP & ScrollTrigger, dynamic light streak canvas effects, and structured JSON-LD schemas optimized for Generative Engine & Answer Engine Optimization (GEO/AEO).",
-      id: "Platform media digital dan portal interaktif modern untuk stockcry, menyajikan rangkuman pasar modal IHSG, aksi korporasi emiten, dividen, serta dinamika crypto terkini dalam format ringkas, tajam, dan mudah dipahami dalam satu kali baca. Dilengkapi animasi interaktif word-reveal berbasis GSAP & ScrollTrigger, efek light streak canvas dinamis, serta skema JSON-LD terstruktur yang dioptimasi untuk Generative Engine & Answer Engine Optimization (GEO/AEO).",
+      en: "A modern digital media platform and interactive landing portal for stockcry, delivering concise Indonesian capital market insights (IHSG, emiten, dividends, IPOs) and crypto intelligence in high-impact, digestible daily briefs with fully automated Instagram publishing. Built with high-performance animations, word-reveal typography via GSAP & ScrollTrigger, dynamic light streak canvas effects, and structured JSON-LD schemas optimized for Generative Engine & Answer Engine Optimization (GEO/AEO).",
+      id: "Platform media digital dan portal interaktif modern untuk stockcry, menyajikan rangkuman pasar modal IHSG, aksi korporasi emiten, dividen, serta dinamika crypto terkini dalam format ringkas dan tajam dengan sistem auto-post Instagram yang sepenuhnya otomatis. Dilengkapi animasi interaktif word-reveal berbasis GSAP & ScrollTrigger, efek light streak canvas dinamis, serta skema JSON-LD terstruktur yang dioptimasi untuk Generative Engine & Answer Engine Optimization (GEO/AEO).",
     },
     urlDirect: "https://stockcry.pages.dev/",
     srcImage: "img/projects/stockcry.webp",
@@ -21,8 +21,8 @@ export const rawProjects: RawProject[] = [
       "/img/projects/stockcry.webp",
     ],
     tags: {
-      en: ["Media Platform", "Fintech", "Stocks & Crypto", "GSAP Animations", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
-      id: ["Media Digital", "Fintech", "Saham & Kripto", "Animasi GSAP", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+      en: ["Media Platform", "Instagram Automation", "Fintech", "Stocks & Crypto", "GSAP Animations", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+      id: ["Media Digital", "Otomatisasi Instagram", "Fintech", "Saham & Kripto", "Animasi GSAP", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
     },
     icons: ["ReactJS", "TypeScript", "TailwindCSS", "Vite", "Cloudflare"],
   },

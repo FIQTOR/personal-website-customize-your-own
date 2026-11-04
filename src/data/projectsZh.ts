@@ -5,10 +5,9 @@ export interface ProjectZhData {
 }
 
 export const PROJECTS_ZH: Record<string, ProjectZhData> = {
-  "stockcry: Indonesian Stock & Crypto Media Platform": {
-    title: "stockcry: 印尼股票与加密货币数字媒体平台",
-    desc: "为 stockcry 打造的高性能现代数字化金融媒体平台与交互门户，专注以简明有力、通俗易懂的每日速报形式传递印尼资本市场动态（IHSG 大盘、上市公司、分红、IPO）以及前沿加密货币资讯。系统结合 GSAP 与 ScrollTrigger 实现字级渐显动效，搭载动态光轨 Canvas 粒子视觉，并配备严格的 JSON-LD 结构化数据体系，针对生成式 AI 搜索引擎优化 (GEO) 与精准问答优化 (AEO) 全面打磨。",
-    tags: ["数字媒体", "金融科技", "股票与加密", "GSAP 动效", "TypeScript", "TailwindCSS", "Cloudflare Pages"],
+  "stockcry: Indonesian Stock & Crypto Media with Automated Instagram Publishing": {
+    title: "stockcry: 具备 Instagram 全自动发布的印尼股票与加密货币数字媒体平台",
+    desc: "为 stockcry 打造的高性能现代数字化金融媒体平台与交互门户，深度集成全自动化 Instagram 内容发布流，专注以简明有力、通俗易懂的每日速报形式传递印尼资本市场动态（IHSG 大盘、上市公司、分红、IPO）以及前沿加密货币资讯。系统结合 GSAP 与 ScrollTrigger 实现字级渐显动效，搭载动态光轨 Canvas 粒子视觉，并配备严格的 JSON-LD 结构化数据体系，针对生成式 AI 搜索引擎优化 (GEO) 与精准问答优化 (AEO) 全面打磨。",
   },
   "WorthIt.id: Living Cost & Salary Calculator Indonesia": {
     title: "WorthIt.id: 印尼生活成本与目标薪资测算平台",
