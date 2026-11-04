@@ -868,6 +868,27 @@ export const S: SiteConfig = {
       periodSuffix: { en: ' / mo', id: ' / bln', zh: ' / 月' },
       from: { en: 'From Rp 750,000 / mo', id: 'Mulai Rp 750.000 / bln', zh: '起价 Rp 750.000 / 月' },
     },
+    {
+      slug: 'rsvp-service',
+      title: { en: 'Digital RSVP & WhatsApp Confirmation', id: 'RSVP Digital & Konfirmasi WhatsApp', zh: '数字 RSVP 与 WhatsApp 智能回执' },
+      desc: {
+        en: 'Modern RSVP system for weddings and events: guests confirm attendance via website with personal QR code entry tickets, or one-tap direct WhatsApp buttons.',
+        id: 'Sistem RSVP modern untuk pernikahan dan acara: konfirmasi kehadiran via website ber-QR Code tiket masuk tamu, serta tombol konfirmasi instan langsung di WhatsApp.',
+        zh: '面向婚礼与商务活动的数字化 RSVP 考勤系统：支持网页端确认并生成专属入场二维码（QR Code），同时集成 WhatsApp 交互式按钮快速回执。',
+      },
+      meta: {
+        en: 'Personal QR check-in · WhatsApp instant button · Real-time attendance dashboard',
+        id: 'Tiket QR Code tamu · Tombol langsung WhatsApp · Rekap kehadiran real-time',
+        zh: '专属入场二维码 · WhatsApp一键回执 · 实时出席看板',
+      },
+      fitsFor: {
+        en: 'Weddings, engagements, seminars, gala dinners, and event organizers wanting orderly, accurate guest tracking.',
+        id: 'Pernikahan, pertunangan, seminar, gala dinner, dan event organizer yang ingin pencatatan tamu tertib dan akurat.',
+        zh: '婚礼、订婚宴、研讨会、晚宴及需要精准控制统计出席人数的活动主办方。',
+      },
+      amountIDR: 500000,
+      from: { en: 'From Rp 500,000', id: 'Mulai Rp 500.000', zh: '起价 Rp 500.000' },
+    },
   ],
 
   process: [
