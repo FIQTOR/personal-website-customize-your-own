@@ -997,11 +997,11 @@ html[data-theme="light"] .md-sub .md-bundle{background:rgba(10,10,10,.02)}
 /* ---------- work timeline (alternating, v3) ---------- */
 .career-tl{position:relative;max-width:1080px;margin:0 auto;padding:1rem 0 2rem}
 .career-tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line);transform:translateX(-50%)}
-.career-tl::after{content:"";position:absolute;left:50%;top:0;width:2px;margin-left:-.5px;height:calc(100% * var(--p,0));background:linear-gradient(var(--ac),var(--ac2));box-shadow:0 0 14px var(--ac)}
+.career-tl::after{content:"";position:absolute;left:50%;top:0;width:2px;height:calc(100% * var(--p,0));transform:translateX(-50%);background:linear-gradient(var(--ac),var(--ac2));box-shadow:0 0 14px var(--ac)}
 .career-tl .ct{position:relative;width:50%;padding:0 2.6rem 1.4rem 0}
 .career-tl .ct:nth-child(even){margin-left:50%;padding:0 0 1.4rem 2.6rem}
-.career-tl .ct::before{content:"";position:absolute;right:-.42rem;top:1.5rem;width:.85rem;height:.85rem;border-radius:50%;background:var(--next-bg);border:2px solid var(--line);transition:.45s var(--ease);z-index:2}
-.career-tl .ct:nth-child(even)::before{right:auto;left:-.42rem}
+.career-tl .ct::before{content:"";position:absolute;right:0;top:1.5rem;width:.85rem;height:.85rem;border-radius:50%;background:var(--next-bg);border:2px solid var(--line);transform:translateX(50%);transition:.45s var(--ease);z-index:2}
+.career-tl .ct:nth-child(even)::before{right:auto;left:0;transform:translateX(-50%)}
 .career-tl .ct.act::before{background:var(--ac);border-color:var(--ac);box-shadow:0 0 0 6px rgba(255,255,255,.14),0 0 24px var(--ac)}
 .career-tl .ct-box{position:relative;overflow:hidden;padding:1.4rem 1.5rem;border:1px solid var(--line);border-radius:1.2rem;background:rgba(255,255,255,.03);transition:border-color .3s,background .3s}
 .career-tl .ct-box::before{content:"";position:absolute;inset:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.1),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
@@ -1055,7 +1055,7 @@ html[data-theme="light"] .ct-now{background:rgba(10,10,10,.04)}
   .career-tl::before,.career-tl::after{left:.4rem;margin-left:0}
   .career-tl::after{transform:translateX(-50%)}
   .career-tl .ct,.career-tl .ct:nth-child(even){width:100%;margin-left:0;padding:0 0 1.2rem 2.2rem}
-  .career-tl .ct::before,.career-tl .ct:nth-child(even)::before{left:.4rem;right:auto;margin-left:-.425rem}
+  .career-tl .ct::before,.career-tl .ct:nth-child(even)::before{left:.4rem;right:auto;transform:translateX(-50%)}
 }
 
 /* ---------- contact extras ---------- */

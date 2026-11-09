@@ -55,7 +55,7 @@ export function ServiceList({ anchor }: { anchor?: string }) {
                 href={waLink(lang, title)}
                 target="_blank"
                 rel="noopener"
-                aria-label={`${ctaText} - ${title} (WhatsApp)`}
+                aria-label={`${ctaText} — ${title} (WhatsApp)`}
               >
                 <Icon name="whatsapp" size={15} />
                 <span>{ctaText}</span>

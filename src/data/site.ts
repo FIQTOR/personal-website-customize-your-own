@@ -625,7 +625,17 @@ const careerRaw: CareerItem[] = [
   },
 ];
 
-const career: CareerItem[] = careerRaw.toSorted((a, b) => b.start.localeCompare(a.start));
+const career: CareerItem[] = careerRaw.toSorted((a, b) => {
+  // Present / ongoing roles (end === null) always on top
+  if (a.end === null && b.end !== null) return -1;
+  if (a.end === null && b.end === null) return b.start.localeCompare(a.start);
+  if (b.end === null) return 1;
+
+  // Then sort completed roles newest end date first, then newest start date
+  const endComp = (b.end ?? '').localeCompare(a.end ?? '');
+  if (endComp !== 0) return endComp;
+  return b.start.localeCompare(a.start);
+});
 
 /* ---------------------------------------------------------------------
    The site object

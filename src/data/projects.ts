@@ -50,8 +50,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Jakarta Transit - Live Public Transport Tracking",
-      id: "Jakarta Transit - Pelacakan Transportasi Umum Live",
+      en: "Jakarta Transit — Live Public Transport Tracking",
+      id: "Jakarta Transit — Pelacakan Transportasi Umum Live",
     },
     category: "Web App",
     best: true,
@@ -78,8 +78,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Oriental Pearl Tower - Interactive 3D Explorer",
-      id: "Menara Mutiara Oriental - Penjelajah 3D Interaktif",
+      en: "Oriental Pearl Tower — Interactive 3D Explorer",
+      id: "Menara Mutiara Oriental — Penjelajah 3D Interaktif",
     },
     category: "Creative",
     description: {
@@ -96,8 +96,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Lagoon - Interactive 3D Island Diorama",
-      id: "Lagoon - Diorama Pulau 3D Interaktif",
+      en: "Lagoon — Interactive 3D Island Diorama",
+      id: "Lagoon — Diorama Pulau 3D Interaktif",
     },
     category: "Creative",
     description: {
@@ -114,8 +114,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Lintas Rent - Premium Car Rental",
-      id: "Lintas Rent - Rental Mobil Premium",
+      en: "Lintas Rent — Premium Car Rental",
+      id: "Lintas Rent — Rental Mobil Premium",
     },
     category: "Landing Page",
     description: {
@@ -132,8 +132,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "IARTY Ecosystem - Business Core",
-      id: "Ekosistem IARTY - Inti Bisnis",
+      en: "IARTY Ecosystem — Business Core",
+      id: "Ekosistem IARTY — Inti Bisnis",
     },
     category: "Business System",
     best: true,
@@ -152,8 +152,8 @@ export const rawProjects: RawProject[] = [
 
   {
     title: {
-      en: "Enterprise Suite - Full ERP Platform",
-      id: "Enterprise Suite - Platform ERP Lengkap",
+      en: "Enterprise Suite — Full ERP Platform",
+      id: "Enterprise Suite — Platform ERP Lengkap",
     },
     category: "Business System",
     best: true,
@@ -183,8 +183,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "CRM Panel - Auth, RBAC & Sales CRM Suite",
-      id: "CRM Panel - Autentikasi, RBAC & Suite CRM Penjualan",
+      en: "CRM Panel — Auth, RBAC & Sales CRM Suite",
+      id: "CRM Panel — Autentikasi, RBAC & Suite CRM Penjualan",
     },
     category: "Business System",
     best: true,
@@ -214,8 +214,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "HRIS - Universal Human Resource System",
-      id: "HRIS - Sistem SDM Universal",
+      en: "HRIS — Universal Human Resource System",
+      id: "HRIS — Sistem SDM Universal",
     },
     category: "Business System",
     best: true,
@@ -246,8 +246,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "IHS E-School - School Management & LMS",
-      id: "IHS E-School - Manajemen Sekolah & LMS",
+      en: "IHS E-School — School Management & LMS",
+      id: "IHS E-School — Manajemen Sekolah & LMS",
     },
     category: "Business System",
     best: true,
@@ -278,8 +278,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Golden Dragon - Restaurant QR Ordering App",
-      id: "Golden Dragon - Aplikasi Pesan QR Restoran",
+      en: "Golden Dragon — Restaurant QR Ordering App",
+      id: "Golden Dragon — Aplikasi Pesan QR Restoran",
     },
     category: "Business System",
     best: true,
@@ -307,8 +307,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "WhatsApp Automation - AI Chatbot",
-      id: "Otomasi WhatsApp - Chatbot AI",
+      en: "WhatsApp Automation — AI Chatbot",
+      id: "Otomasi WhatsApp — Chatbot AI",
     },
     category: "AI & Automation",
     best: true,
@@ -325,8 +325,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "IARTY AI (Third Party) - Multiple AI Models",
-      id: "IARTY AI (Pihak Ketiga) - Beragam Model AI",
+      en: "IARTY AI (Third Party) — Multiple AI Models",
+      id: "IARTY AI (Pihak Ketiga) — Beragam Model AI",
     },
     category: "AI & Automation",
     best: true,
@@ -344,8 +344,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "AI Marketplace - Find the best prompts for your project",
-      id: "Marketplace AI - Temukan prompt terbaik untuk proyek Anda",
+      en: "AI Marketplace — Find the best prompts for your project",
+      id: "Marketplace AI — Temukan prompt terbaik untuk proyek Anda",
     },
     category: "E-Commerce",
     best: true,
@@ -363,8 +363,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Zantova App - UI Marketplace",
-      id: "Zantova App - Marketplace UI",
+      en: "Zantova App — UI Marketplace",
+      id: "Zantova App — Marketplace UI",
     },
     category: "E-Commerce",
     best: true,
@@ -382,8 +382,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Particle Handtracker - Powered by OpenCV",
-      id: "Particle Handtracker - Didukung OpenCV",
+      en: "Particle Handtracker — Powered by OpenCV",
+      id: "Particle Handtracker — Didukung OpenCV",
     },
     category: "Creative",
     description: {
@@ -400,8 +400,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Djoyo Florist - Selling Sign With Flowers",
-      id: "Djoyo Florist - Jual Kesan dengan Bunga",
+      en: "Djoyo Florist — Selling Sign With Flowers",
+      id: "Djoyo Florist — Jual Kesan dengan Bunga",
     },
     category: "Landing Page",
     description: {
@@ -436,8 +436,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "IARTY Education - Open courses for upskilling",
-      id: "IARTY Education - Kursus terbuka untuk peningkatan keterampilan",
+      en: "IARTY Education — Open courses for upskilling",
+      id: "IARTY Education — Kursus terbuka untuk peningkatan keterampilan",
     },
     category: "Web App",
     description: {
@@ -454,8 +454,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Sigma Teknik - Air Conditioner Service",
-      id: "Sigma Teknik - Servis Air Conditioner",
+      en: "Sigma Teknik — Air Conditioner Service",
+      id: "Sigma Teknik — Servis Air Conditioner",
     },
     category: "Landing Page",
     description: {
@@ -526,8 +526,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Store Management System - IARTY MODULeF",
-      id: "Sistem Manajemen Toko - IARTY MODULeF",
+      en: "Store Management System — IARTY MODULeF",
+      id: "Sistem Manajemen Toko — IARTY MODULeF",
     },
     category: "Business System",
     description: {
@@ -543,8 +543,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Savoria Online Order Restaurant - IARTY MODULeF",
-      id: "Savoria Pesan Online Restoran - IARTY MODULeF",
+      en: "Savoria Online Order Restaurant — IARTY MODULeF",
+      id: "Savoria Pesan Online Restoran — IARTY MODULeF",
     },
     category: "Business System",
     description: {
@@ -560,8 +560,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Word Love Code - Gift Website",
-      id: "Word Love Code - Situs Hadiah",
+      en: "Word Love Code — Gift Website",
+      id: "Word Love Code — Situs Hadiah",
     },
     category: "Creative",
     description: {
@@ -578,8 +578,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Online Store - IARTY ModuleF",
-      id: "Toko Online - IARTY ModuleF",
+      en: "Online Store — IARTY ModuleF",
+      id: "Toko Online — IARTY ModuleF",
     },
     category: "E-Commerce",
     description: {
@@ -595,8 +595,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "QR Code Generator - Open Source",
-      id: "Pembuat Kode QR - Open Source",
+      en: "QR Code Generator — Open Source",
+      id: "Pembuat Kode QR — Open Source",
     },
     category: "Web App",
     description: {
@@ -613,8 +613,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Merry Christmas Tree - Gift Website",
-      id: "Merry Christmas Tree - Situs Hadiah",
+      en: "Merry Christmas Tree — Gift Website",
+      id: "Merry Christmas Tree — Situs Hadiah",
     },
     category: "Creative",
     description: {
@@ -631,8 +631,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Flowers For Someone - Gift Website (Popular)",
-      id: "Flowers For Someone - Situs Hadiah (Populer)",
+      en: "Flowers For Someone — Gift Website (Popular)",
+      id: "Flowers For Someone — Situs Hadiah (Populer)",
     },
     category: "Creative",
     description: {
@@ -649,8 +649,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Coffee Shop - QR Code & Web2.0",
-      id: "Kedai Kopi - Kode QR & Web2.0",
+      en: "Coffee Shop — QR Code & Web2.0",
+      id: "Kedai Kopi — Kode QR & Web2.0",
     },
     category: "Business System",
     description: {
@@ -666,8 +666,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Padepokan App - LMS Website",
-      id: "Padepokan App - Situs LMS",
+      en: "Padepokan App — LMS Website",
+      id: "Padepokan App — Situs LMS",
     },
     category: "Web App",
     description: {
@@ -684,8 +684,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Presence App - LMS Website",
-      id: "Presence App - Situs LMS",
+      en: "Presence App — LMS Website",
+      id: "Presence App — Situs LMS",
     },
     category: "Web App",
     description: {
@@ -702,8 +702,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "BBY Interior - Architechture Design Service",
-      id: "BBY Interior - Jasa Desain Arsitektur",
+      en: "BBY Interior — Architechture Design Service",
+      id: "BBY Interior — Jasa Desain Arsitektur",
     },
     category: "Landing Page",
     description: {
@@ -720,8 +720,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "KORARIA - Restaurant Website",
-      id: "KORARIA - Situs Restoran",
+      en: "KORARIA — Restaurant Website",
+      id: "KORARIA — Situs Restoran",
     },
     category: "Business System",
     description: {
@@ -755,8 +755,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Lunar UX - Company Profile",
-      id: "Lunar UX - Profil Perusahaan",
+      en: "Lunar UX — Company Profile",
+      id: "Lunar UX — Profil Perusahaan",
     },
     category: "Landing Page",
     description: {
@@ -773,8 +773,8 @@ export const rawProjects: RawProject[] = [
   },
   {
     title: {
-      en: "Hardware Harmony - Shop Website",
-      id: "Hardware Harmony - Situs Toko",
+      en: "Hardware Harmony — Shop Website",
+      id: "Hardware Harmony — Situs Toko",
     },
     category: "E-Commerce",
     description: {
