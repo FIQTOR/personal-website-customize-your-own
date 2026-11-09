@@ -262,7 +262,7 @@ export function CertificateGallery({
               <p>
                 {t(
                   `The remaining ${all.length - featured.length} records are grouped by type — competitions, courses, events, language tests.`,
-                  `${all.length - featured.length} catatan lainnya dikelompokkan per jenis — kompetisi, kursus, event, tes bahasa.`,
+                  `${all.length - featured.length} catatan lainnya dikelompokkan per jenis: kompetisi, kursus, event, tes bahasa.`,
                   `其余 ${all.length - featured.length} 条记录按类型分组 — 竞赛、课程、活动、语言测试。`,
                 )}
               </p>

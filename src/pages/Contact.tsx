@@ -65,7 +65,7 @@ export default function Contact() {
   const C = 2 * Math.PI * 34;
   const meterText =
     pct < 50
-      ? t('Keep going — the more detail, the faster the reply', 'Lanjutkan — makin lengkap makin cepat dibalas', '继续填写 — 信息越详尽，回复越精准迅速')
+      ? t('Keep going — the more detail, the faster the reply', 'Lanjutkan, makin lengkap makin cepat dibalas', '继续填写 — 信息越详尽，回复越精准迅速')
       : pct < 100
         ? t('Almost there', 'Hampir selesai', '即将完成')
         : t('Complete. Ready to send!', 'Lengkap. Siap dikirim!', '信息完整，随时可以发送！');
@@ -152,7 +152,7 @@ export default function Contact() {
         <PageHeader
           crumb={t('Contact', 'Kontak', '联系')}
           title={t('Message sent.', 'Pesan terkirim.', '消息已发送')}
-          lead={t('Thanks for reaching out — a reply usually lands within 24 hours.', 'Terima kasih sudah menghubungi — balasan biasanya dalam 24 jam.', '感谢您的联系 — 通常会在 24 小时内回复。')}
+          lead={t('Thanks for reaching out — a reply usually lands within 24 hours.', 'Terima kasih sudah menghubungi, balasan biasanya dalam 24 jam.', '感谢您的联系 — 通常会在 24 小时内回复。')}
         />
         <section className="sec pgsec">
           <div className="succ">
@@ -207,7 +207,7 @@ export default function Contact() {
         title={t('Let’s talk.', 'Ayo ngobrol.', '开启合作对话。')}
         lead={t(
           'WhatsApp is the fastest way to reach me — usually answered within minutes, 08:00–22:00 WIB. Prefer a form or email? Both are below.',
-          'WhatsApp adalah jalur tercepat — biasanya dibalas dalam hitungan menit, 08.00–22.00 WIB. Lebih suka form atau email? Keduanya tersedia di bawah.',
+          'WhatsApp adalah jalur tercepat, biasanya dibalas dalam hitungan menit (08.00–22.00 WIB). Lebih suka form atau email? Keduanya tersedia di bawah.',
           'WhatsApp 是联系我的最快方式 — 08:00–22:00 WIB 通常几分钟内回复。也可以使用下方的表单或直接发送邮件。',
         )}
       >
@@ -477,7 +477,7 @@ export default function Contact() {
             <p className="form-hint">
               {t(
                 'Submitting opens a direct WhatsApp chat pre-filled with your project brief — nothing is sent until you press send there.',
-                'Tombol kirim akan langsung membuka chat WhatsApp dengan pesan ringkasan proyek Anda — pesan baru terkirim setelah Anda menekan kirim di WhatsApp.',
+                'Tombol kirim akan langsung membuka chat WhatsApp dengan pesan ringkasan proyek Anda. Pesan baru terkirim setelah Anda menekan kirim di WhatsApp.',
                 '点击发送将直接唤起预填好项目需求的 WhatsApp 对话 — 需在聊天软件中点击发送才算发出。',
               )}
             </p>
@@ -490,7 +490,7 @@ export default function Contact() {
             <div className="pv-card">
               <div className="pv-h">
                 <i />
-                {t('Message preview — updates as you type', 'Pratinjau pesan — berubah saat kamu mengetik', '消息预览 — 实时同步输入')}
+                {t('Message preview — updates as you type', 'Pratinjau pesan (berubah saat kamu mengetik)', '消息预览 — 实时同步输入')}
               </div>
               <div className="pv-b">
                 <div className="bub">{composed}</div>
@@ -603,7 +603,7 @@ export default function Contact() {
               <dd>
                 {t(
                   'Pick a channel — the form, WhatsApp, or email — and send a short brief. A clear brief gets a faster estimate.',
-                  'Pilih jalur — form, WhatsApp, atau email — lalu kirim ringkasan singkat. Ringkasan yang jelas menghasilkan estimasi lebih cepat.',
+                  'Pilih jalur (form, WhatsApp, atau email), lalu kirim ringkasan singkat. Ringkasan yang jelas menghasilkan estimasi lebih cepat.',
                   '任选一种方式 — 网站表单、WhatsApp 或电子邮件，发送简要需求。需求越明确，评估与报价越快。',
                 )}
               </dd>

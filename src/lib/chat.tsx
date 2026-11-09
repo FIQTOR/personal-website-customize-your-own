@@ -102,7 +102,7 @@ const FALLBACK: [RegExp, { en: string; id: string; zh: string }][] = [
     /project|proyek|portfolio|karya|portofolio|项目|作品|案例/i,
     {
       en: 'There are 35+ projects on the Projects page — filter by category or search a tech name.',
-      id: 'Ada 35+ proyek di halaman Projects — filter per kategori atau cari nama teknologi.',
+      id: 'Ada 35+ proyek di halaman Projects, silakan filter per kategori atau cari nama teknologi.',
       zh: '“项目”页面展示了 35+ 个精选实战交付项目 — 支持按业务类型筛选或按技术关键词搜索。',
     },
   ],
@@ -146,7 +146,7 @@ const localAnswer = (q: string, lang: 'en' | 'id' | 'zh'): string => {
   if (lang === 'zh') return `该问题建议直接与我沟通更高效 — WhatsApp +${S.wa} 或发送邮件至 ${S.email}。`;
   return lang === 'en'
     ? `That one is quicker to answer directly — WhatsApp +${S.wa} or email ${S.email}.`
-    : `Pertanyaan itu lebih cepat dijawab langsung — WhatsApp +${S.wa} atau email ${S.email}.`;
+    : `Pertanyaan itu lebih cepat dijawab langsung melalui WhatsApp +${S.wa} atau email ${S.email}.`;
 };
 
 /**
@@ -292,13 +292,13 @@ export function ChatProvider({ children }: { children: ReactNode }) {
                   ? `消息发送已达上限。请在约 ${mins} 分钟后重试 — 或直接通过 WhatsApp 与我联系。`
                   : lang === 'en'
                   ? `I've hit my message limit. Please try again in about ${mins} minute${mins === 1 ? '' : 's'} — or reach me on WhatsApp right away.`
-                  : `Batas pesan tercapai. Coba lagi sekitar ${mins} menit lagi — atau langsung hubungi saya lewat WhatsApp.`
+                  : `Batas pesan tercapai. Coba lagi sekitar ${mins} menit lagi, atau langsung hubungi saya lewat WhatsApp.`
                 : (info && (info.error || info.message)) ||
                     (lang === 'zh'
                       ? `消息发送已达上限。请稍后重试 — 或直接通过 WhatsApp 联系。`
                       : lang === 'en'
                       ? `I've hit my message limit. Please try again later — or reach me on WhatsApp.`
-                      : `Batas pesan tercapai. Coba lagi nanti — atau hubungi saya lewat WhatsApp.`),
+                      : `Batas pesan tercapai. Coba lagi nanti, atau langsung hubungi saya lewat WhatsApp.`),
             );
             setPending(false);
             return;

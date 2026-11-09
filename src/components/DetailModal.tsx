@@ -281,7 +281,7 @@ export function DetailModal() {
                           <span>
                             {t(
                               'One record, issued separately — the list is under "Included certificates".',
-                              'Satu entri yang diterbitkan terpisah — daftarnya ada di "Sertifikat yang termasuk".',
+                              'Satu entri yang diterbitkan terpisah, daftarnya ada di "Sertifikat yang termasuk".',
                               '单条记录，分别颁发 — 列表位于"包含的证书"中。',
                             )}
                           </span>

@@ -7,7 +7,7 @@ import type { LocalizedText } from "./site";
 export const CERTIFICATE_DESCRIPTIONS: Record<string, LocalizedText> = {
   'BNSP — National Professional Certification: Certified Junior Web Developer (Competency Certificate)': {
     en: "A national competency certificate issued by Indonesia's professional certification body (BNSP). It verifies, through a formal competency assessment, that the holder can build and maintain web applications — from structuring HTML documents and styling with CSS to writing client-side logic with JavaScript and working with a database-backed backend.",
-    id: 'Sertifikat kompetensi nasional yang diterbitkan oleh Badan Nasional Sertifikasi Profesi (BNSP). Memverifikasi melalui asesmen kompetensi resmi bahwa pemegang sertifikat mampu membangun dan memelihara aplikasi web — mulai dari struktur HTML, styling CSS, logika JavaScript, hingga backend dengan basis data.',
+    id: 'Sertifikat kompetensi nasional yang diterbitkan oleh Badan Nasional Sertifikasi Profesi (BNSP). Memverifikasi melalui asesmen kompetensi resmi bahwa pemegang sertifikat mampu membangun dan memelihara aplikasi web, mulai dari struktur HTML, styling CSS, logika JavaScript, hingga backend dengan basis data.',
     zh: '印度尼西亚国家专业认证机构 (BNSP) 颁发的国家能力资质证书。通过严谨的专业考核，验证证书持有者具备独立构建与维护 Web 应用程序的能力 — 涵盖 HTML 结构、CSS 样式、JavaScript 前端交互以及后端数据库开发。',
   },
   'SEAMEO QITEP in Science (SEAQIS) — Web Cloud Engineering Champion (1st Place out of 24 Teams)': {
@@ -22,7 +22,7 @@ export const CERTIFICATE_DESCRIPTIONS: Record<string, LocalizedText> = {
   },
   'LKS SMK Jombang Regency XXXII — Web Technologies Champion (1st Place)': {
     en: 'First place in the Web Technologies category of the district-level Skills Competition (LKS) in Jombang Regency — the qualifying round for the provincial competition, where the same candidate went on to place 4th in East Java.',
-    id: 'Juara 1 dalam Lomba Kompetensi Siswa (LKS) bidang Web Technologies tingkat Kabupaten Jombang — babak kualifikasi menuju tingkat provinsi, di mana perwakilan ini kemudian meraih peringkat 4 di Jawa Timur.',
+    id: 'Juara 1 dalam Lomba Kompetensi Siswa (LKS) bidang Web Technologies tingkat Kabupaten Jombang sebagai babak kualifikasi menuju tingkat provinsi, di mana perwakilan ini kemudian meraih peringkat 4 di Jawa Timur.',
     zh: '在 Jombang 县级职业技能大赛（LKS SMK）Web Technologies 赛道中斩获冠军（第 1 名）— 作为该地区唯一代表晋级省赛，并在东爪哇全省决赛中斩获第 4 名。',
   },
   'Airofest by Airnology 2.0 (Universitas Airlangga) — National Coding Challenge Competition': {
@@ -42,7 +42,7 @@ export const CERTIFICATE_DESCRIPTIONS: Record<string, LocalizedText> = {
   },
   'GEMA Foundation — Storytelling Agenda TOEIC Test (Score 640)': {
     en: 'An official TOEIC (Test of English for International Communication) score of 640, taken through the GEMA Foundation storytelling agenda — evidence of working proficiency in English.',
-    id: 'Skor resmi TOEIC (Test of English for International Communication) sebesar 640 melalui agenda GEMA Foundation — bukti kemahiran bahasa Inggris tingkat kerja dan profesional.',
+    id: 'Skor resmi TOEIC (Test of English for International Communication) sebesar 640 melalui agenda GEMA Foundation sebagai bukti kemahiran bahasa Inggris tingkat kerja dan profesional.',
     zh: 'TOEIC（国际交流英语考试）官方权威成绩 640 分，通过 GEMA 基金会项目完成考核 — 具备流利的国际工程英语技术沟通与跨国协作能力。',
   },
   'SEAMEO QITEP in Science — Internship / Praktik Kerja Lapangan (Distinction)': {
@@ -52,7 +52,7 @@ export const CERTIFICATE_DESCRIPTIONS: Record<string, LocalizedText> = {
   },
   'Politeknik Elektronika Negeri Surabaya (PENS) — Webinar: SQL Query Optimization': {
     en: 'Attended a technical webinar by Politeknik Elektronika Negeri Surabaya on optimising SQL queries — indexing strategy, execution plans, and avoiding the common N+1 pattern.',
-    id: 'Mengikuti webinar teknis dari PENS mengenai optimasi kueri SQL — strategi indeks, analisis execution plan, serta penghindaran masalah umum N+1.',
+    id: 'Mengikuti webinar teknis dari PENS mengenai optimasi kueri SQL, meliputi strategi indeks, analisis execution plan, serta pencegahan masalah N+1.',
     zh: '参与泗水电子工程理工学院（PENS）SQL 数据库深度优化专题技术研讨，掌握索引架构策略、查询执行计划深度剖析以及规避 N+1 性能瓶颈的工程方案。',
   },
   'Dilesin.id — C++ Programming Fundamentals #2 (Certified)': {

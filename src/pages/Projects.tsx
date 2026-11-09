@@ -15,7 +15,7 @@ export default function Projects() {
         title={t('Selected work.', 'Karya pilihan.', '精选项目成果。')}
         lead={t(
           `Web apps, AI integrations, business systems, e-commerce, and interactive 3D — ${S.projects.length} builds with screenshots and the reasoning behind them.`,
-          `Aplikasi web, integrasi AI, sistem bisnis, e-commerce, dan 3D interaktif — ${S.projects.length} karya lengkap dengan cuplikan dan alasan di baliknya.`,
+          `Aplikasi web, integrasi AI, sistem bisnis, e-commerce, dan 3D interaktif: total ${S.projects.length} karya lengkap dengan cuplikan dan alasan di baliknya.`,
           `Web 应用、AI 深度集成、企业系统、电商与交互式 3D — 累计 ${S.projects.length} 个完整项目，附带真实截图与技术架构解析。`,
         )}
       >

@@ -492,7 +492,7 @@ const mergedCerts: Cert[] = MERGED_CERT_GROUPS.map((g): Cert | null => {
     kind: kindFor(g.id, g.name, true),
     desc: {
       en: `Six separate W3Docs skill quizzes, each passed with a perfect score (100/100) covering HTML5, CSS3, JavaScript, PHP, TypeScript, and React. Grouped here because they test the same fundamentals — the individual certificates are still available in the detail view.`,
-      id: `Enam kuis keterampilan W3Docs terpisah, semuanya lulus dengan skor sempurna (100/100) mencakup HTML5, CSS3, JavaScript, PHP, TypeScript, dan React. Digabung di sini karena menguji dasar yang sama — sertifikat aslinya tetap tersedia di tampilan detail.`,
+      id: `Enam kuis keterampilan W3Docs terpisah, semuanya lulus dengan skor sempurna (100/100) mencakup HTML5, CSS3, JavaScript, PHP, TypeScript, dan React. Digabung di sini karena menguji dasar yang sama, sertifikat aslinya tetap tersedia di tampilan detail.`,
       zh: `六项独立的 W3Docs 核心技能测验，均以 100/100 满分成绩通过，涵盖 HTML5、CSS3、JavaScript、PHP、TypeScript 与 React。在此处合并归集以便快速浏览，各独立证书依然可在详情弹窗中逐一查验。`,
     },
   };
@@ -553,7 +553,7 @@ const careerRaw: CareerItem[] = [
     logo: COMPANY.image,
     desc: {
       en: 'Built and scaled the IARTY ecosystem across education, AI, digital products, and services — leading end-to-end business strategy, product development, marketing, and operations.',
-      id: 'Membangun dan mengembangkan ekosistem IARTY di bidang pendidikan, AI, produk digital, dan layanan — memimpin strategi bisnis dari hulu ke hilir, pengembangan produk, pemasaran, dan operasional.',
+      id: 'Membangun dan mengembangkan ekosistem IARTY di bidang pendidikan, AI, produk digital, dan layanan, sekaligus memimpin strategi bisnis dari hulu ke hilir, pengembangan produk, pemasaran, dan operasional.',
       zh: '创立并全面扩展涵盖教育培训、AI 解决方案、数字产品与企业级软件服务的 IARTY 商业生态系统 — 主导端到端商业战略规划、产品研发迭代、品牌营销与日常运营。',
     },
     points: [
@@ -992,7 +992,7 @@ export const S: SiteConfig = {
       q: { en: 'What certifications do you hold?', id: 'Sertifikasi apa saja yang dimiliki?', zh: '持有什么证书?' },
       a: {
         en: `${BRAND_NAME} holds the BNSP national Junior Web Developer competency certificate, was 1st of 24 teams in the SEAMEO QITEP in Science web cloud engineering competition, placed 4th of 44 in LKS Web Technologies (East Java), and completed freeCodeCamp, Dicoding and W3Docs programs — ${certs.reduce((n, c) => n + c.count, 0)} credentials in total.`,
-        id: `${BRAND_NAME} memegang sertifikat kompetensi nasional BNSP Junior Web Developer, juara 1 dari 24 tim di kompetisi web cloud engineering SEAMEO QITEP in Science, peringkat 4 dari 44 di LKS Web Technologies (Jawa Timur), serta menuntaskan program freeCodeCamp, Dicoding, dan W3Docs — total ${certs.reduce((n, c) => n + c.count, 0)} kredensial.`,
+        id: `${BRAND_NAME} memegang sertifikat kompetensi nasional BNSP Junior Web Developer, juara 1 dari 24 tim di kompetisi web cloud engineering SEAMEO QITEP in Science, peringkat 4 dari 44 di LKS Web Technologies (Jawa Timur), serta menuntaskan program freeCodeCamp, Dicoding, dan W3Docs dengan total ${certs.reduce((n, c) => n + c.count, 0)} kredensial.`,
         zh: `${BRAND_NAME} 持有 BNSP 国家级初级 Web 开发者能力证书, 在 SEAMEO QITEP in Science Web 云工程竞赛中 24 支队伍获第 1 名, 在 LKS Web Technologies (东爪哇) 44 人中排第 4, 并完成 freeCodeCamp, Dicoding 和 W3Docs 项目 — 共 ${certs.reduce((n, c) => n + c.count, 0)} 个证书.`,
       },
     },
@@ -1264,7 +1264,7 @@ export const waLink = (lang: Language, topic?: string): string => {
     ? lang === 'zh'
       ? `${head} — ${topic}。我的具体需求如下：`
       : lang === 'id'
-      ? `${head} — ${topic}. Kira-kira begini kebutuhannya:`
+      ? `${head}: ${topic}. Kira-kira begini kebutuhannya:`
       : `${head} — ${topic}. Here is what I have in mind:`
     : lang === 'zh'
       ? `${head}。我的具体需求如下：`

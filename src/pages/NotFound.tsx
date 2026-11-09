@@ -53,7 +53,7 @@ export default function NotFound() {
         <p className="nf-lead">
           {t(
             'The link is broken, or the page moved. Nothing is lost — pick a destination below, or search the archive.',
-            'Tautannya rusak, atau halamannya sudah pindah. Tidak ada yang hilang — pilih tujuan di bawah, atau cari di arsip.',
+            'Tautannya rusak, atau halamannya sudah pindah. Tidak ada yang hilang, silakan pilih tujuan di bawah atau cari di arsip.',
             '链接已失效, 或页面已移动. 没有任何丢失 — 选择下方目的地, 或搜索档案.',
           )}
         </p>

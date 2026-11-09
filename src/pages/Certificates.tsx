@@ -22,7 +22,7 @@ export default function Certificates() {
         title={t('Proof of learning.', 'Bukti belajar.', '持续学习与专业实力印证。')}
         lead={t(
           `${total} credentials — national competency certificates, competition results, and course completions. The ${S.certsFeatured.length} that prove the most are shown first; everything else is grouped by type so you can scan it in seconds.`,
-          `${total} kredensial — sertifikat kompetensi nasional, hasil kompetisi, dan penyelesaian kursus. ${S.certsFeatured.length} yang paling membuktikan ditampilkan lebih dulu; sisanya dikelompokkan per jenis agar bisa dipindai dalam hitungan detik.`,
+          `${total} kredensial: sertifikat kompetensi nasional, hasil kompetisi, dan penyelesaian kursus. ${S.certsFeatured.length} yang paling membuktikan ditampilkan lebih dulu; sisanya dikelompokkan per jenis agar bisa dipindai dalam hitungan detik.`,
           `共计 ${total} 项官方认证 — 包含国家级职业技能认证、权威竞赛奖项及专业课程结业证书。精选最具含金量的 ${S.certsFeatured.length} 份优先展示，其余按类型分类归档。`,
         )}
       >

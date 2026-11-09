@@ -55,7 +55,7 @@ export const CERT_GROUPS: CertGroup[] = [
     label: { en: 'Competitions', id: 'Kompetisi', zh: '竞赛奖项' },
     desc: {
       en: 'Ranked results in provincial and national competitions — the strongest single signal of hands-on skill, because they are judged against other people.',
-      id: 'Hasil peringkat di kompetisi provinsi dan nasional — sinyal keterampilan paling kuat, karena dinilai bersaing dengan orang lain.',
+      id: 'Hasil peringkat di kompetisi provinsi dan nasional sebagai bukti keterampilan teruji di ranah kompetitif.',
       zh: '省市级与国家级赛事的获奖战绩 — 实战技术水平最强有力的客观证明，均在严格评审与激烈竞争中取得。',
     },
     ids: [
