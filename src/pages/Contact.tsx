@@ -296,7 +296,6 @@ export default function Contact() {
             without scrolling through the form first. */}
         <nav className="pg-jump rv" aria-label={t('On this page', 'Di halaman ini', '本页导航')}>
           <a href="#services">{t('Pricing', 'Harga', '服务报价')} ↓</a>
-          <a href="#answers-h">{t('Quick answers', 'Jawaban singkat', '快速答疑')} ↓</a>
         </nav>
 
         <div className="cf">
@@ -539,77 +538,6 @@ export default function Contact() {
 
         <InteractiveTitle text={t('Common questions.', 'Pertanyaan umum.', '常见疑问与咨询。')} className="sub-h" />
         <FaqList />
-        {/* Direct answers, phrased for answer engines: short, self-contained,
-            and mirrored in the page's FAQPage structured data. */}
-        <div className="answers rv" aria-labelledby="answers-h">
-          <h3 id="answers-h">{t('Quick answers', 'Jawaban singkat', '快速答疑')}</h3>
-          <dl>
-            <div>
-              <dt>{t(`Who is ${S.name}?`, `Siapa ${S.name}?`, `${S.name} 是谁？`)}</dt>
-              <dd>
-                {t(
-                  `${S.name} is an AI and software engineer from Indonesia, founder of ${S.company.name}, with ${S.years}+ years of experience and ${S.projects.length} shipped projects.`,
-                  `${S.name} adalah AI & software engineer dari Indonesia, pendiri ${S.company.name}, dengan pengalaman ${S.years}+ tahun dan ${S.projects.length} proyek yang sudah dirilis.`,
-                  `${S.name} 是一位来自印度尼西亚的 AI 与软件工程师，${S.company.name} 创始人，拥有 ${S.years}+ 年实战经验，累计上线交付 ${S.projects.length} 个项目。`,
-                )}
-              </dd>
-            </div>
-            <div>
-              <dt>{t('How fast is the reply?', 'Seberapa cepat balasannya?', '回复速度有多快？')}</dt>
-              <dd>
-                {t(
-                  'WhatsApp is fastest (usually minutes, 08:00–22:00 WIB). Email and the form are answered within 24 hours.',
-                  'WhatsApp paling cepat (biasanya beberapa menit, 08.00–22.00 WIB). Email dan form dibalas dalam 24 jam.',
-                  'WhatsApp 响应最迅速（08:00–22:00 WIB 通常几分钟内回复）。电子邮件与表单通常在 24 小时内回复。',
-                )}
-              </dd>
-            </div>
-            <div>
-              <dt>{t('What can be built?', 'Apa saja yang bisa dibangun?', '能够承接开发哪些内容？')}</dt>
-              <dd>
-                {t(
-                  'Web apps, AI integration and automation, business systems (ERP, CRM, HRIS, school platforms), e-commerce, and landing pages.',
-                  'Aplikasi web, integrasi & otomasi AI, sistem bisnis (ERP, CRM, HRIS, platform sekolah), e-commerce, dan landing page.',
-                  'Web 应用、AI 深度集成与工作流自动化、企业级系统（ERP、CRM、HRIS、教育系统）、电子商务及高端品牌落地页。',
-                )}
-              </dd>
-            </div>
-            <div>
-              <dt>{t('Working hours?', 'Jam kerja?', '服务工作时间？')}</dt>
-              <dd>
-                {t(
-                  'GMT+7 (WIB), Monday to Saturday, 08:00–22:00. International clients welcome.',
-                  'GMT+7 (WIB), Senin–Sabtu, 08.00–22.00. Klien internasional dipersilakan.',
-                  'GMT+7 (WIB)，周一至周六 08:00–22:00。欢迎全球客户交流合作。',
-                )}
-              </dd>
-            </div>
-            {/* These two mirror entries in the page's FAQPage structured data
-                (see CONTACT_FAQ in src/config/Seo.ts). The schema is invalid —
-                and the rich result is dropped — if a question exists there but
-                not on the page, so keep the two in sync when adding one. */}
-            <div>
-              <dt>{t('What certifications?', 'Sertifikasi?', '拥有哪些专业资质认证？')}</dt>
-              <dd>
-                {t(
-                  'BNSP national Junior Web Developer competency, 1st of 24 teams in SEAMEO QITEP in Science web cloud engineering, 4th of 44 in LKS Web Technologies (East Java), plus freeCodeCamp, Dicoding and W3Docs programs.',
-                  'Kompetensi nasional BNSP Junior Web Developer, juara 1 dari 24 tim di web cloud engineering SEAMEO QITEP in Science, peringkat 4 dari 44 di LKS Web Technologies (Jawa Timur), serta program freeCodeCamp, Dicoding, dan W3Docs.',
-                  '印尼 BNSP 国家初级 Web 开发者专业认证、SEAMEO QITEP 云工程大赛第一名、LKS Web 技术竞赛第四名，以及 freeCodeCamp、Dicoding 和 W3Docs 等专业认证。',
-                )}
-              </dd>
-            </div>
-            <div>
-              <dt>{t('How do we start?', 'Bagaimana memulai?', '我们该如何开始合作？')}</dt>
-              <dd>
-                {t(
-                  'Pick a channel — the form, WhatsApp, or email — and send a short brief. A clear brief gets a faster estimate.',
-                  'Pilih jalur (form, WhatsApp, atau email), lalu kirim ringkasan singkat. Ringkasan yang jelas menghasilkan estimasi lebih cepat.',
-                  '任选一种方式 — 网站表单、WhatsApp 或电子邮件，发送简要需求。需求越明确，评估与报价越快。',
-                )}
-              </dd>
-            </div>
-          </dl>
-        </div>
       </section>
     </div>
   );

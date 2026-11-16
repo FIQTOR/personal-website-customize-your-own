@@ -26,6 +26,14 @@ export function Footer() {
             {t('Download (PDF)', 'Unduh (PDF)', '下载 (PDF)')}
           </a>
         </div>
+        <div className="ft-dl">
+          <span>Email</span>
+          <a href="mailto:taufiq07326@gmail.com">taufiq07326@gmail.com</a>
+        </div>
+        <div className="ft-dl">
+          <span>{t('Location', 'Lokasi', '地址')}</span>
+          <span>Jakarta, Indonesia</span>
+        </div>
       </div>
       <nav aria-label={t('Footer menu', 'Menu footer', '页脚菜单')}>
         <h2>{t('Menu', 'Menu', '菜单')}</h2>
