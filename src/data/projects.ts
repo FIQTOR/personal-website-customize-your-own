@@ -6,6 +6,28 @@ import type { RawProject } from './site';
 export const rawProjects: RawProject[] = [
   {
     title: {
+      en: "Ngalam Fix Pro: Smartphone Repair Platform & Real-Time Tracking",
+      id: "Ngalam Fix Pro: Platform Servis HP & Pelacakan Nota Real-Time",
+    },
+    category: "Web App",
+    best: true,
+    description: {
+      en: "A comprehensive smartphone repair platform and customer service management portal built for Ngalam Fix Pro (Malang). Features transparent real-time cost calculators for LCD and battery replacements, receipt-based live repair tracking, partner affiliate portal, and a streamlined technician operations dashboard with automated PDF invoices and WhatsApp integration.",
+      id: "Platform website resmi dan portal manajemen servis smartphone terintegrasi untuk Ngalam Fix Pro (Malang). Dilengkapi kalkulator estimasi biaya penggantian part (LCD & baterai) secara transparan dan real-time, sistem pelacakan status servis mandiri (live tracking) berbasis nomor nota, portal kemitraan/afiliasi, serta dashboard manajemen teknisi lengkap dengan cetak invoice otomatis dan integrasi WhatsApp.",
+    },
+    urlDirect: "https://ngalamfixpro.com/",
+    srcImage: "/img/projects/ngalamfixpro.webp",
+    images: [
+      "/img/projects/ngalamfixpro.webp",
+    ],
+    tags: {
+      en: ["Web App", "Smartphone Repair", "Live Tracking", "Cost Estimator", "NodeJS", "React", "TailwindCSS"],
+      id: ["Aplikasi Web", "Servis Smartphone", "Live Tracking", "Kalkulator Biaya", "NodeJS", "React", "TailwindCSS"],
+    },
+    icons: ["ReactJS", "TypeScript", "TailwindCSS", "NodeJS", "Express", "PostgreSQL"],
+  },
+  {
+    title: {
       en: "Stockcry: Indonesian Stock & Crypto Media with Automated Instagram Publishing",
       id: "Stockcry: Media Saham & Crypto Indonesia dengan Auto-Post Instagram",
     },

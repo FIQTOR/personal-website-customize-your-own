@@ -5,6 +5,11 @@ export interface ProjectZhData {
 }
 
 export const PROJECTS_ZH: Record<string, ProjectZhData> = {
+  "Ngalam Fix Pro: Smartphone Repair Platform & Real-Time Tracking": {
+    title: "Ngalam Fix Pro: 智能手机维修综合服务与工单实时追踪平台",
+    desc: "专为印尼玛琅 Ngalam Fix Pro 打造的手机维修官方服务平台与数字化业务中台。内置透明公开的屏幕（LCD）与电池配件更换费用实时测算器、维修单号实时进度追踪（Live Tracking）系统、合作合伙人与分销商门户，以及面向维修技师的全流程工单管理与自动 PDF 发票生成系统，并深度整合 WhatsApp 咨询与沟通渠道。",
+    tags: ["Web应用", "智能手机维修", "工单追踪", "费用测算", "NodeJS", "React", "TailwindCSS"],
+  },
   "Stockcry: Indonesian Stock & Crypto Media with Automated Instagram Publishing": {
     title: "Stockcry: 具备 Instagram 全自动发布的印尼股票与加密货币数字媒体平台",
     desc: "为 Stockcry 打造的高性能现代数字化金融媒体平台与交互门户，深度集成全自动化 Instagram 内容发布流，专注以简明有力、通俗易懂的每日速报形式传递印尼资本市场动态（IHSG 大盘、上市公司、分红、IPO）以及前沿加密货币资讯。系统结合 GSAP 与 ScrollTrigger 实现字级渐显动效，搭载动态光轨 Canvas 粒子视觉，并配备严格的 JSON-LD 结构化数据体系，针对生成式 AI 搜索引擎优化 (GEO) 与精准问答优化 (AEO) 全面打磨。",

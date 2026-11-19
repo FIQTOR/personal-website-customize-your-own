@@ -1020,6 +1020,16 @@ export const S: SiteConfig = {
    */
   testimonials: [
     {
+      name: 'Ngalam Fix Pro',
+      role: { en: 'Owner, Ngalam Fix Pro Malang', id: 'Pemilik, Ngalam Fix Pro Malang', zh: 'Ngalam Fix Pro（玛琅）主理人' },
+      quote: {
+        en: 'The price estimator and live repair tracking system really helped our customers. The system is neat, professional, and took our business to the next level.',
+        id: 'Kalkulator estimasi harga dan fitur live tracking nota servisnya sangat membantu pelanggan kami. Sistemnya rapi, profesional, dan menaikkan citra bisnis.',
+        zh: '维修配件透明测算器和工单实时追踪功能极大地方便了我们的顾客。整套系统严谨而专业，显著提升了我们数码维修中心的品牌形象。',
+      },
+      img: '/img/testimonials/ngalamfixpro.webp',
+    },
+    {
       name: 'Kedai Nagata',
       role: { en: 'Owner, Kedai Nagata', id: 'Pemilik, Kedai Nagata', zh: 'Kedai Nagata 创始人' },
       quote: {
