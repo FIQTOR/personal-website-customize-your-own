@@ -1719,7 +1719,19 @@ html[data-theme="light"] .ch-primary:focus-visible{outline-color:#0a0a0a}
    other page exactly. Everything below is page-specific.
    ===================================================================== */
 .pd-meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
-.pd-actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.pd-actions{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;margin-top:1.5rem}
+.pd-btn-live{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border-radius:999px;background:#fff;color:#08080a;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 4px 20px rgba(255,255,255,.15);transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s}
+.pd-btn-live:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.3)}
+.pd-btn-live svg{transition:transform .25s var(--ease)}
+.pd-btn-live:hover svg{transform:translate(2px,-2px)}
+.pd-btn-inquiry{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.35rem;border-radius:999px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);backdrop-filter:blur(8px);color:var(--text);font-weight:600;font-size:.92rem;text-decoration:none;transition:transform .25s var(--ease),border-color .25s,background .25s,box-shadow .25s}
+.pd-btn-inquiry:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.12);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.pd-btn-inquiry svg{transition:transform .25s var(--ease)}
+.pd-btn-inquiry:hover svg{transform:translateX(3px)}
+html[data-theme="light"] .pd-btn-live{background:#0a0a0a;color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+html[data-theme="light"] .pd-btn-live:hover{box-shadow:0 8px 26px rgba(0,0,0,.28)}
+html[data-theme="light"] .pd-btn-inquiry{border-color:rgba(10,10,10,.2);background:rgba(10,10,10,.04);color:#0a0a0a}
+html[data-theme="light"] .pd-btn-inquiry:hover{border-color:rgba(10,10,10,.6);background:rgba(10,10,10,.08);box-shadow:0 4px 18px rgba(0,0,0,.08)}
 .pd-body{padding-top:1rem}
 .pd-cover{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
 .pd-shots{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:1rem;margin:1rem 0 0;padding:0}

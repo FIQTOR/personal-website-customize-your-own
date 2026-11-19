@@ -60,13 +60,19 @@ export default function ProjectDetail() {
 
         <div className="ph-cta rv pd-actions">
           {project.url && (
-            <a className="btn2" href={project.url} target="_blank" rel="noopener">
-              {t('View live', 'Lihat langsung', '查看线上')}
+            <a className="cta pd-btn-live" href={project.url} target="_blank" rel="noopener">
+              <span>{t('View live', 'Lihat langsung', '查看线上')}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
               <span className="sr"> {t('(opens in a new tab)', '(membuka tab baru)', '(在新标签打开)')}</span>
             </a>
           )}
-          <a className="cta-ghost" href={waLink(lang, project.title[lang] || project.title.en)} target="_blank" rel="noopener">
-            {t('Want something like this?', 'Ingin yang seperti ini?', '想要类似的项目?')}
+          <a className="pd-btn-inquiry" href={waLink(lang, project.title[lang] || project.title.en)} target="_blank" rel="noopener">
+            <span>{t('Want something like this?', 'Ingin yang seperti ini?', '想要类似的项目?')}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
             <span className="sr"> {t('(opens WhatsApp)', '(membuka WhatsApp)', '(打开 WhatsApp)')}</span>
           </a>
         </div>
