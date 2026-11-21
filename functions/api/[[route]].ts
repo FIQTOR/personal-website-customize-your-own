@@ -369,17 +369,54 @@ app.get('/v1/wakatime', async (c) => {
   const env = c.env;
   const apiKey = env.WAKATIME_APP_SECRET;
 
+  // 1. Try public profile stats first if available (reliable, doesn't require OAuth / plugin API key)
+  try {
+    const pubRes = await fetch('https://wakatime.com/api/v1/users/fiqtor/stats', {
+      headers: { 'User-Agent': 'PersonalWebsite/1.0' },
+    });
+    if (pubRes.ok) {
+      const pubJson = (await pubRes.json()) as {
+        data?: {
+          human_readable_total?: string;
+          human_readable_range?: string;
+        };
+      };
+      if (pubJson.data?.human_readable_total) {
+        return c.json(
+          {
+            status: 200,
+            message: 'Success',
+            source: 'public_profile',
+            data: {
+              text: pubJson.data.human_readable_total,
+              range: {
+                start_text: pubJson.data.human_readable_range?.replace(/^since\s+/i, '') ?? '',
+              },
+            },
+          },
+          200,
+          {
+            'Cache-Control': 'public, max-age=1800, s-maxage=1800',
+          },
+        );
+      }
+    }
+  } catch {
+    // Fall back to authenticated API if public fetch fails
+  }
+
+  // 2. Fall back to current user API with API Key / OAuth Token
   if (!apiKey) {
     return c.json({ status: 500, message: 'WakaTime key not configured' }, 500);
   }
 
-  const basicAuthHeader = apiKey.startsWith('Basic ')
+  const authHeader = apiKey.startsWith('Basic ') || apiKey.startsWith('Bearer ')
     ? apiKey
     : `Basic ${btoa(apiKey)}`;
 
   try {
     const res = await fetch('https://wakatime.com/api/v1/users/current/all_time_since_today', {
-      headers: { Authorization: basicAuthHeader },
+      headers: { Authorization: authHeader },
     });
 
     if (!res.ok) throw new Error(`WakaTime API returned ${res.status}`);
