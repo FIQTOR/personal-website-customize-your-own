@@ -17,6 +17,7 @@ export interface Env {
   GITHUB_TOKEN?: string;
   WAKATIME_APP_SECRET?: string;
   COINGECKO_API_KEY?: string;
+  RAPIDAPI_KEY?: string;
 }
 
 const app = new Hono<{ Bindings: Env }>().basePath('/api');
@@ -529,22 +530,119 @@ app.get('/v1/crypto', async (c) => {
 });
 
 // --- Social Stats ---
-import socialConfig from './config/social';
+import socialConfig, { TikTokStats, InstagramStats } from './config/social';
 
-app.get('/v1/social/stats', (c) => {
+// In-memory cache for Worker runtime (RapidAPI quota safeguard)
+// Cache TTL 3 hours (10,800,000 ms) -> at most 8 requests/day even on continuous traffic
+let cachedTikTok: { data: TikTokStats; timestamp: number } | null = null;
+let cachedInstagram: { data: InstagramStats; timestamp: number } | null = null;
+const SOCIAL_CACHE_TTL_MS = 3 * 60 * 60 * 1000;
+
+app.get('/v1/social/stats', async (c) => {
+  const rapidApiKey = c.env.RAPIDAPI_KEY || '40e7615249mshfb89601bacacddbp1a4109jsne882c2464885';
+  let tiktokData = socialConfig.tiktok;
+  let instagramData = socialConfig.instagram;
+  let sourceTikTok = 'fallback';
+  let sourceInstagram = 'fallback';
+
+  const now = Date.now();
+
+  // 1. TikTok fetch & cache
+  if (cachedTikTok && now - cachedTikTok.timestamp < SOCIAL_CACHE_TTL_MS) {
+    tiktokData = cachedTikTok.data;
+    sourceTikTok = 'memory_cache';
+  } else if (rapidApiKey) {
+    try {
+      const username = socialConfig.usernames.tiktok;
+      const res = await fetch(`https://tiktok-api23.p.rapidapi.com/api/user/info?uniqueId=${encodeURIComponent(username)}`, {
+        headers: {
+          'X-RapidAPI-Key': rapidApiKey,
+          'X-RapidAPI-Host': 'tiktok-api23.p.rapidapi.com',
+          Accept: 'application/json',
+          'User-Agent': 'RapidAPI-Playground',
+        },
+      });
+
+      if (res.ok) {
+        const json = await res.json() as any;
+        const stats = json?.userInfo?.stats;
+        const user = json?.userInfo?.user;
+
+        if (stats) {
+          tiktokData = {
+            followers: Number(stats.followerCount) || socialConfig.tiktok.followers,
+            following: Number(stats.followingCount) || socialConfig.tiktok.following,
+            likes: Number(stats.heartCount ?? stats.heart) || socialConfig.tiktok.likes,
+            videoCount: Number(stats.videoCount) || socialConfig.tiktok.videoCount,
+            avatar: user?.avatarThumb || user?.avatarMedium || socialConfig.tiktok.avatar,
+            nickname: user?.nickname || socialConfig.tiktok.nickname,
+          };
+          cachedTikTok = { data: tiktokData, timestamp: now };
+          sourceTikTok = 'live_api';
+        }
+      } else {
+        console.warn(`[TikTok API] Request returned status ${res.status}`);
+      }
+    } catch (err) {
+      console.warn('[TikTok API] Fetch failed, using fallback:', err);
+    }
+  }
+
+  // 2. Instagram fetch & cache
+  if (cachedInstagram && now - cachedInstagram.timestamp < SOCIAL_CACHE_TTL_MS) {
+    instagramData = cachedInstagram.data;
+    sourceInstagram = 'memory_cache';
+  } else if (rapidApiKey) {
+    try {
+      const igUsername = socialConfig.usernames.instagram;
+      const igProfileUrl = encodeURIComponent(`https://www.instagram.com/${igUsername}/`);
+      const res = await fetch(`https://instagram-statistics-api.p.rapidapi.com/community?url=${igProfileUrl}`, {
+        headers: {
+          'X-RapidAPI-Key': rapidApiKey,
+          'X-RapidAPI-Host': 'instagram-statistics-api.p.rapidapi.com',
+          Accept: 'application/json',
+          'User-Agent': 'RapidAPI-Playground',
+        },
+      });
+
+      if (res.ok) {
+        const json = await res.json() as any;
+        const data = json?.data;
+        if (data && typeof data.usersCount === 'number') {
+          instagramData = {
+            followers: data.usersCount,
+            following: socialConfig.instagram.following,
+            avatar: data.image || socialConfig.instagram.avatar,
+            name: data.name || socialConfig.instagram.name,
+          };
+          cachedInstagram = { data: instagramData, timestamp: now };
+          sourceInstagram = 'live_api';
+        }
+      } else {
+        console.warn(`[Instagram API] Request returned status ${res.status}`);
+      }
+    } catch (err) {
+      console.warn('[Instagram API] Fetch failed, using fallback:', err);
+    }
+  }
+
   return c.json(
     {
       success: true,
-      source: 'default',
+      source: {
+        tiktok: sourceTikTok,
+        instagram: sourceInstagram,
+      },
       data: {
-        tiktok: socialConfig.tiktok,
-        instagram: socialConfig.instagram,
-        lastUpdated: new Date().toISOString(),
+        tiktok: tiktokData,
+        instagram: instagramData,
+        lastUpdated: new Date(Math.max(cachedTikTok?.timestamp ?? now, cachedInstagram?.timestamp ?? now)).toISOString(),
       },
     },
     200,
     {
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      // Browser & CDN cache for 2 hours (7200 seconds) to avoid spamming the backend
+      'Cache-Control': 'public, max-age=7200, s-maxage=7200, stale-while-revalidate=3600',
     },
   );
 });

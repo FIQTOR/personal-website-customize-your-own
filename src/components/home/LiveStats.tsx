@@ -15,15 +15,39 @@ type Coin = { rate: number; delta: { month: number; day?: number } };
 /** The backend can answer with a partial map (e.g. one feed is down). */
 type Coins = Partial<Record<'btc' | 'eth' | 'sol', Coin>>;
 type Social = {
-  tiktok?: { followers: number; following: number; likes: number };
-  instagram?: { followers: number; following: number };
+  tiktok?: {
+    followers: number;
+    following: number;
+    likes: number;
+    videoCount?: number;
+    avatar?: string;
+    nickname?: string;
+  };
+  instagram?: {
+    followers: number;
+    following: number;
+    avatar?: string;
+    name?: string;
+  };
 };
 type Waka = { text: string; since: string };
 
-/** Fallbacks mirror `backend/src/config/social.js`; keep the two in step. */
+/** Fallbacks mirror `functions/api/config/social.ts`; keep the two in step. */
 const SOCIAL_FALLBACK: Social = {
-  tiktok: { followers: 1952, following: 33, likes: 130000 },
-  instagram: { followers: 728, following: 579 },
+  tiktok: {
+    followers: 1982,
+    following: 29,
+    likes: 136800,
+    videoCount: 44,
+    avatar: 'https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/4ea3bc439aaa344a04d181b0db357515~tplv-tiktokx-cropcenter:100:100.jpeg?dr=9640&refresh_token=a7e98a5a&x-expires=1795676400&x-signature=LpeYgQ4j8%2Boetp%2B6B1UPSb%2FHMik%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5',
+    nickname: 'fiqtor dev',
+  },
+  instagram: {
+    followers: 742,
+    following: 579,
+    avatar: 'https://6f2859a7-8667-4b05-9978-a8922e29bf1f.selstorage.ru/INST:17841407124984691?time=1795506766',
+    name: 'fiqtor 胡伟明',
+  },
 };
 
 const COIN_META = [
@@ -186,9 +210,23 @@ function SocialPanel() {
 
   return (
     <div className="lv">
-      <div className="lv-h">
-        <Icon name="tiktok" size={17} />
-        {t('Social reach', 'Jangkauan sosial', '社交覆盖')}
+      <div className="lv-h" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          {social?.tiktok?.avatar ? (
+            <img
+              src={social.tiktok.avatar}
+              alt="TikTok Avatar"
+              style={{ width: 22, height: 22, borderRadius: '50%', objectFit: 'cover' }}
+              onError={(e) => {
+                // If avatar URL expires, fallback to icon cleanly
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          ) : (
+            <Icon name="tiktok" size={17} />
+          )}
+          <span>{t('Social reach', 'Jangkauan sosial', '社交覆盖')}</span>
+        </div>
       </div>
       {!social ? (
         <span className="lv-skel" />
@@ -204,23 +242,36 @@ function SocialPanel() {
               value={formatCompact(social.tiktok.followers)}
             />
           )}
+          {social.tiktok && (
+            <SocialRow label={t('TikTok likes', 'suka TikTok', 'TikTok 点赞')} value={`${formatCompact(social.tiktok.likes)}+`} />
+          )}
+          {social.tiktok?.videoCount !== undefined && (
+            <SocialRow
+              label={t('TikTok videos', 'video TikTok', 'TikTok 视频')}
+              value={formatCompact(social.tiktok.videoCount)}
+            />
+          )}
           {social.instagram && (
             <SocialRow
               label={t('Instagram followers', 'pengikut Instagram', 'Instagram 粉丝')}
               value={formatCompact(social.instagram.followers)}
             />
           )}
-          {social.tiktok && (
-            <SocialRow label={t('TikTok likes', 'suka TikTok', 'TikTok 点赞')} value={`${formatCompact(social.tiktok.likes)}+`} />
-          )}
           {offline && (
             <small className="lv-stale">
               {t('Last known figures (feed offline)', 'Angka terakhir diketahui (feed mati)', '最后已知数据（数据源离线）')}
             </small>
           )}
-          <a href={S.social.tiktok} target="_blank" rel="noopener" style={{ fontSize: '.82rem', width: 'fit-content' }}>
-            @{S.alias.toLowerCase()} ↗
-          </a>
+          <div style={{ display: 'flex', gap: '0.75rem', fontSize: '.82rem', width: 'fit-content', marginTop: '0.2rem' }}>
+            <a href={S.social.tiktok} target="_blank" rel="noopener">
+              TikTok ↗
+            </a>
+            {S.social.instagram && (
+              <a href={S.social.instagram} target="_blank" rel="noopener">
+                Instagram ↗
+              </a>
+            )}
+          </div>
         </>
       )}
     </div>
