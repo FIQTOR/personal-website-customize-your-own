@@ -613,11 +613,9 @@ export function HomeSections() {
   const isMobile = useIsMobile();
   const t = (en: string, id: string, zh?: string) => (lang === 'zh' ? zh || en : lang === 'en' ? en : id);
 
-  // Sliced from the front of `featuredProjects`. Note that the best-first
-  // ordering in `site.ts` currently has no effect (see the comment on
-  // BEST_ORDER), so this is the authoring order in `projects.ts` — not a
-  // curated ranking. The rest stay one click away via "All N projects", and
-  // every counter elsewhere still reports the true total.
+  // Sliced from the front of `featuredProjects`, ranked by `BEST_ORDER` in
+  // `site.ts`. The rest stay one click away via "All N projects", and every
+  // counter elsewhere still reports the true total.
   const shownProjects = S.featuredProjects.slice(0, isMobile ? HOME_PROJECTS_MOBILE : HOME_PROJECTS_DESKTOP);
 
   return (

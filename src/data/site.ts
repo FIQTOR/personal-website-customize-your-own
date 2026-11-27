@@ -301,22 +301,18 @@ const roleFor = (p: RawProject): LocalizedText => {
 };
 
 /**
- * Preferred order for the homepage's flagship grid.
- *
- * ⚠️ CURRENTLY INERT. These are short labels, but `Project.id` is a slug of the
- * full title (`jakarta-transit-live-public-transport-tracking`), so every
- * `indexOf` below returns -1 and the sort degenerates to the authoring order
- * in `projects.ts`. That means the homepage's "flagship" grid has never been
- * ranked. Fixing it means replacing these with the real slugs — a visible
- * content change, so it is left for a deliberate decision rather than bundled
- * in silently.
+ * Explicit ordering for the homepage's flagship grid (`S.featuredProjects`).
+ * `Project.id` is `slug(p.title.en)`, so entries here must match those exact
+ * slugs. The homepage slices the first 5 on desktop (3 on mobile).
  */
 const BEST_ORDER = [
-  'jakarta-transit',
-  'iarty-ecosystem',
-  'ai-marketplace',
-  'zantova-app',
-  'whatsapp-automation',
+  'jakarta-transit-live-public-transport-tracking',
+  'enterprise-suite-full-erp-platform',
+  'hris-universal-human-resource-system',
+  'ihs-e-school-school-management-lms',
+  'crm-panel-auth-rbac-sales-crm-suite',
+  'worthit-id-living-cost-salary-calculator-indonesia',
+  'golden-dragon-restaurant-qr-ordering-app',
 ];
 
 /* ---------------------------------------------------------------------
